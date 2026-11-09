@@ -208,6 +208,15 @@ Yönlendirme `#/` tabanlı olduğu için sayfa yenilemede 404 hatası oluşmaz.
 CDN’lere erişilemezse uygulama çalışmaya devam eder: ikonlar görünmez, grafik alanında uyarı gösterilir.
 Tamamen çevrimdışı kullanım istersen iki kütüphaneyi `js/vendor/` altına indirip `index.html` içindeki adresleri güncelleyebilirsin.
 
+## Çekirdek kaynaklar
+
+Kaynakça sayfası dört grupta düzenlenir: **öncelikli kurumsal** (NCCIH Yoga: Effectiveness and Safety, NCCIH Yoga for
+Pain: What the Science Says, NHS Exercise), **öncelikli akademik** (11 hakemli çalışma; Cochrane bel ağrısı incelemesi,
+yogaya bağlı istenmeyen olaylar, pozitif ruh sağlığı ve depresyon meta-analizleri, TAGteach, yaşlılar ve gebelik,
+travma duyarlı yoga, rehabilitasyon), **tamamlayıcı** (tarihçe ve temel bilgiler) ve diğer kurumsal kaynaklar.
+Akademik kaynaklar DOI bağlantısıyla verilir ve Crossref üzerinden doğrulanmıştır. Bibliyografik kaydı bulunamayan
+kaynaklar eklenmez; ana kaynak olarak önerilmeyen yayınlar kullanılmaz.
+
 ## İçerik ve kaynak ilkeleri
 
 - İçerikler NCCIH, NHS, Harvard Health Publishing, Cleveland Clinic, Yoga Journal, Yoga Alliance ve IAYT

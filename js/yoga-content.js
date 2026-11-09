@@ -32,6 +32,28 @@ YA.sources = {
   iayt: { org: 'International Association of Yoga Therapists', title: 'IAYT – yoga terapisi meslek kuruluşu', url: 'https://www.iayt.org/' }
 };
 YA.sourcesAccessed = 'Kasım 2026';
+/* -------------------------------------------------- ÇEKİRDEK KAYNAKLAR (öncelikli)
+   cat: 'kurumsal' | 'akademik' | 'tamamlayici'. Akademik kaynakların DOI kayıtları
+   Crossref üzerinden doğrulanmıştır (Kasım 2026).                                  */
+Object.assign(YA.sources, {
+  nccihYogaSafety: { org: 'NCCIH', title: 'Yoga: Effectiveness and Safety', url: 'https://www.nccih.nih.gov/health/yoga-effectiveness-and-safety', cat: 'kurumsal' },
+  nccihPain: { org: 'NCCIH Clinical Digest', title: 'Yoga for Pain: What the Science Says', url: 'https://www.nccih.nih.gov/health/providers/digest/yoga-for-pain-science', cat: 'kurumsal' },
+  nhsExercise: { org: 'NHS', title: 'Exercise', url: 'https://www.nhs.uk/live-well/exercise/', cat: 'kurumsal' },
+  lbpCochrane: { org: 'Cochrane Database of Systematic Reviews', cite: 'Wieland ve ark., 2022', title: 'Yoga for chronic non-specific low back pain', url: 'https://doi.org/10.1002/14651858.CD010671.pub3', cat: 'akademik' },
+  adverseEvents: { org: 'PLoS ONE', cite: 'Cramer ve ark., 2013', title: 'Adverse Events Associated with Yoga: A Systematic Review of Published Case Reports and Case Series', url: 'https://doi.org/10.1371/journal.pone.0075515', cat: 'akademik' },
+  positiveMH: { org: 'The Journal of Alternative and Complementary Medicine', cite: 'Hendriks ve ark., 2017', title: 'The Effects of Yoga on Positive Mental Health Among Healthy Adults: A Systematic Review and Meta-Analysis', url: 'https://doi.org/10.1089/acm.2016.0334', cat: 'akademik' },
+  depressionMA: { org: 'Depression and Anxiety', cite: 'Cramer ve ark., 2013', title: 'Yoga for Depression: A Systematic Review and Meta-Analysis', url: 'https://doi.org/10.1002/da.22166', cat: 'akademik' },
+  yogaTherapeutic: { org: 'Annals of Yoga and Physical Therapy', cite: 'Du, 2017', title: 'Yoga as a Therapeutic Intervention', url: 'https://doi.org/10.26420/annyogaphysther.2017.1024', cat: 'akademik' },
+  tagteach: { org: 'Journal of Applied Behavior Analysis', cite: 'Ennett ve ark., 2019', title: 'Comparison of Two TAGteach Error-Correction Procedures to Teach Beginner Yoga Poses to Adults', url: 'https://doi.org/10.1002/jaba.550', cat: 'akademik' },
+  seniorsSafety: { org: 'The Journal of Alternative and Complementary Medicine', cite: 'Krucoff ve ark., 2010', title: 'Teaching Yoga to Seniors: Essential Considerations to Enhance Safety and Reduce Risk in a Uniquely Vulnerable Age Group', url: 'https://doi.org/10.1089/acm.2009.0501', cat: 'akademik' },
+  seniorsContinuum: { org: 'Topics in Geriatric Rehabilitation', cite: 'Krucoff ve ark., 2023', title: 'The Yoga for Seniors “Continuum of Practice”', url: 'https://doi.org/10.1097/TGR.0000000000000397', cat: 'akademik' },
+  pregnancyReview: { org: 'Evidence-Based Complementary and Alternative Medicine', cite: 'Curtis ve ark., 2012', title: 'Systematic Review of Yoga for Pregnant Women: Current Status and Future Directions', url: 'https://doi.org/10.1155/2012/715942', cat: 'akademik' },
+  traumaInformed: { org: 'International Journal of Complementary & Alternative Medicine', cite: 'Cook-Cottone ve ark., 2017', title: 'Trauma-Informed Yoga: An Embodied, Cognitive-Relational Framework', url: 'https://doi.org/10.15406/ijcam.2017.09.00284', cat: 'akademik' },
+  rehabFoundations: { org: 'Healthcare Policy and Reform (IGI Global, kitap bölümü)', cite: 'Garner, 2019', title: 'Foundations for Yoga Practice in Rehabilitation', url: 'https://doi.org/10.4018/978-1-5225-6915-2.ch010', cat: 'akademik' },
+  natureOfYoga: { org: 'The Principles and Practice of Yoga in Cardiovascular Medicine (Springer, kitap bölümü)', cite: 'Dallaghan ve ark., 2022', title: 'The Nature, Meaning, and Practice of Yoga: Traditional Base Meets Scientific Rigor', url: 'https://doi.org/10.1007/978-981-16-6913-2_3', cat: 'tamamlayici' },
+  basicPrinciple: { org: 'Journal of Yoga and Physiotherapy', cite: 'Rakwal ve ark., 2026', title: 'The Basic Principle of Yoga—Part I: History, Concept and Systems of Yoga', url: 'https://doi.org/10.19080/JYP.2026.13.555857', cat: 'tamamlayici' }
+});
+
 
 /* -------------------------------------------------- MODÜLLER
    kind: 'text'  -> sections içindeki metinler
@@ -43,7 +65,7 @@ YA.modules = [
   id: 'm1', no: 1, icon: 'sprout', kind: 'text',
   title: "Yoga'ya Giriş",
   summary: 'Yoganın ne olduğunu, kökenini, temel felsefesini ve bugün en çok uygulanan stilleri öğren.',
-  sources: ['nccihYoga', 'nccihYogaSafety', 'nhsYoga', 'harvardYoga', 'yogaAlliance'],
+  sources: ['nccihYogaSafety', 'nccihPain', 'yogaTherapeutic', 'natureOfYoga', 'basicPrinciple', 'nccihYoga', 'nhsYoga', 'harvardYoga', 'yogaAlliance'],
   sections: [
     { id: 'nedir', title: 'Yoga nedir?', html: `
 <p>“Yoga” sözcüğü Sanskritçe <em>yuj</em> kökünden gelir; bu kök “birleştirmek, bağlamak, boyunduruğa koşmak” gibi anlamlar taşır. Geleneksel anlatımda yoga; beden, nefes ve zihnin bir arada, dikkatle çalıştırıldığı bir uygulama bütünüdür.</p>
@@ -118,7 +140,7 @@ YA.modules = [
   id: 'm2', no: 2, icon: 'mat', kind: 'text',
   title: "Yoga'ya Hazırlık",
   summary: 'Ekipman, kıyafet, ortam, doğru duruş ve güvenli pratik kuralları.',
-  sources: ['nhsYoga', 'nccihYogaSafety', 'nccihYoga', 'nhsPregnancy'],
+  sources: ['nccihYogaSafety', 'adverseEvents', 'nhsExercise', 'seniorsSafety', 'pregnancyReview', 'nhsYoga', 'nccihYoga', 'nhsPregnancy'],
   sections: [
     { id: 'ekipman', title: 'Yoga için gerekli ekipmanlar', html: `
 <p>Başlamak için pahalı ekipmana ihtiyacın yok. İlk hafta için bir mat (ya da halı üzerinde katlanmış bir battaniye) yeterlidir.</p>
@@ -207,7 +229,7 @@ YA.modules = [
   id: 'm4', no: 4, icon: 'pose', kind: 'poses',
   title: 'Temel Yoga Pozisyonları (Asanalar)',
   summary: '12 başlangıç ve 6 orta seviye duruş: adım adım uygulama, hizalanma, hatalar ve alternatifler.',
-  sources: ['yogaJournalPoses', 'nhsYoga', 'nccihYogaSafety', 'nhsFlex', 'nhsBalance'],
+  sources: ['nccihYogaSafety', 'adverseEvents', 'tagteach', 'seniorsContinuum', 'yogaJournalPoses', 'nhsYoga', 'nhsFlex', 'nhsBalance'],
   intro: `
 <p>Asana, Sanskritçede “oturuş, duruş” anlamına gelir. Bu modülde her duruşu aynı şablonla öğreneceksin: amaç, çalışan kaslar, adımlar, hizalanma, nefes, yaygın hatalar, kolaylaştırılmış alternatif ve dikkat edilmesi gereken durumlar.</p>
 <p><strong>Seviyeler:</strong> <span class="lvl lvl-b">Başlangıç</span> duruşları ilk 30 günün temelidir. <span class="lvl lvl-i">Orta</span> seviye duruşlar ilk 30 günü tamamladıktan sonra, hazır hissettiğinde denenebilir. <span class="lvl lvl-a">İleri</span> duruşlar yalnızca bilgi amaçlıdır; bu programda uygulanmaz.</p>
@@ -217,7 +239,7 @@ YA.modules = [
   id: 'm5', no: 5, icon: 'lotus', kind: 'text',
   title: 'Meditasyon ve Zihinsel Farkındalık',
   summary: 'Mindfulness, beden taraması, odaklanma, rehberli meditasyon ve Yoga Nidra.',
-  sources: ['nccihMeditation', 'nhsMindfulness', 'ccBodyScan', 'nccihRelax'],
+  sources: ['positiveMH', 'depressionMA', 'traumaInformed', 'nccihMeditation', 'nhsMindfulness', 'ccBodyScan', 'nccihRelax'],
   sections: [
     { id: 'giris', title: 'Meditasyona giriş', html: `
 <p>Meditasyon, dikkati eğitmeye yönelik zihinsel uygulamaların genel adıdır. Amaç “düşünceleri durdurmak” değildir; zihin doğal olarak dağılır. Meditasyon, dikkatin dağıldığını <em>fark edip</em> nazikçe seçtiğin odağa geri getirme becerisini çalıştırır.</p>
@@ -269,7 +291,7 @@ YA.modules = [
   id: 'm6', no: 6, icon: 'spine', kind: 'text',
   title: 'Yoga ve Anatomi',
   summary: 'Omurga, kalça, omuz, hamstringler, core, denge, esneklik ve eklem hareket açıklığı.',
-  sources: ['ccSpine', 'ccHip', 'ccHamstring', 'harvardCore', 'nhsBalance', 'nhsFlex'],
+  sources: ['nccihPain', 'lbpCochrane', 'rehabFoundations', 'ccSpine', 'ccHip', 'ccHamstring', 'harvardCore', 'nhsBalance', 'nhsFlex'],
   sections: [
     { id: 'omurga', title: 'Omurga anatomisi', ill: 'assets/illustrations/spine.svg', html: `
 <p>Omurga, üst üste dizilmiş omurlardan (vertebra) oluşur ve aralarındaki diskler amortisör görevi görür. Omurilik bu kemik kanalın içinde korunur.</p>
@@ -339,7 +361,7 @@ YA.modules = [
   id: 'm7', no: 7, icon: 'sequence', kind: 'programs',
   title: 'Yoga Programları',
   summary: '5–20 dakikalık hazır rutinler, masa başı hareketleri ve denge-esneklik akışları.',
-  sources: ['nhsYoga', 'nhsFlex', 'nhsBalance', 'nccihYogaSafety'],
+  sources: ['nccihYogaSafety', 'nhsExercise', 'seniorsContinuum', 'nhsYoga', 'nhsFlex', 'nhsBalance'],
   intro: `
 <p>Her program; hareket sırası, her adımın süresi ve dinlenme aralıklarıyla birlikte hazırlanmıştır. <strong>“Başlat”</strong> dediğinde ekrandaki zamanlayıcı seni adım adım yönlendirir; program bitince süren pratik kayıtlarına eklenir.</p>
 <p><strong>Kendi rutinini kurarken</strong> şu iskeleti kullanabilirsin: <em>1) Nefesle varış → 2) Isınma (Kedi-İnek) → 3) Ayakta duruşlar → 4) Denge → 5) Yerde esneme ve burgu → 6) Gevşeme (Savasana).</em></p>

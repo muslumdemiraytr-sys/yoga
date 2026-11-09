@@ -69,7 +69,7 @@ const App = (() => {
   function sourceList(keys) {
     return `<div class="sources"><h3>${icon('library')} Kaynakça</h3><ul>${keys.map(k => {
       const s = YA.sources[k]; if (!s) return '';
-      return `<li><a href="${s.url}" target="_blank" rel="noopener noreferrer">${h(s.title)}</a> <span class="muted">– ${h(s.org)}</span></li>`;
+      return `<li>${s.cite ? `${h(s.cite)}. ` : ''}<a href="${s.url}" target="_blank" rel="noopener noreferrer">${h(s.title)}</a> <span class="muted">– ${h(s.org)}</span></li>`;
     }).join('')}</ul><p class="tiny muted">Erişim: ${YA.sourcesAccessed}. İçerikler bu kaynaklardan yararlanılarak özgün Türkçe anlatımla hazırlanmıştır.</p></div>`;
   }
   /* ------------------------------------------------ Videolu gösterim (YouTube, tıklayınca yüklenir) */
@@ -480,7 +480,7 @@ const App = (() => {
         ${videoBlock(p.id, `${p.sa} ${p.tr} yoga nasıl yapılır`)}</div>
       <h2 class="section-title">Pozun görsel anlatımı</h2>
       ${Viz.poseInfographic(p)}
-      ${sourceList(['yogaJournalPoses', 'nhsYoga', 'nccihYogaSafety'])}
+      ${sourceList(['nccihYogaSafety', 'adverseEvents', 'tagteach', 'yogaJournalPoses', 'nhsYoga'])}
       <div class="pager">${prev ? `<a class="btn ghost" href="#/poz/${prev.id}">${icon('arrow-left')} ${h(prev.tr)}</a>` : '<span></span>'}${next ? `<a class="btn ghost" href="#/poz/${next.id}">${h(next.tr)} ${icon('arrow-right')}</a>` : ''}</div>`;
     bindVideos(el);
     el.querySelector('#learnBtn').addEventListener('click', () => {
@@ -803,13 +803,17 @@ const App = (() => {
     el.innerHTML = `<section class="page-head"><p class="eyebrow">Kaynakça</p><h1>Güvenilir kaynaklar ve referanslar</h1>
       <p class="lead">Eğitim içerikleri aşağıdaki kurumların yayınlarından yararlanılarak, doğrudan kopyalanmadan özgün Türkçe anlatımla hazırlanmıştır. Bağlantılar ${YA.sourcesAccessed} tarihinde kontrol edilmiştir.</p></section>
       <div class="card"><h2>${icon('book-marked')} İçerik ilkeleri</h2><ul>
-        <li>Sağlık ve güvenlik ifadeleri NCCIH, NHS, Harvard Health Publishing ve Cleveland Clinic gibi kurumların yayınlarına dayanır.</li>
+        <li>Sağlık ve güvenlik ifadeleri öncelikle NCCIH ve NHS yayınlarına ve hakemli sistematik derlemelere dayanır; Harvard Health Publishing ve Cleveland Clinic tamamlayıcı olarak kullanılır.</li>
         <li>Geleneksel yoga felsefesi “Geleneksel görüş” kutularında; bilimsel bulgular “Bilimsel çerçeve” kutularında ayrı gösterilir.</li>
         <li>Kaynağı doğrulanamayan sağlık iddialarına yer verilmemiştir. Kanıtın sınırlı olduğu konular açıkça belirtilmiştir.</li>
         <li>Kaynak sayfaların yayın/güncelleme tarihleri kurumlar tarafından değiştirilebilir; güncel sürüm için bağlantıları ziyaret et.</li></ul></div>
-      <div class="card"><table class="table src-table"><thead><tr><th>Kurum</th><th>Kaynak</th><th>Kullanıldığı modüller</th></tr></thead><tbody>
-        ${Object.entries(YA.sources).map(([k, s]) => `<tr><td>${h(s.org)}</td><td><a href="${s.url}" target="_blank" rel="noopener noreferrer">${h(s.title)} ${icon('external-link')}</a></td><td>${(used[k] || ['Genel']).join(', ')}</td></tr>`).join('')}
-      </tbody></table></div>
+      ${[['kurumsal', 'Öncelikli kurumsal kaynaklar', 'library'], ['akademik', 'Öncelikli akademik kaynaklar', 'graduation-cap'], ['tamamlayici', 'Tarihçe ve temel bilgiler için tamamlayıcı kaynaklar', 'book-open'], [undefined, 'Diğer kurumsal ve eğitim kaynakları', 'globe']].map(([cat, title, ic]) => {
+        const list = Object.entries(YA.sources).filter(([, s]) => s.cat === cat);
+        return `<div class="card src-group"><h2>${icon(ic)} ${title} <span class="chip">${list.length}</span></h2><table class="table src-table"><thead><tr><th>Kaynak</th><th>Yayın</th><th>Modüller</th></tr></thead><tbody>
+          ${list.map(([k, s]) => `<tr><td>${s.cite ? `<strong>${h(s.cite)}.</strong> ` : ''}<a href="${s.url}" target="_blank" rel="noopener noreferrer">${h(s.title)} ${icon('external-link')}</a></td><td>${h(s.org)}</td><td>${(used[k] || ['Genel']).join(', ')}</td></tr>`).join('')}
+        </tbody></table></div>`;
+      }).join('')}
+      <div class="callout info small">${icon('info')} <div>Akademik kaynakların bağlantıları DOI kayıtlarına gider; DOI kayıtları Crossref üzerinden doğrulanmıştır. Bibliyografik kaydı doğrulanamayan kaynaklar listeye eklenmemiştir. Tek bir çalışmanın sonucu herkese genellenemez; kanıtın gücü çalışmaya, yoga türüne, süreye ve katılımcı grubuna göre değişir.</div></div>
       <div class="card"><h2>${icon('image')} Görsel kaynakları ve lisanslar</h2><ul>
         <li><strong>Sayfa illüstrasyonları, menü/modül/rozet ikon seti (<code>assets/icons/ya-icons.svg</code>), pozisyon çizimleri, anatomi şemaları ve nefes infografikleri:</strong> bu proje için özgün olarak hazırlanmış SVG çizimlerdir (kontur + tek vurgu rengi stili, svgs.app’teki “Minimal Outline Accent” yaklaşımından esinlenilmiştir; hiçbir çizim oradan kopyalanmamıştır); projeyle aynı lisans altında serbestçe kullanılabilir. Tüm görseller <code>assets/</code> klasöründe yereldir.</li>
         <li><strong>Fotoğraf eklemek istersen:</strong> Unsplash (unsplash.com/license) ve Pexels (pexels.com/license) lisansları ücretsiz ticari/kişisel kullanıma izin verir. Fotoğrafı <code>assets/images/</code> klasörüne indirip <code>assets/images/CREDITS.md</code> dosyasına fotoğrafçı adı ve bağlantısını ekle.</li>
