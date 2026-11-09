@@ -60,6 +60,15 @@ YA.quizzes = [
   { t: 'mc', q: 'Programın ortasında nefes darlığı hissedersen ne yapmalısın?', o: ['Devam etmek', 'Duraklatıp Çocuk Duruşu’na ya da uzanmaya geçmek', 'Daha hızlı yapmak', 'Nefesi tutmak'], a: 1, e: 'Nefes darlığı, baş dönmesi ve ağrı durma sinyalleridir.' },
   { t: 'tf', q: 'Kısa ama düzenli pratik, seyrek ve uzun pratikten daha sürdürülebilirdir.', o: TF, a: 0, e: 'Alışkanlık oluşturmada düzenlilik yoğunluktan önce gelir.' }
 ]},
+{ id: 'm8', module: 'm8', title: 'Modül 8 – Yoga Anatomisi ve Vücut Etkileri', qs: [
+  { t: 'mc', q: 'Arka uyluk kasları (hamstringler) genel olarak hangi hareketlerde görev alır?', o: ['Dizi büker ve kalçayı geriye uzatır', 'Dizi düzleştirir', 'Kolu yana kaldırır', 'Ana solunum kasıdır'], a: 0, e: 'Hamstringler kalça ekleminin arkasından diz arkasına uzanır; dizi büker, kalçayı geriye uzatır.' },
+  { t: 'mc', q: 'Aşağı Bakan Köpek’te baldır kasları genellikle hangi durumdadır?', o: ['Aktif kasılır', 'Esner', 'Hiç etkilenmez', 'Yalnızca nefese katılır'], a: 1, e: 'Kalça bükülü ve topuklar yere doğru inerken baldır kasları esner.' },
+  { t: 'mc', q: 'Ağaç Duruşu’nda destek bacağında pelvisin yana düşmesini sınırlayan kas hangisidir?', o: ['Gluteus medius', 'Biceps brachii', 'Pectoralis major', 'Trapezius'], a: 0, e: 'Orta kalça kası tek ayak üzerinde pelvisin dengede kalmasına yardım eder.' },
+  { t: 'mc', q: 'Köprü Duruşu’nda kalçayı yerden kaldıran başlıca kas hangisidir?', o: ['Büyük kalça kası (gluteus maximus)', 'Pazı kası', 'Ön kaval kası', 'Diyafram'], a: 0, e: 'Kalça ekstansiyonunda büyük kalça kası öne çıkar; hamstringler de yardım eder.' },
+  { t: 'mc', q: '“Stabilizasyon sağlayan kas” ne demektir?', o: ['Hareketi üreten kas', 'Eklemleri ve gövdeyi sabit tutan kas', 'Esneyen kas', 'Çalışmayan kas'], a: 1, e: 'Stabilizatörler hareketi üretmekten çok, eklemleri ve gövdeyi doğru konumda tutar.' },
+  { t: 'tf', q: 'Bir pozda hangi kasların ne kadar çalıştığı kişiden kişiye ve uygulama biçimine göre değişebilir.', o: TF, a: 0, e: 'Beden yapısı, hareket kısıtlılıkları ve poz varyasyonu kasların rolünü etkiler.' },
+  { t: 'tf', q: 'Yoga pozları iç organları iyileştirir.', o: TF, a: 1, e: 'Bu tür iddialar kanıtla desteklenmez. Yoga, tıbbi değerlendirme veya tedavinin yerine geçmez.' }
+]},
 { id: 'final', title: 'Final Değerlendirmesi (30. Gün)', final: true, qs: [
   { t: 'mc', q: 'Modern yoga pratiğinin üç temel bileşeni nedir?', o: ['Diyet, uyku, koşu', 'Duruşlar, nefes, meditasyon', 'Ağırlık, esneme, masaj', 'Dans, müzik, nefes'], a: 1, e: 'Asana, pranayama ve meditasyon/gevşeme.' },
   { t: 'mc', q: 'Ahimsa ilkesinin bir yeni başlayan için pratikteki anlamı nedir?', o: ['Her gün 1 saat çalışmak', 'Kendine de zarar vermemek, zorlamamak', 'Sadece vejetaryen beslenmek', 'Nefesi tutmak'], a: 1, e: 'Ahimsa “zarar vermemek”tir; bedeni zorlamadan çalışmak bu ilkeyle uyumludur.' },

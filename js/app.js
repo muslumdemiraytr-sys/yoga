@@ -182,7 +182,7 @@ const App = (() => {
           <article class="course-card">
             <a class="cc-banner tone-2" href="#/moduller"><img src="assets/illustrations/moduller.svg" alt="" loading="lazy"></a>
             <div class="cc-body"><p class="cc-label">Bölüm 2</p><h3><a href="#/moduller">Eğitim Modülleri</a></h3>
-              <p>Felsefeden anatomiye 7 modül, 61 bölüm. Her modülün sonunda kısa bir sınav ve kaynakça.</p>
+              <p>Felsefeden anatomiye ${YA.modules.length} modül, ${s.secTotal} bölüm. Her modülün sonunda kısa bir sınav ve kaynakça.</p>
               ${bar(s.secDone / s.secTotal * 100)}<p class="tiny muted">${s.secDone}/${s.secTotal} bölüm okundu</p>
               <a class="link" href="${nextSec ? nextSec.href : '#/moduller'}">${s.secDone ? 'Kaldığın yerden devam et' : 'Modüllere başla'} ${icon('arrow-right')}</a></div>
           </article>
@@ -292,7 +292,7 @@ const App = (() => {
   }
 
   /* ---------- Kurs yapısı: modül → bölüm satırları */
-  const MOD_ILL = { m1: 'moduller', m2: 'baslangic', m3: 'nefes', m4: 'pozlar', m5: 'meditasyon', m6: 'spine', m7: 'programlar' };
+  const MOD_ILL = { m1: 'moduller', m2: 'baslangic', m3: 'nefes', m4: 'pozlar', m5: 'meditasyon', m6: 'spine', m7: 'programlar', m8: 'pozlar' };
   const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII'];
   const tone = (m) => 'tone-' + ((YA.modules.indexOf(m) % 4) + 1);
   function moduleRows(m) {
@@ -327,12 +327,12 @@ const App = (() => {
       <section class="band band-center">
         <p class="band-label">Eğitim Modülleri</p>
         <h1 class="display">Hoş geldin!</h1>
-        <p class="lead">7 modül ve ${s.secTotal} bölümle yoganın temellerini öğren. Hesap gerekmez; ilerlemen bu tarayıcıda saklanır.</p>
+        <p class="lead">${YA.modules.length} modül ve ${s.secTotal} bölümle yoganın temellerini öğren. Hesap gerekmez; ilerlemen bu tarayıcıda saklanır.</p>
         <div class="btn-row center">
           ${nx ? `<a class="btn pill light lg" href="${nx.href}">${s.secDone ? 'Kaldığın yerden devam et' : 'Modül 1’e başla'} ${icon('arrow-right')}</a>` : ''}
           <a class="btn pill outline-light lg" href="#/quiz">Sınavlar</a>
         </div>
-        <div class="band-progress">${bar(s.secDone / s.secTotal * 100)}<span>${s.secDone}/${s.secTotal} bölüm · ${s.modulesDone}/7 modül tamamlandı</span></div>
+        <div class="band-progress">${bar(s.secDone / s.secTotal * 100)}<span>${s.secDone}/${s.secTotal} bölüm · ${s.modulesDone}/${YA.modules.length} modül tamamlandı</span></div>
       </section>
       <div class="course-grid">${YA.modules.map(m => {
         const ms = Progress.moduleStats(m.id);
@@ -351,6 +351,7 @@ const App = (() => {
     const m = YA.modules.find(x => x.id === id);
     if (!m) return notFound(el);
     if (sec && m.kind === 'text') return pageSection(el, m, sec);
+    if (m.kind === 'anatomy') return Anatomy.renderHub(el, m, sec);
     const ms = Progress.moduleStats(m.id);
     const idx = YA.modules.indexOf(m);
     const prev = YA.modules[idx - 1], next = YA.modules[idx + 1];
@@ -480,9 +481,11 @@ const App = (() => {
         ${videoBlock(p.id, `${p.sa} ${p.tr} yoga nasıl yapılır`)}</div>
       <h2 class="section-title">Pozun görsel anlatımı</h2>
       ${Viz.poseInfographic(p)}
-      ${sourceList(['nccihYogaSafety', 'adverseEvents', 'tagteach', 'yogaJournalPoses', 'nhsYoga'])}
+      ${Anatomy.has(p.id) ? `<h2 class="section-title" id="anatomi">${icon('scan-line')} Yoga anatomisi ve vücut etkileri</h2><div class="card an-host" id="anHost"></div>${Anatomy.infoCards(p.id)}` : ''}
+      ${sourceList(['nccihYogaSafety', 'adverseEvents', 'tagteach', 'openstaxAP', 'yogaJournalPoses', 'nhsYoga'])}
       <div class="pager">${prev ? `<a class="btn ghost" href="#/poz/${prev.id}">${icon('arrow-left')} ${h(prev.tr)}</a>` : '<span></span>'}${next ? `<a class="btn ghost" href="#/poz/${next.id}">${h(next.tr)} ${icon('arrow-right')}</a>` : ''}</div>`;
     bindVideos(el);
+    if (Anatomy.has(p.id)) Anatomy.mount(el.querySelector('#anHost'), p.id);
     el.querySelector('#learnBtn').addEventListener('click', () => {
       Progress.setRead('m4', p.id, !Progress.isRead('m4', p.id));
       if (Progress.isRead('m4', p.id)) toast(`${p.tr} öğrenildi olarak işaretlendi.`, 'ok');

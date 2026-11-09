@@ -39,6 +39,7 @@ Object.assign(YA.sources, {
   nccihYogaSafety: { org: 'NCCIH', title: 'Yoga: Effectiveness and Safety', url: 'https://www.nccih.nih.gov/health/yoga-effectiveness-and-safety', cat: 'kurumsal' },
   nccihPain: { org: 'NCCIH Clinical Digest', title: 'Yoga for Pain: What the Science Says', url: 'https://www.nccih.nih.gov/health/providers/digest/yoga-for-pain-science', cat: 'kurumsal' },
   nhsExercise: { org: 'NHS', title: 'Exercise', url: 'https://www.nhs.uk/live-well/exercise/', cat: 'kurumsal' },
+  openstaxAP: { org: 'OpenStax (Rice University) – açık ders kitabı', title: 'Anatomy and Physiology 2e – Bölüm 9 (Eklemler) ve Bölüm 11 (Kas sistemi)', url: 'https://openstax.org/details/books/anatomy-and-physiology-2e' },
   lbpCochrane: { org: 'Cochrane Database of Systematic Reviews', cite: 'Wieland ve ark., 2022', title: 'Yoga for chronic non-specific low back pain', url: 'https://doi.org/10.1002/14651858.CD010671.pub3', cat: 'akademik' },
   adverseEvents: { org: 'PLoS ONE', cite: 'Cramer ve ark., 2013', title: 'Adverse Events Associated with Yoga: A Systematic Review of Published Case Reports and Case Series', url: 'https://doi.org/10.1371/journal.pone.0075515', cat: 'akademik' },
   positiveMH: { org: 'The Journal of Alternative and Complementary Medicine', cite: 'Hendriks ve ark., 2017', title: 'The Effects of Yoga on Positive Mental Health Among Healthy Adults: A Systematic Review and Meta-Analysis', url: 'https://doi.org/10.1089/acm.2016.0334', cat: 'akademik' },
@@ -368,6 +369,17 @@ YA.modules = [
 <div class="callout warn">Programın herhangi bir anında baş dönmesi, nefes darlığı veya ağrı hissedersen duraklat, Çocuk Duruşu’na ya da sırt üstü uzanmaya geç.</div>`
 }
 ];
+
+YA.modules.push({
+  id: 'm8', no: 8, icon: 'spine', kind: 'anatomy',
+  title: 'Yoga Anatomisi ve Vücut Etkileri',
+  summary: 'Her pozda hangi kasların çalıştığını, esnediğini ve gövdeyi sabitlediğini interaktif anatomi çizimleriyle öğren.',
+  sources: ['openstaxAP', 'ccSpine', 'ccHip', 'ccHamstring', 'harvardCore', 'nhsBalance', 'adverseEvents', 'nccihYogaSafety'],
+  intro: `
+<p>Bu modülde pozları <strong>kaslar, iskelet, omurga ve eklemler, solunum</strong> ile <strong>denge ve postür</strong> açısından inceleyeceksin. Her pozun sayfasında ön, arka ve yan görünümlü etkileşimli bir anatomi alanı bulunur; bir kasa dokunduğunda Türkçe ve Latince adı, pozdaki hareketi ve rolü açılır.</p>
+<p><strong>Renkler:</strong> <span class="an-badge r-a">Aktif çalışan</span> kaslar hareketi üretir ya da taşır, <span class="an-badge r-s">Esneyen</span> kaslar uzar, <span class="an-badge r-t">Stabilizasyon sağlayan</span> kaslar eklemleri ve gövdeyi sabitler, <span class="an-badge r-n">Daha az etkilenen</span> bölgeler ise bu pozda belirgin bir rol üstlenmez.</p>
+<div class="callout science"><strong>Bilimsel çerçeve:</strong> Bilgiler genel anatomi ve hareket bilimi bilgisine dayanır. Bir kasın bir pozda ne kadar çalıştığı kişiden kişiye, bedenin yapısına, hareket kısıtlılıklarına ve pozun nasıl uygulandığına göre değişir. Pozlar hastalık tedavi etmez ya da organları iyileştirmez; yoga, tıbbi değerlendirme veya tedavinin yerine geçmez.</div>`
+});
 
 /* -------------------------------------------------- MOTİVASYON */
 YA.motivation = [

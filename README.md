@@ -37,6 +37,7 @@ yoga-academy/
 ├── js/
 │   ├── theme.js          # 10 renk teması, kontrast hesaplı tema motoru
 │   ├── visuals.js        # görsel anlatım bileşenleri, öğrenme haritası, görsel rapor
+│   ├── anatomy.js        # anatomi verisi ve etkileşimli anatomi bileşenleri (Modül 8)
 │   ├── storage.js        # localStorage, JSON dışa/içe aktarma
 │   ├── yoga-content.js   # Modüller, kaynaklar, nefes, pozlar, programlar, meditasyon
 │   ├── progress.js       # Metrikler, seri (streak), rozet kuralları
@@ -51,6 +52,20 @@ yoga-academy/
 ```
 
 Pozisyon çizimleri `yoga-content.js` içindeki eklem koordinatlarından SVG olarak üretilir; tüm görseller yereldir.
+
+## Yoga Anatomisi ve Vücut Etkileri (Modül 8)
+
+- **Veri:** `js/anatomy.js` içinde ayrı tutulur: `MUSCLES` (Türkçe/Latince ad, bölge, genel görev), `CATS` (7 anatomik
+  kategori) ve `POSES` (her poz için kas rolleri, eklem hareketleri, omurga etkisi, nefes, denge, fonksiyonel katkı,
+  doğru teknik, olası zorlanmalar ve alternatifler). 18 pozun tamamı tanımlıdır.
+- **Poz sayfası:** ön / arka kas haritası ve pozun kendi çizimi üzerinde yan görünüm; Kas sistemi, İskelet,
+  Omurga ve eklemler, Solunum, Denge ve postür sekmeleri; aktif / esneyen / stabilizasyon / daha az etkilenen
+  katmanlarını açıp kapatma; kasa tıklayınca bilgi kartı; her pozda anatomik bilgi kartları.
+- **Modül sayfası (`#/modul/m8`):** 7 kategoriye göre pozlar, iki pozu anatomik olarak karşılaştırma ve verilerden
+  üretilen mini test; ayrıca 7 soruluk modül sınavı.
+- Yeni poz eklemek için `Anatomy.POSES` içine aynı şablonla bir kayıt eklemek yeterlidir.
+- Bilgiler genel anatomi ve hareket bilimi bilgisine (OpenStax Anatomy and Physiology 2e) dayanır; kasların rolünün
+  kişiye ve uygulamaya göre değişebileceği her sayfada belirtilir.
 
 ## Sağlık ve güvenlik ilkeleri
 

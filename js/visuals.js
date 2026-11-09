@@ -338,6 +338,7 @@ const Viz = (() => {
           <div class="pi-align"><div class="pi-align-fig">${App.figure(p.fig, { label: p.tr + ' hizalama çizimi' })}</div>
           <ol class="pi-checks">${p.align.map(a => `<li>${ic('check')}<span>${h(a)}</span></li>`).join('')}</ol></div></section>
         <section class="card pi-card">${bodymap(POSE_REGIONS[p.id] || [], { title: `${ic('dumbbell')} Çalışan kas grupları` })}
+          ${typeof Anatomy !== 'undefined' && Anatomy.has(p.id) ? `<p class="tiny"><a href="javascript:void 0" onclick="document.getElementById('anatomi').scrollIntoView({behavior:'smooth'})">Ayrıntılı, etkileşimli anatomi gösterimine git ${ic('arrow-down')}</a></p>` : ''}
           <div class="tags">${p.muscles.map(x => `<span class="tag">${h(x)}</span>`).join('')}</div></section>
       </div>
       <section class="card pi-card">${compare(

@@ -64,6 +64,7 @@ const Progress = (() => {
     if (m.kind === 'breath') return YA.breaths.map(b => b.id);
     if (m.kind === 'poses') return YA.poses.map(p => p.id);
     if (m.kind === 'programs') return YA.programs.map(p => p.id);
+    if (m.kind === 'anatomy') return (typeof Anatomy !== 'undefined' ? Anatomy.CATS.map(c => c.id) : []);
     return [];
   }
   function moduleStats(id) {

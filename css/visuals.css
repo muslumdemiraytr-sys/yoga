@@ -341,3 +341,106 @@
   .vz-modules .vz-pips { grid-column: 1 / -1; grid-row: 2; }
   .vz-scale-ticks span { width: 90px; }
 }
+
+/* ==========================================================================
+   Yoga Anatomisi – etkileşimli anatomi bileşenleri
+   ========================================================================== */
+.an-host { padding: 20px; }
+.r-a { --r: var(--color-cta); } .r-s { --r: var(--chart-1); } .r-t { --r: var(--chart-3); } .r-n { --r: var(--color-surface-2); }
+.an-sw { display: inline-block; width: 14px; height: 14px; border-radius: 4px; background: var(--r); border: 1px solid var(--color-border); margin-right: 6px; vertical-align: -2px; flex-shrink: 0; }
+.an-sw.lv0 { background: var(--color-surface-2); } .an-sw.lv1 { background: color-mix(in srgb, var(--color-cta) 45%, var(--color-surface)); } .an-sw.lv2 { background: var(--color-cta); }
+.an-badge { display: inline-block; font-size: .72rem; font-weight: 800; padding: 3px 9px; border-radius: 999px; background: color-mix(in srgb, var(--r) 22%, var(--color-surface)); color: var(--color-heading); border: 1px solid color-mix(in srgb, var(--r) 60%, transparent); }
+.an-cats { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.an-cats .chip { text-decoration: none; }
+.an-tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--color-border); margin-bottom: 16px; }
+.an-tabs button { border: 0; background: none; padding: 10px 14px; font: 700 .9rem var(--font); color: var(--color-muted); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -1px; min-height: 44px; }
+.an-tabs button[aria-selected="true"] { color: var(--color-heading); border-bottom-color: var(--color-cta); }
+.an-tabs button:hover { color: var(--color-heading); }
+.an-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+.an-views { display: inline-flex; border: 1px solid var(--color-border); border-radius: 999px; padding: 3px; margin-bottom: 10px; }
+.an-views button { border: 0; background: none; border-radius: 999px; padding: 6px 14px; font: 700 .85rem var(--font); color: var(--color-text); cursor: pointer; min-height: 36px; }
+.an-views button[aria-pressed="true"] { background: var(--color-primary-strong); color: var(--color-button-text); }
+.an-toggles { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-bottom: 8px; font-size: .84rem; font-weight: 700; }
+.an-toggles label { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; }
+.an-toggles input { width: 16px; height: 16px; }
+.an-fig { background: var(--color-background); border-radius: 16px; padding: 12px; display: flex; justify-content: center; }
+.an-fig.wide { justify-content: flex-start; }
+.an-svg { width: 100%; max-width: 230px; height: auto; }
+.an-svg.spine { max-width: 300px; }
+.an-sil { fill: var(--color-surface); stroke: var(--color-border); stroke-width: 1.2; }
+.an-m { fill: var(--r); stroke: var(--color-surface); stroke-width: 1; cursor: pointer; transition: opacity .15s; }
+.an-m.r-n { fill: var(--color-surface-2); }
+.an-m:hover, .an-m:focus { stroke: var(--color-heading); stroke-width: 1.6; outline: none; }
+.an-m.sel { stroke: var(--color-heading); stroke-width: 2.2; }
+.hide-a .an-m.r-a, .hide-s .an-m.r-s, .hide-t .an-m.r-t { fill: var(--color-surface-2); opacity: .5; }
+.hide-n .an-m.r-n { opacity: 0; }
+.an-legend { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .84rem; font-weight: 700; color: var(--color-text); }
+.an-legend li { margin: 0; display: flex; align-items: center; }
+.an-bone { fill: none; stroke: var(--color-muted); stroke-width: 2.2; stroke-linecap: round; }
+.an-bone rect { fill: var(--color-surface-2); stroke-width: 1; }
+.an-bone circle { fill: var(--color-surface); }
+.an-j { fill: var(--color-surface-2); stroke: var(--color-muted); stroke-width: 1; }
+.an-j.on { fill: var(--color-cta); stroke: var(--color-accent-deep); cursor: pointer; }
+.an-v.lv0 { fill: var(--color-surface-2); } .an-v.lv1 { fill: color-mix(in srgb, var(--color-cta) 45%, var(--color-surface)); } .an-v.lv2 { fill: var(--color-cta); }
+.an-v { stroke: var(--color-border); }
+.an-t { font: 700 11px var(--font); fill: var(--color-heading); }
+.an-t.mid { text-anchor: middle; }
+.an-rib { fill: var(--color-surface); stroke: var(--color-muted); stroke-width: 1.5; }
+.an-lung { fill: color-mix(in srgb, var(--chart-1) 20%, var(--color-surface)); stroke: var(--chart-1); stroke-width: 1.2; }
+.an-ribline { fill: none; stroke: var(--color-border); stroke-width: 2; }
+.an-ribline.on { stroke: var(--chart-3); }
+.an-dia { fill: none; stroke: var(--color-border); stroke-width: 5; stroke-linecap: round; }
+.an-dia.on { stroke: var(--color-cta); }
+.an-fjs .an-fj circle { fill: var(--color-cta); stroke: var(--color-surface); stroke-width: 2; }
+.an-fjs .an-fj text { font: 800 9px var(--font); fill: var(--color-cta-text); text-anchor: middle; }
+.an-fj { cursor: pointer; }
+.an-cl { stroke: var(--color-accent-deep); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.an-base { fill: var(--color-cta); }
+.an-fig .pose-fig { max-width: 300px; }
+.an-meter { display: flex; align-items: center; gap: 5px; margin-top: 8px; font-size: .85rem; }
+.an-fig:has(.an-meter) { flex-direction: column; align-items: center; }
+.an-meter span { width: 22px; height: 8px; border-radius: 4px; background: var(--color-surface-2); }
+.an-meter span.on { background: var(--color-cta); }
+.an-meter b { margin-left: 6px; color: var(--color-heading); }
+.an-card { background: var(--color-background); border: 1px solid var(--color-border); border-radius: 16px; padding: 16px 18px; }
+.an-card h4 { margin: 8px 0 2px; font-family: var(--serif); font-size: 1.1rem; display: flex; gap: 8px; align-items: center; }
+.an-card p { margin: 6px 0 0; font-size: .93rem; }
+.an-la { color: var(--color-muted); font-size: .85rem !important; }
+.an-jlist { margin: 8px 0 0; padding-left: 20px; font-size: .93rem; }
+.an-jlist li { margin-bottom: 4px; }
+.an-jlist li.sel { color: var(--color-heading); font-weight: 700; }
+.an-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; margin: 18px 0; }
+.an-extra .card h3 { font-size: 1rem; display: flex; gap: 8px; align-items: center; }
+.an-note { display: flex; gap: 6px; align-items: flex-start; }
+.an-catgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.an-catcard h3 { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 1.05rem; }
+.an-catcard h3 .yi { width: 26px; height: 26px; --ic-accent: var(--color-secondary); }
+.an-catposes { list-style: none; padding: 0; margin: 10px 0 12px; display: grid; grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); gap: 8px; }
+.an-catposes li { margin: 0; }
+.an-catposes a { display: flex; flex-direction: column; align-items: center; gap: 2px; text-decoration: none; font-size: .72rem; font-weight: 700; color: var(--color-heading); text-align: center; padding: 6px; border-radius: 10px; background: var(--color-background); }
+.an-catposes .pose-fig { width: 58px; }
+.an-cmp-sel { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.an-cmp-maps { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.an-cmp-maps figure { margin: 0; background: var(--color-background); border-radius: 14px; padding: 10px; text-align: center; }
+.an-cmp-maps figcaption { font-weight: 800; color: var(--color-heading); margin-bottom: 6px; }
+.an-pair { display: flex; gap: 4px; justify-content: center; }
+.an-pair .an-svg { max-width: 110px; }
+.an-cmp-table td { vertical-align: middle; }
+.an-quiz .q { margin: 4px 0 12px; }
+.an-quiz .feedback .btn { margin-top: 10px; }
+.an-quiz-res { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 1.05rem; }
+.an-quiz-res b { font: 600 2rem var(--serif); color: var(--color-heading); }
+@media (max-width: 767px) {
+  .an-host { padding: 14px; }
+  .an-grid, .an-cmp-sel { grid-template-columns: 1fr; }
+  .an-tabs { flex-wrap: nowrap; overflow-x: auto; }
+  .an-tabs button { white-space: nowrap; padding: 10px; }
+  .an-svg { max-width: 190px; }
+  .an-pair .an-svg { max-width: 72px; }
+}
+/* kas sınırlarını belirginleştir */
+.an-sil { stroke: color-mix(in srgb, var(--color-text) 35%, transparent); }
+.an-m { stroke: color-mix(in srgb, var(--color-text) 45%, transparent); stroke-width: .9; }
+.an-m.r-n { fill: color-mix(in srgb, var(--color-text) 12%, var(--color-surface)); }
+.hide-a .an-m.r-a, .hide-s .an-m.r-s, .hide-t .an-m.r-t { fill: color-mix(in srgb, var(--color-text) 12%, var(--color-surface)); opacity: .55; }
+.an-sw.r-n { background: color-mix(in srgb, var(--color-text) 12%, var(--color-surface)); }
