@@ -1,0 +1,6 @@
+{
+  "widths": [375, 390, 768, 1024, 1440, 1920],
+  "routes": ["#/", "#/baslangic", "#/moduller", "#/modul/m1", "#/modul/m1/turler", "#/modul/m4", "#/modul/m8", "#/harita",
+    "#/pozlar", "#/poz/savasci-2", "#/nefes", "#/meditasyon", "#/programlar", "#/programlar/p20-tum", "#/program", "#/gun/3",
+    "#/panel", "#/rapor", "#/quiz", "#/quiz/m1", "#/rozetler", "#/kaynakca", "#/ayarlar", "#/yok"]
+}

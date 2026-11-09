@@ -79,7 +79,7 @@ const App = (() => {
     if (!v) return search ? `<div class="video-wrap"><p class="muted tiny">Bu bölüm için seçilmiş bir video yok.</p>${search}</div>` : '';
     return `<div class="video-wrap">
       <button class="video-thumb" data-yt="${v.id}" aria-label="Videoyu oynat: ${h(v.title)}">
-        <img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="" loading="lazy">
+        <img src="https://i.ytimg.com/vi/${v.id}/sddefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v.id}/hqdefault.jpg'" alt="" loading="lazy" width="640" height="480">
         <span class="play">${icon('play')}</span><span class="vlen">${h(v.len)}</span>
       </button>
       <p class="video-meta"><strong>${h(v.title)}</strong><br><span class="muted">${h(v.ch)} · İngilizce · Türkçe altyazı için videoda <b>CC → Ayarlar → Otomatik çevir</b></span></p>
@@ -173,14 +173,14 @@ const App = (() => {
         <h2 class="center-title">Eğitimler</h2>
         <div class="course-grid">
           <article class="course-card">
-            <a class="cc-banner tone-1" href="#/program"><img src="assets/illustrations/program.svg" alt="" loading="lazy"></a>
+            <a class="cc-banner tone-1" href="#/program"><img src="assets/illustrations/program.svg" alt="" loading="lazy" width="400" height="300"></a>
             <div class="cc-body"><p class="cc-label">Bölüm 1</p><h3><a href="#/program">30 Günlük Program</a></h3>
               <p>Her gün bir konu, bir öğrenme hedefi, kısa bir pratik ve değerlendirme sorusu. 4 haftada sıfırdan bağımsız pratiğe.</p>
               ${bar(s.daysDone / 30 * 100)}<p class="tiny muted">${s.daysDone}/30 gün tamamlandı</p>
               <a class="link" href="${next ? '#/gun/' + next.n : '#/program'}">${s.daysDone ? 'Devam et' : 'Programa başla'} ${icon('arrow-right')}</a></div>
           </article>
           <article class="course-card">
-            <a class="cc-banner tone-2" href="#/moduller"><img src="assets/illustrations/moduller.svg" alt="" loading="lazy"></a>
+            <a class="cc-banner tone-2" href="#/moduller"><img src="assets/illustrations/moduller.svg" alt="" loading="lazy" width="400" height="300"></a>
             <div class="cc-body"><p class="cc-label">Bölüm 2</p><h3><a href="#/moduller">Eğitim Modülleri</a></h3>
               <p>Felsefeden anatomiye ${YA.modules.length} modül, ${s.secTotal} bölüm. Her modülün sonunda kısa bir sınav ve kaynakça.</p>
               ${bar(s.secDone / s.secTotal * 100)}<p class="tiny muted">${s.secDone}/${s.secTotal} bölüm okundu</p>
@@ -337,7 +337,7 @@ const App = (() => {
       <div class="course-grid">${YA.modules.map(m => {
         const ms = Progress.moduleStats(m.id);
         return `<article class="course-card">
-          <a class="cc-banner ${tone(m)}" href="#/modul/${m.id}" aria-label="Modül ${m.no}: ${h(m.title)}"><img src="assets/illustrations/${MOD_ILL[m.id]}.svg" alt="" loading="lazy"></a>
+          <a class="cc-banner ${tone(m)}" href="#/modul/${m.id}" aria-label="Modül ${m.no}: ${h(m.title)}"><img src="assets/illustrations/${MOD_ILL[m.id]}.svg" alt="" loading="lazy" width="${MOD_ILL[m.id] === 'spine' ? 240 : 400}" height="${MOD_ILL[m.id] === 'spine' ? 420 : 300}"></a>
           <div class="cc-body">
             <p class="cc-label">Modül ${m.no} ${ms.complete ? `<span class="chip ok">${icon('check')} Tamamlandı</span>` : ''}</p>
             <h3><a href="#/modul/${m.id}">${h(m.title)}</a></h3>
@@ -393,7 +393,7 @@ const App = (() => {
         <div class="sec-dots" aria-hidden="true">${m.sections.map((x, k) => `<a href="#/modul/${m.id}/${x.id}" class="${k === i ? 'cur' : ''} ${Progress.isRead(m.id, x.id) ? 'done' : ''}" tabindex="-1"></a>`).join('')}</div>
         <h1 class="sec-title"><span class="rn">${ROMAN[i]}.</span> ${h(s.title)}</h1>
         ${Viz.SECTION[m.id + '/' + s.id] ? `<div class="sec-visual"><p class="eyebrow">${icon('eye')} Görsel özet</p>${Viz.SECTION[m.id + '/' + s.id]()}</div>` : ''}
-        ${s.ill ? `<figure class="lesson-ill"><img src="${s.ill}" alt="${h(s.title)} illüstrasyonu" loading="lazy"></figure>` : ''}
+        ${s.ill ? `<figure class="lesson-ill"><img src="${s.ill}" alt="${h(s.title)} illüstrasyonu" loading="lazy" width="240" height="420"></figure>` : ''}
         <div class="prose prose-lg">${s.html}</div>
         ${safetyNote()}
         <div class="sec-end">
@@ -546,7 +546,7 @@ const App = (() => {
     if (sel) setTimeout(() => { const t = document.getElementById('br-' + sel.id); if (t) t.scrollIntoView({ behavior: 'smooth' }); }, 60);
   }
   function breathInfographic(b) {
-    if (b.ill) return `<figure class="infographic"><img src="${b.ill}" alt="Diyafram nefesinde diyaframın hareketini gösteren şema" loading="lazy"><figcaption>Nefes alırken diyafram aşağı iner; verirken yukarı, gevşeme konumuna döner.</figcaption></figure>`;
+    if (b.ill) return `<figure class="infographic"><img src="${b.ill}" alt="Diyafram nefesinde diyaframın hareketini gösteren şema" loading="lazy" width="420" height="240"><figcaption>Nefes alırken diyafram aşağı iner; verirken yukarı, gevşeme konumuna döner.</figcaption></figure>`;
     if (b.box) return `<figure class="infographic"><svg viewBox="0 0 220 220" class="box-svg" role="img" aria-label="Kutu nefesi şeması"><rect x="40" y="40" width="140" height="140" rx="10"/><circle r="8" class="dot"><animateMotion dur="12s" repeatCount="indefinite" path="M40,180 L40,40 L180,40 L180,180 Z"/></circle>
       <text x="20" y="115" transform="rotate(-90 20 115)">Al · 4</text><text x="110" y="28">Bekle · isteğe bağlı</text><text x="200" y="110" transform="rotate(90 200 110)">Ver · 4</text><text x="110" y="205">Bekle · isteğe bağlı</text></svg>
       <figcaption>Kare boyunca ilerleyen nokta: dört eşit kenar, dört evre.</figcaption></figure>`;

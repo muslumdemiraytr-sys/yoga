@@ -434,8 +434,8 @@ const Anatomy = (() => {
     const ids = [...new Set([...da.m, ...db.m].map(x => x[0]))];
     const cell = (d, id) => { const r = roleOf(d, id); return `<td><span class="an-badge r-${r}">${ROLE[r]}</span></td>`; };
     return `<div class="an-cmp-maps">${[[pa, da], [pb, db]].map(([p, d]) => `<figure><figcaption>${h(p.tr)}</figcaption><div class="an-pair">${musclesSvg(d, 'front')}${musclesSvg(d, 'back')}</div></figure>`).join('')}</div>${legend()}
-      <table class="table an-cmp-table"><thead><tr><th>Kas</th><th>${h(pa.tr)}</th><th>${h(pb.tr)}</th></tr></thead><tbody>
-      ${ids.map(id => `<tr><td>${h(MUSCLES[id].tr)}<br><small><em>${h(MUSCLES[id].la)}</em></small></td>${cell(da, id)}${cell(db, id)}</tr>`).join('')}</tbody></table>`;
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Anatomik karşılaştırma tablosu"><table class="table an-cmp-table"><thead><tr><th>Kas</th><th>${h(pa.tr)}</th><th>${h(pb.tr)}</th></tr></thead><tbody>
+      ${ids.map(id => `<tr><td>${h(MUSCLES[id].tr)}<br><small><em>${h(MUSCLES[id].la)}</em></small></td>${cell(da, id)}${cell(db, id)}</tr>`).join('')}</tbody></table></div>`;
   }
   function quizQuestions(n) {
     const pool = [];

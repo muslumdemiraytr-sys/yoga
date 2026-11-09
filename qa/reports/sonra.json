@@ -1,0 +1,3667 @@
+{
+ "summary": {
+  "label": "sonra",
+  "date": "2026-11-09T17:22:55.820Z",
+  "pages": 24,
+  "widths": [
+   375,
+   390,
+   768,
+   1024,
+   1440,
+   1920
+  ],
+  "runs": 144,
+  "cards": 1716,
+  "images": 240,
+  "high": 0,
+  "medium": 0,
+  "low": 0,
+  "jsErrors": []
+ },
+ "issues": [],
+ "results": [
+  {
+   "stats": {
+    "route": "#/",
+    "width": 375,
+    "cards": 14,
+    "images": 3,
+    "svgs": 23,
+    "elements": 161
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".cc-banner img",
+     "ratio": "16 / 9",
+     "fit": "contain",
+     "note": "Kurs kartı illüstrasyonu – tamamı görünmeli",
+     "count": 2,
+     "actualRatio": "auto 400 / 300",
+     "actualFit": "contain",
+     "ok": true
+    },
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/baslangic",
+    "width": 375,
+    "cards": 10,
+    "images": 1,
+    "svgs": 7,
+    "elements": 89
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/moduller",
+    "width": 375,
+    "cards": 8,
+    "images": 8,
+    "svgs": 3,
+    "elements": 348
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".cc-banner img",
+     "ratio": "16 / 9",
+     "fit": "contain",
+     "note": "Kurs kartı illüstrasyonu – tamamı görünmeli",
+     "count": 8,
+     "actualRatio": "auto 400 / 300",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m1",
+    "width": 375,
+    "cards": 8,
+    "images": 1,
+    "svgs": 5,
+    "elements": 145
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m1/turler",
+    "width": 375,
+    "cards": 5,
+    "images": 1,
+    "svgs": 6,
+    "elements": 126
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m4",
+    "width": 375,
+    "cards": 3,
+    "images": 1,
+    "svgs": 11,
+    "elements": 204
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m8",
+    "width": 375,
+    "cards": 10,
+    "images": 1,
+    "svgs": 88,
+    "elements": 1228
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/harita",
+    "width": 375,
+    "cards": 22,
+    "images": 1,
+    "svgs": 21,
+    "elements": 487
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/pozlar",
+    "width": 375,
+    "cards": 23,
+    "images": 1,
+    "svgs": 41,
+    "elements": 439
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/poz/savasci-2",
+    "width": 375,
+    "cards": 27,
+    "images": 1,
+    "svgs": 40,
+    "elements": 476
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".video-thumb img",
+     "ratio": "16 / 9",
+     "fit": "cover",
+     "note": "YouTube küçük resmi (4:3, üst-alt siyah bantlı)",
+     "allowCrop": true,
+     "count": 1,
+     "actualRatio": "auto 640 / 480",
+     "actualFit": "cover",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/nefes",
+    "width": 375,
+    "cards": 8,
+    "images": 8,
+    "svgs": 46,
+    "elements": 559
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    },
+    {
+     "sel": ".video-thumb img",
+     "ratio": "16 / 9",
+     "fit": "cover",
+     "note": "YouTube küçük resmi (4:3, üst-alt siyah bantlı)",
+     "allowCrop": true,
+     "count": 5,
+     "actualRatio": "auto 640 / 480",
+     "actualFit": "cover",
+     "ok": true
+    },
+    {
+     "sel": ".lesson-ill img, .visual-box img, .infographic img",
+     "ratio": "doğal",
+     "fit": "contain",
+     "note": "Ders şeması – kırpılmamalı",
+     "count": 2,
+     "actualRatio": "auto 420 / 240",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/meditasyon",
+    "width": 375,
+    "cards": 8,
+    "images": 1,
+    "svgs": 13,
+    "elements": 160
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/programlar",
+    "width": 375,
+    "cards": 8,
+    "images": 1,
+    "svgs": 15,
+    "elements": 142
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/programlar/p20-tum",
+    "width": 375,
+    "cards": 1,
+    "images": 1,
+    "svgs": 49,
+    "elements": 472
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/program",
+    "width": 375,
+    "cards": 31,
+    "images": 1,
+    "svgs": 36,
+    "elements": 259
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/gun/3",
+    "width": 375,
+    "cards": 10,
+    "images": 2,
+    "svgs": 19,
+    "elements": 116
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    },
+    {
+     "sel": ".lesson-ill img, .visual-box img, .infographic img",
+     "ratio": "doğal",
+     "fit": "contain",
+     "note": "Ders şeması – kırpılmamalı",
+     "count": 1,
+     "actualRatio": "auto 420 / 240",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/panel",
+    "width": 375,
+    "cards": 27,
+    "images": 1,
+    "svgs": 48,
+    "elements": 704
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/rapor",
+    "width": 375,
+    "cards": 22,
+    "images": 1,
+    "svgs": 46,
+    "elements": 638
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/quiz",
+    "width": 375,
+    "cards": 9,
+    "images": 1,
+    "svgs": 18,
+    "elements": 124
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/quiz/m1",
+    "width": 375,
+    "cards": 1,
+    "images": 0,
+    "svgs": 1,
+    "elements": 20
+   },
+   "issues": [],
+   "imageRules": [],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/rozetler",
+    "width": 375,
+    "cards": 10,
+    "images": 1,
+    "svgs": 21,
+    "elements": 161
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/kaynakca",
+    "width": 375,
+    "cards": 7,
+    "images": 1,
+    "svgs": 48,
+    "elements": 449
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/ayarlar",
+    "width": 375,
+    "cards": 13,
+    "images": 1,
+    "svgs": 16,
+    "elements": 208
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/yok",
+    "width": 375,
+    "cards": 1,
+    "images": 1,
+    "svgs": 0,
+    "elements": 5
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".empty-state img",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "404 illüstrasyonu",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/",
+    "width": 390,
+    "cards": 14,
+    "images": 3,
+    "svgs": 23,
+    "elements": 161
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".cc-banner img",
+     "ratio": "16 / 9",
+     "fit": "contain",
+     "note": "Kurs kartı illüstrasyonu – tamamı görünmeli",
+     "count": 2,
+     "actualRatio": "auto 400 / 300",
+     "actualFit": "contain",
+     "ok": true
+    },
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/baslangic",
+    "width": 390,
+    "cards": 10,
+    "images": 1,
+    "svgs": 7,
+    "elements": 89
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/moduller",
+    "width": 390,
+    "cards": 8,
+    "images": 8,
+    "svgs": 3,
+    "elements": 348
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".cc-banner img",
+     "ratio": "16 / 9",
+     "fit": "contain",
+     "note": "Kurs kartı illüstrasyonu – tamamı görünmeli",
+     "count": 8,
+     "actualRatio": "auto 400 / 300",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m1",
+    "width": 390,
+    "cards": 8,
+    "images": 1,
+    "svgs": 5,
+    "elements": 145
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m1/turler",
+    "width": 390,
+    "cards": 5,
+    "images": 1,
+    "svgs": 6,
+    "elements": 126
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m4",
+    "width": 390,
+    "cards": 3,
+    "images": 1,
+    "svgs": 11,
+    "elements": 204
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m8",
+    "width": 390,
+    "cards": 10,
+    "images": 1,
+    "svgs": 88,
+    "elements": 1228
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/harita",
+    "width": 390,
+    "cards": 22,
+    "images": 1,
+    "svgs": 21,
+    "elements": 487
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/pozlar",
+    "width": 390,
+    "cards": 23,
+    "images": 1,
+    "svgs": 41,
+    "elements": 439
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/poz/savasci-2",
+    "width": 390,
+    "cards": 27,
+    "images": 1,
+    "svgs": 40,
+    "elements": 476
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".video-thumb img",
+     "ratio": "16 / 9",
+     "fit": "cover",
+     "note": "YouTube küçük resmi (4:3, üst-alt siyah bantlı)",
+     "allowCrop": true,
+     "count": 1,
+     "actualRatio": "auto 640 / 480",
+     "actualFit": "cover",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/nefes",
+    "width": 390,
+    "cards": 8,
+    "images": 8,
+    "svgs": 46,
+    "elements": 559
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    },
+    {
+     "sel": ".video-thumb img",
+     "ratio": "16 / 9",
+     "fit": "cover",
+     "note": "YouTube küçük resmi (4:3, üst-alt siyah bantlı)",
+     "allowCrop": true,
+     "count": 5,
+     "actualRatio": "auto 640 / 480",
+     "actualFit": "cover",
+     "ok": true
+    },
+    {
+     "sel": ".lesson-ill img, .visual-box img, .infographic img",
+     "ratio": "doğal",
+     "fit": "contain",
+     "note": "Ders şeması – kırpılmamalı",
+     "count": 2,
+     "actualRatio": "auto 420 / 240",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/meditasyon",
+    "width": 390,
+    "cards": 8,
+    "images": 1,
+    "svgs": 13,
+    "elements": 160
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/programlar",
+    "width": 390,
+    "cards": 8,
+    "images": 1,
+    "svgs": 15,
+    "elements": 142
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/programlar/p20-tum",
+    "width": 390,
+    "cards": 1,
+    "images": 1,
+    "svgs": 49,
+    "elements": 472
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/program",
+    "width": 390,
+    "cards": 31,
+    "images": 1,
+    "svgs": 36,
+    "elements": 259
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/gun/3",
+    "width": 390,
+    "cards": 10,
+    "images": 2,
+    "svgs": 19,
+    "elements": 116
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    },
+    {
+     "sel": ".lesson-ill img, .visual-box img, .infographic img",
+     "ratio": "doğal",
+     "fit": "contain",
+     "note": "Ders şeması – kırpılmamalı",
+     "count": 1,
+     "actualRatio": "auto 420 / 240",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/panel",
+    "width": 390,
+    "cards": 27,
+    "images": 1,
+    "svgs": 48,
+    "elements": 704
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/rapor",
+    "width": 390,
+    "cards": 22,
+    "images": 1,
+    "svgs": 46,
+    "elements": 638
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/quiz",
+    "width": 390,
+    "cards": 9,
+    "images": 1,
+    "svgs": 18,
+    "elements": 124
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/quiz/m1",
+    "width": 390,
+    "cards": 1,
+    "images": 0,
+    "svgs": 1,
+    "elements": 20
+   },
+   "issues": [],
+   "imageRules": [],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/rozetler",
+    "width": 390,
+    "cards": 10,
+    "images": 1,
+    "svgs": 21,
+    "elements": 161
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/kaynakca",
+    "width": 390,
+    "cards": 7,
+    "images": 1,
+    "svgs": 48,
+    "elements": 449
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/ayarlar",
+    "width": 390,
+    "cards": 13,
+    "images": 1,
+    "svgs": 16,
+    "elements": 208
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/yok",
+    "width": 390,
+    "cards": 1,
+    "images": 1,
+    "svgs": 0,
+    "elements": 5
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".empty-state img",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "404 illüstrasyonu",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/",
+    "width": 768,
+    "cards": 14,
+    "images": 3,
+    "svgs": 23,
+    "elements": 161
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".cc-banner img",
+     "ratio": "16 / 9",
+     "fit": "contain",
+     "note": "Kurs kartı illüstrasyonu – tamamı görünmeli",
+     "count": 2,
+     "actualRatio": "auto 400 / 300",
+     "actualFit": "contain",
+     "ok": true
+    },
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/baslangic",
+    "width": 768,
+    "cards": 10,
+    "images": 1,
+    "svgs": 7,
+    "elements": 89
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/moduller",
+    "width": 768,
+    "cards": 8,
+    "images": 8,
+    "svgs": 3,
+    "elements": 348
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".cc-banner img",
+     "ratio": "16 / 9",
+     "fit": "contain",
+     "note": "Kurs kartı illüstrasyonu – tamamı görünmeli",
+     "count": 8,
+     "actualRatio": "auto 400 / 300",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m1",
+    "width": 768,
+    "cards": 8,
+    "images": 1,
+    "svgs": 5,
+    "elements": 145
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m1/turler",
+    "width": 768,
+    "cards": 5,
+    "images": 1,
+    "svgs": 6,
+    "elements": 126
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m4",
+    "width": 768,
+    "cards": 3,
+    "images": 1,
+    "svgs": 11,
+    "elements": 204
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m8",
+    "width": 768,
+    "cards": 10,
+    "images": 1,
+    "svgs": 88,
+    "elements": 1228
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/harita",
+    "width": 768,
+    "cards": 22,
+    "images": 1,
+    "svgs": 21,
+    "elements": 487
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/pozlar",
+    "width": 768,
+    "cards": 23,
+    "images": 1,
+    "svgs": 41,
+    "elements": 439
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/poz/savasci-2",
+    "width": 768,
+    "cards": 27,
+    "images": 1,
+    "svgs": 40,
+    "elements": 476
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".video-thumb img",
+     "ratio": "16 / 9",
+     "fit": "cover",
+     "note": "YouTube küçük resmi (4:3, üst-alt siyah bantlı)",
+     "allowCrop": true,
+     "count": 1,
+     "actualRatio": "auto 640 / 480",
+     "actualFit": "cover",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/nefes",
+    "width": 768,
+    "cards": 8,
+    "images": 8,
+    "svgs": 46,
+    "elements": 559
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    },
+    {
+     "sel": ".video-thumb img",
+     "ratio": "16 / 9",
+     "fit": "cover",
+     "note": "YouTube küçük resmi (4:3, üst-alt siyah bantlı)",
+     "allowCrop": true,
+     "count": 5,
+     "actualRatio": "auto 640 / 480",
+     "actualFit": "cover",
+     "ok": true
+    },
+    {
+     "sel": ".lesson-ill img, .visual-box img, .infographic img",
+     "ratio": "doğal",
+     "fit": "contain",
+     "note": "Ders şeması – kırpılmamalı",
+     "count": 2,
+     "actualRatio": "auto 420 / 240",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/meditasyon",
+    "width": 768,
+    "cards": 8,
+    "images": 1,
+    "svgs": 13,
+    "elements": 160
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/programlar",
+    "width": 768,
+    "cards": 8,
+    "images": 1,
+    "svgs": 15,
+    "elements": 142
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/programlar/p20-tum",
+    "width": 768,
+    "cards": 1,
+    "images": 1,
+    "svgs": 49,
+    "elements": 529
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/program",
+    "width": 768,
+    "cards": 31,
+    "images": 1,
+    "svgs": 36,
+    "elements": 259
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/gun/3",
+    "width": 768,
+    "cards": 10,
+    "images": 2,
+    "svgs": 19,
+    "elements": 116
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    },
+    {
+     "sel": ".lesson-ill img, .visual-box img, .infographic img",
+     "ratio": "doğal",
+     "fit": "contain",
+     "note": "Ders şeması – kırpılmamalı",
+     "count": 1,
+     "actualRatio": "auto 420 / 240",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/panel",
+    "width": 768,
+    "cards": 27,
+    "images": 1,
+    "svgs": 48,
+    "elements": 704
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/rapor",
+    "width": 768,
+    "cards": 22,
+    "images": 1,
+    "svgs": 46,
+    "elements": 638
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/quiz",
+    "width": 768,
+    "cards": 9,
+    "images": 1,
+    "svgs": 18,
+    "elements": 124
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/quiz/m1",
+    "width": 768,
+    "cards": 1,
+    "images": 0,
+    "svgs": 1,
+    "elements": 20
+   },
+   "issues": [],
+   "imageRules": [],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/rozetler",
+    "width": 768,
+    "cards": 10,
+    "images": 1,
+    "svgs": 21,
+    "elements": 161
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/kaynakca",
+    "width": 768,
+    "cards": 7,
+    "images": 1,
+    "svgs": 48,
+    "elements": 469
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/ayarlar",
+    "width": 768,
+    "cards": 13,
+    "images": 1,
+    "svgs": 16,
+    "elements": 208
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/yok",
+    "width": 768,
+    "cards": 1,
+    "images": 1,
+    "svgs": 0,
+    "elements": 5
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".empty-state img",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "404 illüstrasyonu",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/",
+    "width": 1024,
+    "cards": 14,
+    "images": 3,
+    "svgs": 23,
+    "elements": 161
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".cc-banner img",
+     "ratio": "16 / 9",
+     "fit": "contain",
+     "note": "Kurs kartı illüstrasyonu – tamamı görünmeli",
+     "count": 2,
+     "actualRatio": "auto 400 / 300",
+     "actualFit": "contain",
+     "ok": true
+    },
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/baslangic",
+    "width": 1024,
+    "cards": 10,
+    "images": 1,
+    "svgs": 7,
+    "elements": 89
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/moduller",
+    "width": 1024,
+    "cards": 8,
+    "images": 8,
+    "svgs": 3,
+    "elements": 348
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".cc-banner img",
+     "ratio": "16 / 9",
+     "fit": "contain",
+     "note": "Kurs kartı illüstrasyonu – tamamı görünmeli",
+     "count": 8,
+     "actualRatio": "auto 400 / 300",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m1",
+    "width": 1024,
+    "cards": 8,
+    "images": 1,
+    "svgs": 5,
+    "elements": 145
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m1/turler",
+    "width": 1024,
+    "cards": 5,
+    "images": 1,
+    "svgs": 6,
+    "elements": 126
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m4",
+    "width": 1024,
+    "cards": 3,
+    "images": 1,
+    "svgs": 11,
+    "elements": 204
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m8",
+    "width": 1024,
+    "cards": 10,
+    "images": 1,
+    "svgs": 88,
+    "elements": 1228
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/harita",
+    "width": 1024,
+    "cards": 22,
+    "images": 1,
+    "svgs": 21,
+    "elements": 487
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/pozlar",
+    "width": 1024,
+    "cards": 23,
+    "images": 1,
+    "svgs": 41,
+    "elements": 439
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/poz/savasci-2",
+    "width": 1024,
+    "cards": 27,
+    "images": 1,
+    "svgs": 40,
+    "elements": 476
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".video-thumb img",
+     "ratio": "16 / 9",
+     "fit": "cover",
+     "note": "YouTube küçük resmi (4:3, üst-alt siyah bantlı)",
+     "allowCrop": true,
+     "count": 1,
+     "actualRatio": "auto 640 / 480",
+     "actualFit": "cover",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/nefes",
+    "width": 1024,
+    "cards": 8,
+    "images": 8,
+    "svgs": 46,
+    "elements": 559
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    },
+    {
+     "sel": ".video-thumb img",
+     "ratio": "16 / 9",
+     "fit": "cover",
+     "note": "YouTube küçük resmi (4:3, üst-alt siyah bantlı)",
+     "allowCrop": true,
+     "count": 5,
+     "actualRatio": "auto 640 / 480",
+     "actualFit": "cover",
+     "ok": true
+    },
+    {
+     "sel": ".lesson-ill img, .visual-box img, .infographic img",
+     "ratio": "doğal",
+     "fit": "contain",
+     "note": "Ders şeması – kırpılmamalı",
+     "count": 2,
+     "actualRatio": "auto 420 / 240",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/meditasyon",
+    "width": 1024,
+    "cards": 8,
+    "images": 1,
+    "svgs": 13,
+    "elements": 160
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/programlar",
+    "width": 1024,
+    "cards": 8,
+    "images": 1,
+    "svgs": 15,
+    "elements": 142
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/programlar/p20-tum",
+    "width": 1024,
+    "cards": 1,
+    "images": 1,
+    "svgs": 49,
+    "elements": 529
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/program",
+    "width": 1024,
+    "cards": 31,
+    "images": 1,
+    "svgs": 36,
+    "elements": 259
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/gun/3",
+    "width": 1024,
+    "cards": 10,
+    "images": 2,
+    "svgs": 19,
+    "elements": 116
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    },
+    {
+     "sel": ".lesson-ill img, .visual-box img, .infographic img",
+     "ratio": "doğal",
+     "fit": "contain",
+     "note": "Ders şeması – kırpılmamalı",
+     "count": 1,
+     "actualRatio": "auto 420 / 240",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/panel",
+    "width": 1024,
+    "cards": 27,
+    "images": 1,
+    "svgs": 48,
+    "elements": 704
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/rapor",
+    "width": 1024,
+    "cards": 22,
+    "images": 1,
+    "svgs": 46,
+    "elements": 638
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/quiz",
+    "width": 1024,
+    "cards": 9,
+    "images": 1,
+    "svgs": 18,
+    "elements": 124
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/quiz/m1",
+    "width": 1024,
+    "cards": 1,
+    "images": 0,
+    "svgs": 1,
+    "elements": 20
+   },
+   "issues": [],
+   "imageRules": [],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/rozetler",
+    "width": 1024,
+    "cards": 10,
+    "images": 1,
+    "svgs": 21,
+    "elements": 161
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/kaynakca",
+    "width": 1024,
+    "cards": 7,
+    "images": 1,
+    "svgs": 48,
+    "elements": 469
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/ayarlar",
+    "width": 1024,
+    "cards": 13,
+    "images": 1,
+    "svgs": 16,
+    "elements": 208
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/yok",
+    "width": 1024,
+    "cards": 1,
+    "images": 1,
+    "svgs": 0,
+    "elements": 5
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".empty-state img",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "404 illüstrasyonu",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/",
+    "width": 1440,
+    "cards": 14,
+    "images": 3,
+    "svgs": 23,
+    "elements": 161
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".cc-banner img",
+     "ratio": "16 / 9",
+     "fit": "contain",
+     "note": "Kurs kartı illüstrasyonu – tamamı görünmeli",
+     "count": 2,
+     "actualRatio": "auto 400 / 300",
+     "actualFit": "contain",
+     "ok": true
+    },
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/baslangic",
+    "width": 1440,
+    "cards": 10,
+    "images": 1,
+    "svgs": 7,
+    "elements": 89
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/moduller",
+    "width": 1440,
+    "cards": 8,
+    "images": 8,
+    "svgs": 3,
+    "elements": 348
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".cc-banner img",
+     "ratio": "16 / 9",
+     "fit": "contain",
+     "note": "Kurs kartı illüstrasyonu – tamamı görünmeli",
+     "count": 8,
+     "actualRatio": "auto 400 / 300",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m1",
+    "width": 1440,
+    "cards": 8,
+    "images": 1,
+    "svgs": 5,
+    "elements": 145
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m1/turler",
+    "width": 1440,
+    "cards": 5,
+    "images": 1,
+    "svgs": 6,
+    "elements": 126
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m4",
+    "width": 1440,
+    "cards": 3,
+    "images": 1,
+    "svgs": 11,
+    "elements": 204
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m8",
+    "width": 1440,
+    "cards": 10,
+    "images": 1,
+    "svgs": 88,
+    "elements": 1228
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/harita",
+    "width": 1440,
+    "cards": 22,
+    "images": 1,
+    "svgs": 21,
+    "elements": 487
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/pozlar",
+    "width": 1440,
+    "cards": 23,
+    "images": 1,
+    "svgs": 41,
+    "elements": 439
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/poz/savasci-2",
+    "width": 1440,
+    "cards": 27,
+    "images": 1,
+    "svgs": 40,
+    "elements": 476
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".video-thumb img",
+     "ratio": "16 / 9",
+     "fit": "cover",
+     "note": "YouTube küçük resmi (4:3, üst-alt siyah bantlı)",
+     "allowCrop": true,
+     "count": 1,
+     "actualRatio": "auto 640 / 480",
+     "actualFit": "cover",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/nefes",
+    "width": 1440,
+    "cards": 8,
+    "images": 8,
+    "svgs": 46,
+    "elements": 559
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    },
+    {
+     "sel": ".video-thumb img",
+     "ratio": "16 / 9",
+     "fit": "cover",
+     "note": "YouTube küçük resmi (4:3, üst-alt siyah bantlı)",
+     "allowCrop": true,
+     "count": 5,
+     "actualRatio": "auto 640 / 480",
+     "actualFit": "cover",
+     "ok": true
+    },
+    {
+     "sel": ".lesson-ill img, .visual-box img, .infographic img",
+     "ratio": "doğal",
+     "fit": "contain",
+     "note": "Ders şeması – kırpılmamalı",
+     "count": 2,
+     "actualRatio": "auto 420 / 240",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/meditasyon",
+    "width": 1440,
+    "cards": 8,
+    "images": 1,
+    "svgs": 13,
+    "elements": 160
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/programlar",
+    "width": 1440,
+    "cards": 8,
+    "images": 1,
+    "svgs": 15,
+    "elements": 142
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/programlar/p20-tum",
+    "width": 1440,
+    "cards": 1,
+    "images": 1,
+    "svgs": 49,
+    "elements": 529
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/program",
+    "width": 1440,
+    "cards": 31,
+    "images": 1,
+    "svgs": 36,
+    "elements": 259
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/gun/3",
+    "width": 1440,
+    "cards": 10,
+    "images": 2,
+    "svgs": 19,
+    "elements": 116
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    },
+    {
+     "sel": ".lesson-ill img, .visual-box img, .infographic img",
+     "ratio": "doğal",
+     "fit": "contain",
+     "note": "Ders şeması – kırpılmamalı",
+     "count": 1,
+     "actualRatio": "auto 420 / 240",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/panel",
+    "width": 1440,
+    "cards": 27,
+    "images": 1,
+    "svgs": 48,
+    "elements": 704
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/rapor",
+    "width": 1440,
+    "cards": 22,
+    "images": 1,
+    "svgs": 46,
+    "elements": 638
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/quiz",
+    "width": 1440,
+    "cards": 9,
+    "images": 1,
+    "svgs": 18,
+    "elements": 124
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/quiz/m1",
+    "width": 1440,
+    "cards": 1,
+    "images": 0,
+    "svgs": 1,
+    "elements": 20
+   },
+   "issues": [],
+   "imageRules": [],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/rozetler",
+    "width": 1440,
+    "cards": 10,
+    "images": 1,
+    "svgs": 21,
+    "elements": 161
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/kaynakca",
+    "width": 1440,
+    "cards": 7,
+    "images": 1,
+    "svgs": 48,
+    "elements": 469
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/ayarlar",
+    "width": 1440,
+    "cards": 13,
+    "images": 1,
+    "svgs": 16,
+    "elements": 208
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/yok",
+    "width": 1440,
+    "cards": 1,
+    "images": 1,
+    "svgs": 0,
+    "elements": 5
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".empty-state img",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "404 illüstrasyonu",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/",
+    "width": 1920,
+    "cards": 14,
+    "images": 3,
+    "svgs": 23,
+    "elements": 161
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".cc-banner img",
+     "ratio": "16 / 9",
+     "fit": "contain",
+     "note": "Kurs kartı illüstrasyonu – tamamı görünmeli",
+     "count": 2,
+     "actualRatio": "auto 400 / 300",
+     "actualFit": "contain",
+     "ok": true
+    },
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/baslangic",
+    "width": 1920,
+    "cards": 10,
+    "images": 1,
+    "svgs": 7,
+    "elements": 89
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/moduller",
+    "width": 1920,
+    "cards": 8,
+    "images": 8,
+    "svgs": 3,
+    "elements": 348
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".cc-banner img",
+     "ratio": "16 / 9",
+     "fit": "contain",
+     "note": "Kurs kartı illüstrasyonu – tamamı görünmeli",
+     "count": 8,
+     "actualRatio": "auto 400 / 300",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m1",
+    "width": 1920,
+    "cards": 8,
+    "images": 1,
+    "svgs": 5,
+    "elements": 145
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m1/turler",
+    "width": 1920,
+    "cards": 5,
+    "images": 1,
+    "svgs": 6,
+    "elements": 126
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m4",
+    "width": 1920,
+    "cards": 3,
+    "images": 1,
+    "svgs": 11,
+    "elements": 204
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/modul/m8",
+    "width": 1920,
+    "cards": 10,
+    "images": 1,
+    "svgs": 88,
+    "elements": 1228
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/harita",
+    "width": 1920,
+    "cards": 22,
+    "images": 1,
+    "svgs": 21,
+    "elements": 487
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/pozlar",
+    "width": 1920,
+    "cards": 23,
+    "images": 1,
+    "svgs": 41,
+    "elements": 439
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/poz/savasci-2",
+    "width": 1920,
+    "cards": 27,
+    "images": 1,
+    "svgs": 40,
+    "elements": 476
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".video-thumb img",
+     "ratio": "16 / 9",
+     "fit": "cover",
+     "note": "YouTube küçük resmi (4:3, üst-alt siyah bantlı)",
+     "allowCrop": true,
+     "count": 1,
+     "actualRatio": "auto 640 / 480",
+     "actualFit": "cover",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/nefes",
+    "width": 1920,
+    "cards": 8,
+    "images": 8,
+    "svgs": 46,
+    "elements": 559
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    },
+    {
+     "sel": ".video-thumb img",
+     "ratio": "16 / 9",
+     "fit": "cover",
+     "note": "YouTube küçük resmi (4:3, üst-alt siyah bantlı)",
+     "allowCrop": true,
+     "count": 5,
+     "actualRatio": "auto 640 / 480",
+     "actualFit": "cover",
+     "ok": true
+    },
+    {
+     "sel": ".lesson-ill img, .visual-box img, .infographic img",
+     "ratio": "doğal",
+     "fit": "contain",
+     "note": "Ders şeması – kırpılmamalı",
+     "count": 2,
+     "actualRatio": "auto 420 / 240",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/meditasyon",
+    "width": 1920,
+    "cards": 8,
+    "images": 1,
+    "svgs": 13,
+    "elements": 160
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/programlar",
+    "width": 1920,
+    "cards": 8,
+    "images": 1,
+    "svgs": 15,
+    "elements": 142
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/programlar/p20-tum",
+    "width": 1920,
+    "cards": 1,
+    "images": 1,
+    "svgs": 49,
+    "elements": 529
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/program",
+    "width": 1920,
+    "cards": 31,
+    "images": 1,
+    "svgs": 36,
+    "elements": 259
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/gun/3",
+    "width": 1920,
+    "cards": 10,
+    "images": 2,
+    "svgs": 19,
+    "elements": 116
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    },
+    {
+     "sel": ".lesson-ill img, .visual-box img, .infographic img",
+     "ratio": "doğal",
+     "fit": "contain",
+     "note": "Ders şeması – kırpılmamalı",
+     "count": 1,
+     "actualRatio": "auto 420 / 240",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/panel",
+    "width": 1920,
+    "cards": 27,
+    "images": 1,
+    "svgs": 48,
+    "elements": 704
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/rapor",
+    "width": 1920,
+    "cards": 22,
+    "images": 1,
+    "svgs": 46,
+    "elements": 638
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/quiz",
+    "width": 1920,
+    "cards": 9,
+    "images": 1,
+    "svgs": 18,
+    "elements": 124
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/quiz/m1",
+    "width": 1920,
+    "cards": 1,
+    "images": 0,
+    "svgs": 1,
+    "elements": 20
+   },
+   "issues": [],
+   "imageRules": [],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/rozetler",
+    "width": 1920,
+    "cards": 10,
+    "images": 1,
+    "svgs": 21,
+    "elements": 161
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/kaynakca",
+    "width": 1920,
+    "cards": 7,
+    "images": 1,
+    "svgs": 48,
+    "elements": 469
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/ayarlar",
+    "width": 1920,
+    "cards": 13,
+    "images": 1,
+    "svgs": 16,
+    "elements": 208
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".band-ill",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "Sayfa başlığı illüstrasyonu (400×300)",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  },
+  {
+   "stats": {
+    "route": "#/yok",
+    "width": 1920,
+    "cards": 1,
+    "images": 1,
+    "svgs": 0,
+    "elements": 5
+   },
+   "issues": [],
+   "imageRules": [
+    {
+     "sel": ".empty-state img",
+     "ratio": "4 / 3",
+     "fit": "contain",
+     "note": "404 illüstrasyonu",
+     "count": 1,
+     "actualRatio": "4 / 3",
+     "actualFit": "contain",
+     "ok": true
+    }
+   ],
+   "errors": []
+  }
+ ]
+}

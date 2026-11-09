@@ -282,7 +282,7 @@ const Daily = (() => {
       const poses = p.steps.filter(s => s.pose).slice(0, 5).map(s => App.poseById(s.pose));
       return `<a class="visual-box" href="#/programlar/${p.id}"><div class="fig-strip">${poses.map(x => App.figure(x.fig, { small: true })).join('')}</div><span>${h(p.title)} – hareket sırası ${App.icon('arrow-right')}</span></a>`;
     }
-    if (v.type === 'ill') return `<figure class="visual-box"><img src="${v.src}" alt="${h(v.cap)}" loading="lazy"><figcaption>${h(v.cap)}</figcaption></figure>`;
+    if (v.type === 'ill') return `<figure class="visual-box"><img src="${v.src}" alt="${h(v.cap)}" loading="lazy" width="${/diaphragm/.test(v.src) ? 420 : 400}" height="${/diaphragm/.test(v.src) ? 240 : 300}"><figcaption>${h(v.cap)}</figcaption></figure>`;
     return '';
   }
 

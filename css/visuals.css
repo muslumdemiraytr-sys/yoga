@@ -444,3 +444,40 @@
 .an-m.r-n { fill: color-mix(in srgb, var(--color-text) 12%, var(--color-surface)); }
 .hide-a .an-m.r-a, .hide-s .an-m.r-s, .hide-t .an-m.r-t { fill: color-mix(in srgb, var(--color-text) 12%, var(--color-surface)); opacity: .55; }
 .an-sw.r-n { background: color-mix(in srgb, var(--color-text) 12%, var(--color-surface)); }
+
+/* ==========================================================================
+   Visual QA düzeltmeleri (qa/reports/2026-11-09-ilk-tarama.md)
+   Renk, yazı tipi ve düzen değiştirilmez; yalnızca ölçü standartları.
+   ========================================================================== */
+:root { --card-radius: 18px; --card-radius-sm: 14px; --card-pad: 22px; --card-pad-sm: 16px; }
+
+/* Öneri 1 – görsel oranları açıkça tanımla (esneme yok, gereksiz kırpma yok) */
+.band-ill { aspect-ratio: 4 / 3; object-fit: contain; height: auto; }
+.lesson-ill img, .visual-box img, .infographic img { object-fit: contain; height: auto; max-width: 100%; }
+.empty-state img { aspect-ratio: 4 / 3; object-fit: contain; height: auto; }
+.cc-banner { aspect-ratio: 16 / 9; }
+.cc-banner img { object-fit: contain; }
+.video-thumb { aspect-ratio: 16 / 9; }
+.video-thumb img { object-fit: cover; object-position: center; }
+
+/* Öneri 2 – ortak kart standartları */
+.card, .feature, .step-card, .course-card, .pose-hero, .quiz-wrap { border-radius: var(--card-radius); }
+.feature, .step-card { padding: var(--card-pad); }
+.metric, .vz-kpi, .an-card, .theme-card, .jn, .vz-node, .vz-branch, .day-tile, .mini-card { border-radius: var(--card-radius-sm); }
+.metric, .vz-kpi, .an-card, .vz-branch, .day-tile, .mini-card { padding: var(--card-pad-sm); }
+.vz-flow.vertical .vz-node { border-radius: 0; padding: 0 0 18px; }
+@media (max-width: 767px) {
+  .card { border-radius: 16px; }            /* mevcut mobil kuralı korunur */
+  .feature, .step-card { padding: 18px 16px; }
+}
+
+/* Öneri 3 – geniş tablolar kartın dışına taşmasın */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+.table-scroll:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+.an-cmp-table td, .an-cmp-table th { overflow-wrap: anywhere; }
+
+/* Öneri 5a – uzun Sanskritçe adlar satır kırabilsin */
+.sa { overflow-wrap: anywhere; hyphens: auto; }
+
+/* Öneri 5b – panelde modül adları en fazla iki satır */
+.vz-modules a { white-space: normal; text-overflow: clip; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.35; }

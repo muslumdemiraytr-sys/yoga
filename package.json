@@ -1,0 +1,14 @@
+{
+  "name": "yoga-akademisi",
+  "private": true,
+  "type": "module",
+  "description": "Yoga Akademisi – statik site; bu dosya yalnızca Visual QA araçları içindir.",
+  "scripts": {
+    "qa": "node qa/run-visual-qa.mjs",
+    "qa:baseline": "playwright test -c qa/playwright.config.mjs --update-snapshots",
+    "qa:regression": "playwright test -c qa/playwright.config.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.0"
+  }
+}
