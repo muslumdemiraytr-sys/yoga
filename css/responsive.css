@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Yoga Akademisi – duyarlı (responsive) düzen
+   Masaüstü ≥1100px · Tablet 768–1099px · Mobil <768px
+   ========================================================================== */
+
+/* ---------- Geniş tablet / küçük masaüstü */
+@media (max-width: 1280px) {
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- Tablet */
+@media (max-width: 1099px) {
+  .home-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .today-card, .home-grid .wide { grid-column: 1 / -1; }
+  .steps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .day-layout { grid-template-columns: 1fr; }
+  .pacer-card, .med-card { grid-template-columns: 1fr; }
+}
+
+/* ---------- Mobil */
+@media (max-width: 767px) {
+  body { font-size: 16px; }
+  .topbar { padding: 0 12px; gap: 8px; }
+  .chrome-stats { display: none; }
+  .brand span { font-size: 1.05rem; }
+  :root { --pad: 16px; }
+  .main { padding: 24px var(--pad) 32px; }
+  .footer { padding: 20px var(--pad) 32px; }
+  .card { padding: 18px 16px; border-radius: 16px; }
+  .hero { grid-template-columns: 1fr; padding: 22px 18px; border-radius: 22px; }
+  .hero-art { order: -1; max-width: 340px; margin: 0 auto; }
+  .home-grid, .grid-2, .pose-detail, .chart-grid, .bc-grid, .pose-hero, .pl-main { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .metrics { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .metric { padding: 12px; flex-direction: column; gap: 8px; }
+  .m-val { font-size: 1.35rem; }
+  .ring-card { flex-direction: column; text-align: center; }
+  .toc ol { columns: 1; }
+  .lesson-ill { float: none; width: 100%; max-width: 280px; margin: 0 auto 14px; }
+  .pose-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .pc-fig { padding: 8px 10px 0; }
+  .pc-body { padding: 10px 12px 12px; }
+  .pc-body h3 { font-size: .98rem; }
+  .ph-fig { padding: 12px 24px 4px; max-width: 320px; margin: 0 auto; width: 100%; }
+  .day-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .day-tile { min-height: 110px; padding: 12px; }
+  .seq li { grid-template-columns: 26px 52px 1fr auto; gap: 10px; padding: 8px 10px; }
+  .seq-fig { width: 52px; }
+  .seq-link { display: none; }
+  .pacer-stage, .med-stage { min-height: 280px; }
+  .pacer-circle { width: 200px; height: 200px; }
+  .ring.big { width: 170px; height: 170px; }
+  .player { padding: 0; place-items: stretch; }
+  .player-inner { border-radius: 0; padding: 16px; min-height: 100%; }
+  .pl-fig { max-width: 260px; margin: 0 auto; width: 100%; padding: 12px; }
+  .pl-info { text-align: center; }
+  .pl-info h2 { font-size: 1.4rem; }
+  .pl-count { font-size: 3rem; }
+  .pl-controls .btn { flex: 1; padding: 10px; }
+  .opts.tf { grid-template-columns: 1fr; }
+  .search { max-width: none; min-width: 0; width: 100%; }
+  .seg { width: 100%; justify-content: space-between; }
+  .seg button { padding: 8px 10px; font-size: .82rem; }
+  .table { font-size: .86rem; }
+  .src-table, .src-table tbody, .src-table tr, .src-table td { display: block; width: 100%; }
+  .src-table thead { display: none; }
+  .src-table tr { border-bottom: 1px solid var(--line); padding: 8px 0; }
+  .src-table td { border: 0; padding: 2px 0; }
+  .module-progress { flex-wrap: wrap; }
+  .chart-box { height: 210px; }
+  .chart-box.tall { height: 280px; }
+  .toast-root { left: 12px; right: 12px; bottom: 12px; align-items: stretch; }
+  .toast { max-width: none; }
+  .chrome-stats .chip { padding: 4px 8px; }
+  .quote { font-size: 1.15rem; }
+  .btn-row .btn { flex: 1 1 auto; }
+}
+
+@media (max-width: 380px) {
+  .pose-grid, .day-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+}

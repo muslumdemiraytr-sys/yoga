@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 240" role="img" aria-label="Nefes alırken ve verirken diyaframın konumu">
+  <rect width="420" height="240" rx="16" fill="#F6F3EA"/>
+  <g font-family="Nunito Sans, sans-serif" font-weight="700" font-size="13" fill="#574b3f" text-anchor="middle">
+    <text x="105" y="26">Nefes alırken</text><text x="315" y="26">Nefes verirken</text>
+    <text x="105" y="226" font-weight="400" font-size="11">Diyafram aşağı iner · karın öne çıkar</text>
+    <text x="315" y="226" font-weight="400" font-size="11">Diyafram yukarı döner · karın içe iner</text>
+  </g>
+  <g>
+    <path d="M60 50 Q105 34 150 50 L160 190 Q105 205 50 190 Z" fill="#fff" stroke="#776858" stroke-width="2.5"/>
+    <ellipse cx="85" cy="100" rx="20" ry="38" fill="#e3c9bf"/><ellipse cx="125" cy="100" rx="20" ry="38" fill="#e3c9bf"/>
+    <path d="M52 152 Q105 138 158 152" fill="none" stroke="#5f7a5b" stroke-width="7" stroke-linecap="round"/>
+    <path d="M160 160 q14 6 14 20" fill="none" stroke="#879B83" stroke-width="3" stroke-dasharray="4 4"/>
+    <path d="M105 160 v18 m-7 -7 l7 8 l7 -8" fill="none" stroke="#5f7a5b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <line x1="210" y1="44" x2="210" y2="206" stroke="#e4ddcd" stroke-width="2"/>
+  <g>
+    <path d="M270 50 Q315 34 360 50 L366 190 Q315 200 264 190 Z" fill="#fff" stroke="#776858" stroke-width="2.5"/>
+    <ellipse cx="297" cy="92" rx="16" ry="30" fill="#e3c9bf"/><ellipse cx="333" cy="92" rx="16" ry="30" fill="#e3c9bf"/>
+    <path d="M266 140 Q315 100 364 140" fill="none" stroke="#5f7a5b" stroke-width="7" stroke-linecap="round"/>
+    <path d="M315 138 v-18 m-7 7 l7 -8 l7 8" fill="none" stroke="#5f7a5b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

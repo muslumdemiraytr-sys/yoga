@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <!-- Yoga Akademisi özgün ikon seti · 24×24 · kontur + tek vurgu rengi
+       Renk: kontur = currentColor, vurgu = var(--ic-accent) -->
+
+  <!-- ===== Menü ===== -->
+  <symbol id="home" viewBox="0 0 24 24">
+    <path style="fill:var(--ic-accent,#879B83)" d="M9.5 21v-5.2a2.5 2.5 0 0 1 5 0V21z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M3.5 11 12 4l8.5 7"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M5.5 9.6V21h13V9.6"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M9.5 21v-5.2a2.5 2.5 0 0 1 5 0V21"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M16.5 4.5v2.2" /><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M2.5 21h19"/>
+  </symbol>
+  <symbol id="sprout" viewBox="0 0 24 24">
+    <path style="fill:var(--ic-accent,#879B83)" d="M12 12.5C12 8 9 5.5 4.5 5.8 4.4 10 7.4 12.6 12 12.5z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M12 12.5C12 8 9 5.5 4.5 5.8 4.4 10 7.4 12.6 12 12.5z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M12 11.5c0-3.6 2.4-6 6.8-5.7.2 3.9-2.6 6-6.8 5.7"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M12 9v8"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M7 17h10l-1.3 4.2H8.3z"/>
+  </symbol>
+  <symbol id="book" viewBox="0 0 24 24">
+    <path style="fill:var(--ic-accent,#879B83)" d="M12 6.8c2-1.6 4.8-2 8-1.6v12.6c-3.2-.4-6 0-8 1.6z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M12 6.8c-2-1.6-4.8-2-8-1.6v12.6c3.2-.4 6 0 8 1.6"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M12 6.8c2-1.6 4.8-2 8-1.6v12.6c-3.2-.4-6 0-8 1.6z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M12 6.8v12.6"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M6.5 9.2c1.2-.1 2.3.1 3.2.6M6.5 12.4c1.2-.1 2.3.1 3.2.6"/>
+  </symbol>
+  <symbol id="pose" viewBox="0 0 24 24">
+    <circle style="fill:var(--ic-accent,#879B83)" cx="12" cy="4.6" r="2.1"/><circle style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" cx="12" cy="4.6" r="2.1"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M12 7.5v6.5"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M3.5 9.5 12 8.2l8.5 1.3"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M12 14 7.3 16.5 6 21"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M12 14l4.5 2.2 1.6 4.8"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M3 21.2h18" stroke-dasharray="1.5 2.5"/>
+  </symbol>
+  <symbol id="wind" viewBox="0 0 24 24">
+    <path style="fill:var(--ic-accent,#879B83)" d="M3 15.5h11.5a2.6 2.6 0 1 1-2.4 3.6"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M3 8.5h10a2.6 2.6 0 1 0-2.4-3.6"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M3 12h15.5a2.6 2.6 0 1 1-2.4 3.6"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M3 15.5h8.5"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M19.5 6.5h1M21 9.5h.5"/>
+  </symbol>
+  <symbol id="lotus" viewBox="0 0 24 24">
+    <path style="fill:var(--ic-accent,#879B83)" d="M12 5.2c2.2 2.2 3 4.8 3 7.3 0 2.6-1.3 4.6-3 5.8-1.7-1.2-3-3.2-3-5.8 0-2.5.8-5.1 3-7.3z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M12 5.2c2.2 2.2 3 4.8 3 7.3 0 2.6-1.3 4.6-3 5.8-1.7-1.2-3-3.2-3-5.8 0-2.5.8-5.1 3-7.3z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M9.3 9.2C6.5 8.6 4 9.4 2.8 10.6c.7 4.5 4.6 7.7 9.2 7.7"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M14.7 9.2c2.8-.6 5.3.2 6.5 1.4-.7 4.5-4.6 7.7-9.2 7.7"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M5 21h14"/>
+  </symbol>
+  <symbol id="calendar" viewBox="0 0 24 24">
+    <rect style="fill:var(--ic-accent,#879B83)" x="3.5" y="5" width="17" height="4.5" rx="1"/>
+    <rect style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M3.5 9.5h17M8 3v4M16 3v4"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="m8.6 14.6 2.2 2.2 4.6-4.6"/>
+  </symbol>
+  <symbol id="chart" viewBox="0 0 24 24">
+    <rect style="fill:var(--ic-accent,#879B83)" x="13.6" y="9.5" width="3.4" height="10" rx=".8"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M3.5 3.5v17h17"/><rect style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" x="7.5" y="13" width="3.4" height="6.5" rx=".8"/><rect style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" x="13.6" y="9.5" width="3.4" height="10" rx=".8"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="m6.5 9.5 4-3.5 3 2 5.5-4.5"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M16.8 3.5H19v2.2"/>
+  </symbol>
+  <symbol id="quiz" viewBox="0 0 24 24">
+    <path style="fill:var(--ic-accent,#879B83)" d="M4 4.5h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-3.5 3v-3H4z" opacity=".9"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M4 4.5h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-3.5 3v-3"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M4 14.5a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M8 8.2a1.8 1.8 0 1 1 2.4 1.7c-.5.2-.9.6-.9 1.1"/><circle style="fill:currentColor" cx="9.5" cy="12.6" r=".75"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M19.5 9.5h.5a2 2 0 0 1 2 2v5.5a2 2 0 0 1-2 2v2.5l-3-2.5h-4.5a2 2 0 0 1-1.8-1.1"/>
+  </symbol>
+  <symbol id="medal" viewBox="0 0 24 24">
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M8 2.8 10.5 9M16 2.8 13.5 9"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M6 2.8h4.2M13.8 2.8H18"/>
+    <circle style="fill:var(--ic-accent,#879B83)" cx="12" cy="15" r="6"/><circle style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" cx="12" cy="15" r="6"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="m12 12.2.9 1.8 2 .3-1.45 1.4.35 2-1.8-.95-1.8.95.35-2-1.45-1.4 2-.3z"/>
+  </symbol>
+  <symbol id="books" viewBox="0 0 24 24">
+    <rect style="fill:var(--ic-accent,#879B83)" x="8.5" y="4" width="4" height="16.5" rx=".8"/>
+    <rect style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" x="3.5" y="6" width="5" height="14.5" rx=".8"/><rect style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" x="8.5" y="4" width="4" height="16.5" rx=".8"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="m13.6 6.4 3.9-1 3.6 14.4-3.9 1z"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M3.5 9.5h5M3.5 17h5M14.4 9.6l3.9-1"/>
+  </symbol>
+
+  <!-- ===== Modüller ===== -->
+  <symbol id="mat" viewBox="0 0 24 24">
+    <path style="fill:var(--ic-accent,#879B83)" d="M2.5 14.5H17v4H2.5z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M17 18.5H2.5v-4H17"/><circle style="fill:var(--ic-accent,#879B83)" cx="17.5" cy="14" r="4.5"/><circle style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" cx="17.5" cy="14" r="4.5"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M17.5 14a1.6 1.6 0 1 1 1.6 1.6"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M5.5 16.5h1.5M9 16.5h1.5"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M6 10.5c.8-1.8 2.4-2.8 4.4-2.8M8 5.5l.8 1.2M12.5 4.5v1.5"/>
+  </symbol>
+  <symbol id="lungs" viewBox="0 0 24 24">
+    <path style="fill:var(--ic-accent,#879B83)" d="M9.6 9.6C8 6.8 6 7 4.9 9.4 3.6 12 3 15.6 3.2 18.1c.1 1.4 1.3 2 2.5 1.6l3.3-1.2c.5-.2.8-.7.8-1.2z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M9.6 9.6C8 6.8 6 7 4.9 9.4 3.6 12 3 15.6 3.2 18.1c.1 1.4 1.3 2 2.5 1.6l3.3-1.2c.5-.2.8-.7.8-1.2z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M14.4 9.6c1.6-2.8 3.6-2.6 4.7-.2 1.3 2.6 1.9 6.2 1.7 8.7-.1 1.4-1.3 2-2.5 1.6l-3.3-1.2c-.5-.2-.8-.7-.8-1.2z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M12 3v7.5m0 0-2.4 2M12 10.5l2.4 2"/>
+  </symbol>
+  <symbol id="spine" viewBox="0 0 24 24">
+    <rect style="fill:var(--ic-accent,#879B83)" x="9" y="15.8" width="6" height="3" rx="1.2"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M12 2.5c-1.6 3.2-1.6 6.3 0 9.5s1.6 6.3 0 9.5" stroke-dasharray="0" opacity=".35"/>
+    <rect style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" x="10" y="3" width="4" height="2.4" rx="1"/><rect style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" x="9.4" y="6.6" width="5" height="2.6" rx="1"/>
+    <rect style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" x="9.4" y="10.6" width="5.4" height="2.8" rx="1.1"/><rect style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" x="9" y="15.8" width="6" height="3" rx="1.2"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M10.6 20.8h2.8"/>
+  </symbol>
+  <symbol id="sequence" viewBox="0 0 24 24">
+    <circle style="fill:var(--ic-accent,#879B83)" cx="17.5" cy="15.5" r="4.5"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M3.5 5h9M3.5 9.5h7M3.5 14h5"/><circle style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" cx="17.5" cy="15.5" r="4.5"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M17.5 13v2.6l1.6 1M16.3 9.3h2.4"/>
+    <circle style="fill:currentColor" cx="3.5" cy="19" r=".9"/><circle style="fill:currentColor" cx="7" cy="19" r=".9"/>
+  </symbol>
+
+  <!-- ===== Rozetler ===== -->
+  <symbol id="footprints" viewBox="0 0 24 24">
+    <path style="fill:var(--ic-accent,#879B83)" d="M7.6 4c2 0 2.8 2.5 2.6 5.4-.2 2.4-1.2 3.7-2.6 3.7S5.2 11.8 5 9.4C4.8 6.5 5.6 4 7.6 4z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M7.6 4c2 0 2.8 2.5 2.6 5.4-.2 2.4-1.2 3.7-2.6 3.7S5.2 11.8 5 9.4C4.8 6.5 5.6 4 7.6 4z"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M5.6 15.3h4v1.2a2 2 0 0 1-4 0z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M16.4 8c2 0 2.8 2.5 2.6 5.4-.2 2.4-1.2 3.7-2.6 3.7s-2.4-1.3-2.6-3.7C13.6 10.5 14.4 8 16.4 8z"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M14.4 19.3h4v.2a2 2 0 0 1-4 0z"/>
+  </symbol>
+  <symbol id="flame" viewBox="0 0 24 24">
+    <path style="fill:var(--ic-accent,#879B83)" d="M12 21a4 4 0 0 1-4-4c0-2.6 2.2-3.6 2.6-6.2 1.6 1 2.4 2.4 2.5 3.8.7-.5 1.2-1.2 1.4-2 1 1 1.5 2.6 1.5 4.4a4 4 0 0 1-4 4z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M12 21.5c-4 0-7-2.7-7-6.6 0-4.4 4.4-6.3 5.2-11.4 2.6 1.6 4.4 4.5 4.6 7.3 1-.8 1.7-1.9 2-3.2 1.9 1.8 3.2 4.6 3.2 7.3 0 3.9-3 6.6-8 6.6z"/>
+  </symbol>
+  <symbol id="balance" viewBox="0 0 24 24">
+    <path style="fill:var(--ic-accent,#879B83)" d="M2.8 13.5h6.4a3.2 3.2 0 0 1-6.4 0z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M12 3.5v17M7.5 20.5h9M5 7l14-2"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M6 7.2 2.8 13.5h6.4z"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M18 5.2l-3.2 6.3h6.4z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M2.8 13.5a3.2 3.2 0 0 0 6.4 0M14.8 11.5a3.2 3.2 0 0 0 6.4 0"/><circle style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" cx="12" cy="4.5" r="1"/>
+  </symbol>
+  <symbol id="compass" viewBox="0 0 24 24">
+    <path style="fill:var(--ic-accent,#879B83)" d="m15.6 8.4-2 5.2-5.2 2 2-5.2z"/>
+    <circle style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" cx="12" cy="12" r="9"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="m15.6 8.4-2 5.2-5.2 2 2-5.2z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M12 3v1.6M12 19.4V21M3 12h1.6M19.4 12H21"/>
+  </symbol>
+  <symbol id="calcheck" viewBox="0 0 24 24">
+    <rect style="fill:var(--ic-accent,#879B83)" x="3.5" y="5" width="17" height="4.5" rx="1"/>
+    <rect style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M3.5 9.5h17M8 3v4M16 3v4"/>
+    <circle style="fill:currentColor" cx="8" cy="13.5" r=".9"/><circle style="fill:currentColor" cx="12" cy="13.5" r=".9"/><circle style="fill:currentColor" cx="16" cy="13.5" r=".9"/>
+    <circle style="fill:currentColor" cx="8" cy="17" r=".9"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="m11 17 1.2 1.2 2.6-2.6"/>
+  </symbol>
+  <symbol id="mountain" viewBox="0 0 24 24">
+    <path style="fill:var(--ic-accent,#879B83)" d="M9.5 6 13 11.3l-1.6 1.2-1.9-1.4-1.9 1.4L6 11.3z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M2 20.5 9.5 6l7.5 14.5"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M13.8 14.4 16.5 10l5.5 10.5H2"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M6 11.3l1.6 1.2 1.9-1.4 1.9 1.4L13 11.3"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M18.5 3.5v3M17 5h3"/>
+  </symbol>
+  <symbol id="gradcap" viewBox="0 0 24 24">
+    <path style="fill:var(--ic-accent,#879B83)" d="M2 9.5 12 5l10 4.5-10 4.5z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M2 9.5 12 5l10 4.5-10 4.5z"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M6.5 11.5v4.3c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-4.3"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M22 9.5v5.5"/><circle style="fill:currentColor" cx="22" cy="16" r="1"/>
+  </symbol>
+  <symbol id="trophy" viewBox="0 0 24 24">
+    <path style="fill:var(--ic-accent,#879B83)" d="M7 3.5h10v5.5a5 5 0 0 1-10 0z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M7 3.5h10v5.5a5 5 0 0 1-10 0z"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M7 5.5H4.5a3 3 0 0 0 3 4M17 5.5h2.5a3 3 0 0 1-3 4"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M12 14v3.5M8 21h8l-.8-3.5H8.8z"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M10.5 7l1 1 2-2"/>
+  </symbol>
+  <symbol id="leaf" viewBox="0 0 24 24">
+    <path style="fill:var(--ic-accent,#879B83)" d="M5 19C4 11 9 4.5 20 4c.4 10.5-5.5 16-15 15z"/>
+    <path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M5 19C4 11 9 4.5 20 4c.4 10.5-5.5 16-15 15z"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M3 21 15.5 8.5M9.5 14.5h4M12 12V8.5"/>
+  </symbol>
+  <symbol id="timer" viewBox="0 0 24 24">
+    <path style="fill:var(--ic-accent,#879B83)" d="M12 13.5V8a5.5 5.5 0 0 1 5.4 6.6z"/>
+    <circle style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" cx="12" cy="13.5" r="7.5"/><path style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round" d="M12 13.5V9.5M10 2.5h4M12 2.5V6M18.4 6.6l1.4-1.4"/>
+  </symbol>
+</svg>

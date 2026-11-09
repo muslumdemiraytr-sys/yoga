@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yoga Akademisi</title>
+  <meta name="description" content="Sıfırdan orta seviyeye Türkçe, interaktif yoga eğitimi: 30 günlük program, nefes ve meditasyon rehberleri, pozisyon kütüphanesi, sınavlar ve gelişim paneli.">
+  <meta name="theme-color" content="#879B83">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">İçeriğe geç</a>
+
+  <header class="topbar">
+    <a class="brand" href="#/"><img src="assets/icons/logo.svg" alt="" width="34" height="34"><span>Yoga <b>Akademisi</b></span></a>
+    <div class="chrome-stats" id="chromeStats"></div>
+    <button class="menu-btn" id="menuBtn" aria-label="Menüyü aç" aria-expanded="false" aria-controls="sidebar"><span>Menü</span><i data-lucide="menu" aria-hidden="true"></i></button>
+  </header>
+  <nav class="crumbbar" id="crumbbar" aria-label="Konum"></nav>
+
+  <aside class="sidebar" id="sidebar" aria-label="Ana menü" aria-hidden="true">
+    <div class="menu-head">
+      <a class="brand" href="#/"><img src="assets/icons/logo.svg" alt="" width="34" height="34"><span>Yoga <b>Akademisi</b></span></a>
+      <button class="menu-btn" id="menuClose" aria-label="Menüyü kapat"><span>Kapat</span><i data-lucide="x" aria-hidden="true"></i></button>
+    </div>
+    <nav id="nav" class="nav"></nav>
+    <div class="side-progress" id="sideProgress"></div>
+    <p class="side-note">Veriler yalnızca bu tarayıcıda saklanır.</p>
+  </aside>
+
+  <main id="main" class="main" tabindex="-1">
+    <noscript><div class="card"><h1>JavaScript gerekli</h1><p>Yoga Akademisi’nin etkileşimli özellikleri için JavaScript’i etkinleştir.</p></div></noscript>
+  </main>
+
+  <footer class="footer">
+    <p><strong>Yoga Akademisi</strong> · Eğitim amaçlıdır; tıbbi tavsiye ve tedavinin yerine geçmez. Ağrı, baş dönmesi veya nefes darlığında pratiği durdur.</p>
+    <p class="tiny">İlerlemen bu tarayıcının yerel depolamasında tutulur, cihazlar arasında otomatik senkronize olmaz. · <a href="#/kaynakca">Kaynakça ve görsel lisansları</a></p>
+  </footer>
+
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+  <div id="modal-root"></div>
+
+  <!-- Harici kütüphaneler (sabit sürüm) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+  <!-- Uygulama -->
+  <script src="js/storage.js" defer></script>
+  <script src="js/yoga-content.js" defer></script>
+  <script src="js/progress.js" defer></script>
+  <script src="js/daily-tasks.js" defer></script>
+  <script src="js/quiz.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
