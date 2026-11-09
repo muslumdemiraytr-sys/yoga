@@ -32,9 +32,11 @@ yoga-academy/
 ├── .nojekyll             # GitHub Pages’in Jekyll işlemesini kapatır
 ├── css/
 │   ├── style.css         # Tasarım sistemi ve bileşenler
+│   ├── visuals.css       # İnfografik ve harita bileşenleri
 │   └── responsive.css    # Tablet ve mobil düzen
 ├── js/
 │   ├── theme.js          # 10 renk teması, kontrast hesaplı tema motoru
+│   ├── visuals.js        # görsel anlatım bileşenleri, öğrenme haritası, görsel rapor
 │   ├── storage.js        # localStorage, JSON dışa/içe aktarma
 │   ├── yoga-content.js   # Modüller, kaynaklar, nefes, pozlar, programlar, meditasyon
 │   ├── progress.js       # Metrikler, seri (streak), rozet kuralları
@@ -49,6 +51,35 @@ yoga-academy/
 ```
 
 Pozisyon çizimleri `yoga-content.js` içindeki eklem koordinatlarından SVG olarak üretilir; tüm görseller yereldir.
+
+## Görsel anlatım sistemi
+
+Uzun metinleri görerek anlaşılır hâle getiren, SVG ve CSS ile çizilen bileşenler (`js/visuals.js`, `css/visuals.css`).
+Hepsi tema renklerini kullanır, animasyon içermez ve metin alternatifiyle birlikte gelir.
+
+| Bileşen | Kullanıldığı yer |
+|---------|------------------|
+| Akış / süreç | Poz aşamaları, beden taraması, hizalama noktaları, günlük görev akışı |
+| Zihin haritası | Modül konu haritaları, yoganın bileşenleri, kalça, core, nefes haritası |
+| Döngü halkası | Nefes ritimleri (sürelerle), meditasyonun dikkat döngüsü |
+| Basamaklar | Sekiz basamak (geleneksel çerçeve) |
+| Venn | Yoga ve meditasyon, dengeyi sağlayan üç sistem |
+| Dağılım | Yoga stilleri: tempo × yoğunluk |
+| Zaman çizelgesi | Yoganın tarihçesi |
+| Karşılaştırma | Fiziksel/zihinsel, statik/dinamik esneme, yanlış/doğru, hata/alternatif |
+| Segment çubuğu | Omurga bölümleri, program zaman şeridi |
+| Vücut haritası | Pozların çalıştırdığı kas bölgeleri (ön/arka) |
+| Isı haritası, halka, sütun | Gelişim paneli ve rapor |
+
+- **Poz sayfaları:** başlangıç pozisyonu, nefes işaretli (al/ver) uygulama aşamaları, hizalama kontrol noktaları,
+  vücut haritası, “hata → alternatif” karşılaştırması ve güvenlik uyarıları görsel kartlar olarak sunulur.
+- **Öğrenme Haritası (`#/harita`):** öğrenme yolculuğu (ilerlemene göre), yoga türleri, felsefe ve kavramlar,
+  etkileşimli anatomi haritası, nefes teknikleri ve pozlar arası geçiş diyagramı. Geçiş diyagramı hazır
+  programlardaki gerçek hareket sırasından hesaplanır.
+- **Gelişim paneli ve rapor:** 30/60/90 günlük görsel rapor; günlük çalışma ısı haritası, haftalık gelişim,
+  hedef/görev/eğitim tamamlama halkaları, seri şeridi, öğrenilen pozlar ve modül ilerlemesi. Tüm değerler
+  tarayıcıdaki gerçek kullanıcı verisinden hesaplanır.
+- Yeni bir bölüm görseli eklemek için `Viz.SECTION` nesnesine `'modülId/bölümId': () => Viz.flow([...])` gibi bir kayıt eklemek yeterlidir.
 
 ## Renk temaları
 

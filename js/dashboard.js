@@ -5,6 +5,7 @@ const Dashboard = (() => {
   const h = (s) => App.h(s);
   const charts = [];
   let C = {};
+  let range = 30;
   /** Grafik renkleri seçili temadan okunur (js/theme.js) */
   function palette() {
     const v = (typeof Theme !== 'undefined' ? Theme.vars() : {});
@@ -38,6 +39,10 @@ const Dashboard = (() => {
         <h1>Kişisel gelişimin${name}</h1>
         <p class="lead">Pratik süren, görevlerin, öğrenme ilerlemen ve kendi değerlendirmelerin tek bakışta.</p>
       </section>
+
+      <h2 class="section-title">Görsel gelişim raporu</h2>
+      <div class="vz-range" role="group" aria-label="Rapor dönemi">${[30, 60, 90].map(r => `<button type="button" data-range="${r}" aria-pressed="${r === range}">${r} gün</button>`).join('')}</div>
+      <div id="vzReport" class="vz-report">${Viz.progressReport(range)}</div>
 
       <h2 class="section-title">Günlük ve haftalık metrikler</h2>
       <div class="metrics">
@@ -106,6 +111,11 @@ const Dashboard = (() => {
   }
 
   function bind(el) {
+    el.querySelectorAll('[data-range]').forEach(b => b.addEventListener('click', () => {
+      range = Number(b.dataset.range);
+      el.querySelectorAll('[data-range]').forEach(x => x.setAttribute('aria-pressed', x === b));
+      el.querySelector('#vzReport').innerHTML = Viz.progressReport(range); App.refreshIcons();
+    }));
     el.querySelector('#goalSel').addEventListener('change', (e) => {
       Store.update(s => { s.profile.dailyGoal = Number(e.target.value); });
       App.toast('Günlük hedef güncellendi.', 'ok'); render(el); App.refreshIcons();
@@ -234,6 +244,9 @@ const Dashboard = (() => {
         ${metric('person-standing', `${s.poses}/${YA.poses.length}`, 'Öğrenilen pozisyon')}
         ${metric('graduation-cap', `%${s.learning}`, 'Öğrenme ilerlemesi')}
       </div>
+      <h2 class="section-title">30 / 60 / 90 günlük görsel rapor</h2>
+      <div class="vz-range no-print" role="group" aria-label="Rapor dönemi">${[30, 60, 90].map(r => `<button type="button" data-rrange="${r}" aria-pressed="${r === range}">${r} gün</button>`).join('')}</div>
+      <div id="vzReport2" class="vz-report">${Viz.progressReport(range)}</div>
       <div class="grid-2">
         <div class="card"><h3>${App.icon('graduation-cap')} Final değerlendirmesi</h3>
           ${fin ? `<p class="big">%${fin.best}</p><p>${fin.best >= 80 ? 'Eğitim içeriğini başarıyla kavradın.' : 'Final sınavını tekrar çözerek puanını yükseltebilirsin.'}</p>` : `<p>Final sınavı henüz çözülmedi.</p><a class="btn primary" href="#/quiz/final">Final sınavına git</a>`}
@@ -256,7 +269,15 @@ const Dashboard = (() => {
           <li>Mümkünse nitelikli bir eğitmenle (ör. Yoga Alliance kayıtlı) birkaç ders alarak hizalamanı kontrol ettir.</li>
           <li>Ağrı, baş dönmesi ya da sağlık durumunda değişiklik olursa pratiğe ara verip sağlık profesyoneline danış.</li>
         </ul></div>`;
+    bindReport(el);
   }
 
+  function bindReport(el) {
+    el.querySelectorAll('[data-rrange]').forEach(b => b.addEventListener('click', () => {
+      range = Number(b.dataset.rrange);
+      el.querySelectorAll('[data-rrange]').forEach(x => x.setAttribute('aria-pressed', x === b));
+      el.querySelector('#vzReport2').innerHTML = Viz.progressReport(range); App.refreshIcons();
+    }));
+  }
   return { render, renderReport, destroyCharts };
 })();

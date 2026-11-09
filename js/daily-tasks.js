@@ -301,6 +301,12 @@ const Daily = (() => {
         <h1>${h(d.title)}</h1>
         <div class="meta-row"><span class="chip">${App.icon('clock')} Tahmini süre: ${d.min} dk</span>${rec ? `<span class="chip ok">${App.icon('check')} Tamamlandı · ${App.fmtDate(rec.date)}</span>` : ''}</div>
       </section>
+      ${Viz.flow([
+        { icon: 'book-open', title: 'Öğren', text: 'Eğitim içeriğini oku', state: rec ? 'done' : 'current' },
+        { icon: 'image', title: 'İncele', text: 'Görseli ve adımları gözden geçir', state: rec ? 'done' : '' },
+        { icon: 'activity', title: 'Uygula', text: d.min + ' dk pratik', state: rec ? 'done' : '' },
+        { icon: 'circle-help', title: 'Değerlendir', text: 'Kısa soruyu yanıtla', state: ans != null ? 'done' : '' }
+      ], { title: 'Bugünün akışı', label: 'Günlük görev aşamaları' })}
       <div class="day-layout">
         <div class="stack">
           <div class="card"><h3>${App.icon('target')} Öğrenme hedefi</h3><p>${h(d.goal)}</p></div>

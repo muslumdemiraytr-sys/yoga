@@ -221,6 +221,7 @@ const App = (() => {
         <a class="feature" href="#/meditasyon">${yi('lotus')}<h3>Meditasyon</h3><p>Rehberli, zilli meditasyon zamanlayıcısı.</p></a>
         <a class="feature" href="#/programlar">${yi('sequence')}<h3>Hazır programlar</h3><p>5–20 dakikalık zamanlayıcılı rutinler.</p></a>
         <a class="feature" href="#/quiz">${yi('quiz')}<h3>Quiz ve sınavlar</h3><p>Anında geri bildirim ve final değerlendirmesi.</p></a>
+        <a class="feature" href="#/harita">${yi('compass')}<h3>Öğrenme haritası</h3><p>Yolculuğun, anatomi ve pozlar arası geçişler.</p></a>
         <a class="feature" href="#/panel">${yi('chart')}<h3>Gelişim paneli</h3><p>Grafikler, seri ve öz-değerlendirme.</p></a>
       </div>
       ${safetyNote()}`;
@@ -365,6 +366,9 @@ const App = (() => {
       <div class="reading">
         <p class="intro-lead">${h(m.summary)}</p>
         ${m.intro ? `<div class="prose">${m.intro}</div>` : ''}
+        ${Viz.mindmap(m.title, m.kind === 'poses'
+          ? [{ title: 'Başlangıç seviyesi', text: `${rows.filter(r => r.group === 'Başlangıç seviyesi' && r.done).length}/12 poz öğrenildi`, href: '#/pozlar', icon: 'pose' }, { title: 'Orta seviye', text: `${rows.filter(r => r.group === 'Orta seviye' && r.done).length}/6 poz öğrenildi`, href: '#/pozlar', icon: 'mountain' }]
+          : rows.map((r, k) => ({ title: `${ROMAN[k]}. ${r.title}`, href: r.href, done: r.done })), { title: `${icon('map')} Modül ${m.no} konu haritası`, sub: `${ms.done}/${ms.total} bölüm` })}
         <h2 class="list-title">Modül ${m.no}’de şu bölümleri işleyeceğiz. Başlamak için bir bölüme tıkla:</h2>
         ${secTable(m, rows)}
         <div class="module-progress">${bar(ms.pct)}<span class="muted">${ms.done}/${ms.total} bölüm · %${ms.pct}</span></div>
@@ -388,6 +392,7 @@ const App = (() => {
         <p class="sec-progress">Modül ${m.no}: ${h(m.title)} · Bölüm ${i + 1}/${m.sections.length}</p>
         <div class="sec-dots" aria-hidden="true">${m.sections.map((x, k) => `<a href="#/modul/${m.id}/${x.id}" class="${k === i ? 'cur' : ''} ${Progress.isRead(m.id, x.id) ? 'done' : ''}" tabindex="-1"></a>`).join('')}</div>
         <h1 class="sec-title"><span class="rn">${ROMAN[i]}.</span> ${h(s.title)}</h1>
+        ${Viz.SECTION[m.id + '/' + s.id] ? `<div class="sec-visual"><p class="eyebrow">${icon('eye')} Görsel özet</p>${Viz.SECTION[m.id + '/' + s.id]()}</div>` : ''}
         ${s.ill ? `<figure class="lesson-ill"><img src="${s.ill}" alt="${h(s.title)} illüstrasyonu" loading="lazy"></figure>` : ''}
         <div class="prose prose-lg">${s.html}</div>
         <div class="sec-end">
@@ -473,15 +478,8 @@ const App = (() => {
       <div class="card video-card"><h2>${icon('video')} Videolu gösterim</h2>
         ${p.level === 'i' ? `<p class="tiny muted">Orta seviye duruştur; videoyu izlerken kolaylaştırılmış alternatifi tercih et.</p>` : ''}
         ${videoBlock(p.id, `${p.sa} ${p.tr} yoga nasıl yapılır`)}</div>
-      <div class="pose-detail">
-        <div class="card"><h2>${icon('dumbbell')} Çalışan kas grupları</h2><div class="tags">${p.muscles.map(x => `<span class="tag">${h(x)}</span>`).join('')}</div></div>
-        <div class="card"><h2>${icon('list-ordered')} Adım adım uygulama</h2><ol class="steps">${p.steps.map(x => `<li>${x}</li>`).join('')}</ol></div>
-        <div class="card"><h2>${icon('ruler')} Doğru hizalanma</h2>${list(p.align, 'check')}</div>
-        <div class="card"><h2>${icon('wind')} Nefes koordinasyonu</h2><p>${h(p.breath)}</p></div>
-        <div class="card"><h2>${icon('circle-x')} Yaygın hatalar</h2>${list(p.mistakes, 'x-list')}</div>
-        <div class="card"><h2>${icon('hand-heart')} Kolaylaştırılmış alternatif</h2><p>${h(p.easier)}</p></div>
-        <div class="card warn-card"><h2>${icon('triangle-alert')} Dikkat edilmesi gereken durumlar</h2><p>${h(p.caution)}</p><p class="tiny">Ağrı, baş dönmesi veya nefes darlığı hissedersen duruştan hemen çık. Ağrıya rağmen pozisyonda kalma.</p></div>
-      </div>
+      <h2 class="section-title">Pozun görsel anlatımı</h2>
+      ${Viz.poseInfographic(p)}
       ${sourceList(['yogaJournalPoses', 'nhsYoga', 'nccihYogaSafety'])}
       <div class="pager">${prev ? `<a class="btn ghost" href="#/poz/${prev.id}">${icon('arrow-left')} ${h(prev.tr)}</a>` : '<span></span>'}${next ? `<a class="btn ghost" href="#/poz/${next.id}">${h(next.tr)} ${icon('arrow-right')}</a>` : ''}</div>`;
     bindVideos(el);
@@ -524,7 +522,7 @@ const App = (() => {
               <h3>3. Süre</h3><p>${h(b.duration)} · Ritim: al ${b.pattern[0]} sn${b.pattern[1] ? ` · bekle ${b.pattern[1]} sn (isteğe bağlı)` : ''} · ver ${b.pattern[2]} sn${b.pattern[3] ? ` · bekle ${b.pattern[3]} sn (isteğe bağlı)` : ''}</p>
               <h3>5. Dikkat edilmesi gerekenler</h3><ul class="x-list warnish">${b.cautions.map(c => `<li>${c}</li>`).join('')}</ul>
             </div>
-            <div><h3>4. Görsel anlatım</h3>${breathInfographic(b)}<h3>${icon('video')} Videolu gösterim</h3>${videoBlock('nefes-' + b.id, b.title + ' nefes tekniği nasıl yapılır')}</div>
+            <div><h3>4. Görsel anlatım</h3>${Viz.breathCycle(b)}${breathInfographic(b)}<h3>${icon('video')} Videolu gösterim</h3>${videoBlock('nefes-' + b.id, b.title + ' nefes tekniği nasıl yapılır')}</div>
           </div>
           <div class="btn-row"><button class="btn primary try" data-id="${b.id}">${icon('play')} Rehberle uygula</button>
           <button class="btn read-b ${Progress.isRead('m3', b.id) ? 'is-read' : ''}" data-id="${b.id}">${icon(Progress.isRead('m3', b.id) ? 'circle-check' : 'circle')} ${Progress.isRead('m3', b.id) ? 'Tamamlandı' : 'Okudum ve uyguladım'}</button></div>
@@ -555,10 +553,7 @@ const App = (() => {
       <path d="M40 120 C60 120 80 116 100 112" class="arrow in"/><path d="M140 112 C160 116 180 120 200 120" class="arrow out"/>
       <text x="40" y="140">Sol: al</text><text x="160" y="140">Sağ: ver</text><text x="70" y="30">Sonra tersi: sağdan al, soldan ver</text></svg>
       <figcaption>Bir tur: soldan al → sağdan ver → sağdan al → soldan ver.</figcaption></figure>`;
-    return `<figure class="infographic"><svg viewBox="0 0 260 120" class="wave-svg" role="img" aria-label="Nefes ritmi dalgası">
-      <path d="M10 90 C40 90 50 30 ${10 + b.pattern[0] * 15} 30 S ${20 + (b.pattern[0] + b.pattern[2]) * 15} 90 ${20 + (b.pattern[0] + b.pattern[2]) * 15} 90" class="wave"/>
-      <text x="20" y="20">Al · ${b.pattern[0]} sn</text><text x="${30 + b.pattern[0] * 15}" y="110">Ver · ${b.pattern[2]} sn</text></svg>
-      <figcaption>Nefes ritmi: ${b.pattern[2] > b.pattern[0] ? 'veriş alıştan uzun, bu da rahatlamayı destekler.' : 'alış ve veriş eşit, yumuşak ve sessiz.'}</figcaption></figure>`;
+    return '';
   }
   function initPacer(el) {
     const $ = (s) => el.querySelector(s);
@@ -715,6 +710,7 @@ const App = (() => {
         <button class="btn ${Progress.isRead('m7', p.id) ? 'is-read' : ''}" id="readProg">${icon(Progress.isRead('m7', p.id) ? 'circle-check' : 'circle')} ${Progress.isRead('m7', p.id) ? 'İncelendi' : 'İnceledim'}</button></div></section>
       ${safetyNote()}
       ${YA.videos['program-' + p.id] ? `<div class="card video-card"><h2>${icon('video')} Videolu gösterim</h2>${videoBlock('program-' + p.id, p.title + ' yoga')}</div>` : ''}
+      <div class="card">${Viz.programStrip(p)}</div>
       <h2 class="section-title">Hareket sırası</h2>
       <ol class="seq">${p.steps.map((s, i) => { const x = stepInfo(s); return `<li class="${x.rest ? 'rest' : ''}">
         <span class="seq-no">${i + 1}</span>
@@ -891,13 +887,13 @@ const App = (() => {
 
   /* ================================================ Yönlendirme */
   const NAV = [
-    ['#/', 'home', 'Ana Sayfa'], ['#/baslangic', 'sprout', "Yoga'ya Başlangıç"], ['#/moduller', 'book', 'Eğitim Modülleri'],
+    ['#/', 'home', 'Ana Sayfa'], ['#/baslangic', 'sprout', "Yoga'ya Başlangıç"], ['#/moduller', 'book', 'Eğitim Modülleri'], ['#/harita', 'compass', 'Öğrenme Haritası'],
     ['#/pozlar', 'pose', 'Yoga Pozisyonları'], ['#/nefes', 'wind', 'Nefes Teknikleri'], ['#/meditasyon', 'lotus', 'Meditasyon'],
     ['#/program', 'calendar', '30 Günlük Program'], ['#/panel', 'chart', 'Gelişim Paneli'], ['#/quiz', 'quiz', 'Quiz ve Sınavlar'],
     ['#/rozetler', 'medal', 'Başarı Rozetleri'], ['#/kaynakca', 'books', 'Kaynakça'], ['#/ayarlar', 'settings', 'Ayarlar']
   ];
-  const navKey = { '': '#/', baslangic: '#/baslangic', moduller: '#/moduller', modul: '#/moduller', pozlar: '#/pozlar', poz: '#/pozlar', nefes: '#/nefes', meditasyon: '#/meditasyon', program: '#/program', gun: '#/program', panel: '#/panel', rapor: '#/panel', quiz: '#/quiz', rozetler: '#/rozetler', kaynakca: '#/kaynakca', programlar: '#/moduller', ayarlar: '#/ayarlar' };
-  const TITLES = { '': 'Ana Sayfa', baslangic: "Yoga'ya Başlangıç", moduller: 'Eğitim Modülleri', modul: 'Modül', pozlar: 'Yoga Pozisyonları', poz: 'Pozisyon', nefes: 'Nefes Teknikleri', meditasyon: 'Meditasyon', program: '30 Günlük Program', gun: 'Günlük Görev', panel: 'Gelişim Paneli', rapor: 'Gelişim Raporu', quiz: 'Quiz ve Sınavlar', rozetler: 'Başarı Rozetleri', kaynakca: 'Kaynakça', programlar: 'Yoga Programları', ayarlar: 'Ayarlar' };
+  const navKey = { '': '#/', baslangic: '#/baslangic', moduller: '#/moduller', modul: '#/moduller', pozlar: '#/pozlar', poz: '#/pozlar', nefes: '#/nefes', meditasyon: '#/meditasyon', program: '#/program', gun: '#/program', panel: '#/panel', rapor: '#/panel', quiz: '#/quiz', rozetler: '#/rozetler', kaynakca: '#/kaynakca', programlar: '#/moduller', ayarlar: '#/ayarlar', harita: '#/harita' };
+  const TITLES = { '': 'Ana Sayfa', baslangic: "Yoga'ya Başlangıç", moduller: 'Eğitim Modülleri', modul: 'Modül', pozlar: 'Yoga Pozisyonları', poz: 'Pozisyon', nefes: 'Nefes Teknikleri', meditasyon: 'Meditasyon', program: '30 Günlük Program', gun: 'Günlük Görev', panel: 'Gelişim Paneli', rapor: 'Gelişim Raporu', quiz: 'Quiz ve Sınavlar', rozetler: 'Başarı Rozetleri', kaynakca: 'Kaynakça', programlar: 'Yoga Programları', ayarlar: 'Ayarlar', harita: 'Öğrenme Haritası' };
 
   function renderCrumbs(p0, p1, p2) {
     const c = [['#/', 'Ana Sayfa']];
@@ -958,6 +954,7 @@ const App = (() => {
       case 'rozetler': pageBadges(el); break;
       case 'kaynakca': pageSources(el); break;
       case 'ayarlar': pageSettings(el); break;
+      case 'harita': Viz.renderMap(el); break;
       default: notFound(el);
     }
     decorateHead(el, p0, p1);
@@ -1002,7 +999,7 @@ const App = (() => {
     nefes: ['nefes', 'Nefese odaklanan kişi ve nefes dalgaları'], meditasyon: ['meditasyon', 'Ay ışığında meditasyon yapan kişi'],
     program: ['program', 'Tamamlanan günleri gösteren takvim ve büyüyen bitki'], gun: ['program', 'Takvim ve büyüyen bitki'],
     panel: ['panel', 'Yükselen gelişim grafiği'], rapor: ['panel', 'Yükselen gelişim grafiği'], quiz: ['quiz', 'Soru ve onay işaretli konuşma balonları'],
-    rozetler: ['rozetler', 'Kupa ve madalyalar'], ayarlar: ['baslangic', 'Hazırlanan kişi ve kontrol listesi'], kaynakca: ['kaynakca', 'Kitap yığını ve büyüteç'], programlar: ['programlar', 'Ağaç duruşunda kişi ve kronometre']
+    rozetler: ['rozetler', 'Kupa ve madalyalar'], harita: ['moduller', 'Açık kitaptan filizlenen bitki'], ayarlar: ['baslangic', 'Hazırlanan kişi ve kontrol listesi'], kaynakca: ['kaynakca', 'Kitap yığını ve büyüteç'], programlar: ['programlar', 'Ağaç duruşunda kişi ve kronometre']
   };
   function decorateHead(el, p0, p1) {
     const ill = HEAD_ILL[p0];
@@ -1037,7 +1034,7 @@ const App = (() => {
     route(); updateChrome(); onboarding();
   }
 
-  return { init, videoBlock, bindVideos, h, icon, bar, today, fmtDate, toast, badgeToast, badgeMedal, figure, poseById, sourceList, notFound, refreshIcons, updateChrome, go };
+  return { init, yi, videoBlock, bindVideos, h, icon, bar, today, fmtDate, toast, badgeToast, badgeMedal, figure, poseById, sourceList, notFound, refreshIcons, updateChrome, go };
 })();
 
 document.addEventListener('DOMContentLoaded', App.init);
