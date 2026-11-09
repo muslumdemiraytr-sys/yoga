@@ -34,6 +34,7 @@ yoga-academy/
 │   ├── style.css         # Tasarım sistemi ve bileşenler
 │   └── responsive.css    # Tablet ve mobil düzen
 ├── js/
+│   ├── theme.js          # 10 renk teması, kontrast hesaplı tema motoru
 │   ├── storage.js        # localStorage, JSON dışa/içe aktarma
 │   ├── yoga-content.js   # Modüller, kaynaklar, nefes, pozlar, programlar, meditasyon
 │   ├── progress.js       # Metrikler, seri (streak), rozet kuralları
@@ -48,6 +49,22 @@ yoga-academy/
 ```
 
 Pozisyon çizimleri `yoga-content.js` içindeki eklem koordinatlarından SVG olarak üretilir; tüm görseller yereldir.
+
+## Renk temaları
+
+**Ayarlar → Görünüm ve Tema** bölümünden (üst bardaki palet simgesi ya da Menü → Ayarlar) 10 tema arasında geçiş yapılır:
+Sage Serenity (varsayılan), Warm Zen, Lavender Mind, Earth & Soul, Ocean Balance, Botanical Green, Blush Harmony,
+Deep Nature, Sunset Energy, Modern Minimal.
+
+- Temalar `js/theme.js` içinde 5 temel renkle (background, primary, secondary, accent, text) tanımlıdır. Motor bunlardan
+  `--color-surface`, `--color-border`, `--color-muted`, `--color-success/-warning/-danger`, `--color-button-text`,
+  `--color-cta` gibi tüm değişkenleri **kontrast hedeflerini (metin ≥ 4.5:1, gövde metni ≥ 7:1) sağlayarak** üretir.
+- Renk rolleri: açık yüzeyler ~%60 · marka rengi (üst bar, menü, başlık bantları) ~%25 · ikincil yüzeyler ~%10 ·
+  vurgu (ana butonlar, ilerleme çubukları, seçili öğeler) ~%5.
+- `theme.js` `<head>` içinde senkron yüklenir; seçili tema ilk boyamadan önce uygulanır (renk “yanıp sönmesi” olmaz).
+- Seçim `localStorage` içinde `yogaAkademisi.theme` anahtarıyla ve JSON yedeğindeki profilde saklanır.
+- Gelişim grafikleri renklerini aktif temadan alır; seriler birbirinden ayırt edilebilir olacak şekilde seçilir.
+- Yeni tema eklemek için `THEMES` dizisine 5 renkli bir kayıt eklemek yeterlidir.
 
 ## Arayüz düzeni (kurs yapısı)
 

@@ -823,15 +823,81 @@ const App = (() => {
       <div class="callout warn">${icon('shield-alert')} <div>Bu platform eğitim amaçlıdır ve tıbbi tavsiye yerine geçmez. Sağlık durumunla ilgili kararlar için bir sağlık profesyoneline danış.</div></div>`;
   }
 
+  /* ---------- Ayarlar: Görünüm ve Tema + profil */
+  function themePreview(t) {
+    const v = Theme.build(t);
+    return `<span class="tc-preview" style="background:${v['--color-background']}" aria-hidden="true">
+        <span class="tp-bar" style="background:${v['--color-primary-strong']}"></span>
+        <span class="tp-card" style="background:${v['--color-surface']};border:1px solid ${v['--color-border']}">
+          <span class="tp-line" style="background:${v['--color-secondary']}"></span>
+          <span class="tp-btn" style="background:${v['--color-cta']}"></span>
+        </span>
+      </span>
+      <span class="tc-swatches" aria-hidden="true">${[t.bg, t.primary, t.secondary, t.accent, t.text].map(c => `<span style="background:${c}"></span>`).join('')}</span>`;
+  }
+  function pageSettings(el) {
+    const st = Store.state;
+    const cur = Theme.current();
+    el.innerHTML = `
+      <section class="page-head"><p class="eyebrow">Ayarlar</p><h1>Ayarlar</h1>
+        <p class="lead">Görünümü kendine göre düzenle. Tema yalnızca renkleri değiştirir; ilerlemen, görevlerin ve tüm içerik aynen korunur.</p></section>
+      <section class="settings-section" aria-labelledby="themeTitle">
+        <h2 id="themeTitle">${yi('lotus')} Görünüm ve Tema</h2>
+        <p class="muted">10 renk temasından birini seç. Değişiklik anında uygulanır ve sayfa yenilendiğinde korunur.</p>
+        <div class="theme-grid" role="radiogroup" aria-labelledby="themeTitle">
+          ${Theme.THEMES.map(t => `<button class="theme-card" role="radio" aria-checked="${t.id === cur}" data-theme-id="${t.id}" tabindex="${t.id === cur ? 0 : -1}">
+            ${themePreview(t)}
+            <span class="tc-info"><strong>${h(t.name)}${t.id === Theme.DEFAULT ? ' <small style="display:inline">· varsayılan</small>' : ''}</strong><small>${h(t.desc)}</small></span>
+            <span class="tc-check">${icon('check')}</span>
+          </button>`).join('')}
+        </div>
+        <p class="tiny muted theme-note">Renk dağılımı: açık yüzeyler ~%60 · marka rengi (menü, başlık bantları) ~%25 · ikincil yüzeyler ~%10 · vurgu (ana butonlar, ilerleme) ~%5. Metin ve buton renkleri her temada okunabilirlik için otomatik ayarlanır.</p>
+      </section>
+      <section class="settings-section">
+        <h2>${yi('sprout')} Profil</h2>
+        <div class="card">
+          <form id="setProfile" class="grid-2" style="margin:0;align-items:end">
+            <label class="field"><span>Adın (isteğe bağlı)</span><input name="name" maxlength="40" value="${h(st.profile.name)}" autocomplete="given-name"></label>
+            <label class="field"><span>Günlük pratik hedefin</span><select name="goal">${[5, 10, 15, 20, 30].map(v => `<option value="${v}" ${v === st.profile.dailyGoal ? 'selected' : ''}>${v} dakika</option>`).join('')}</select></label>
+            <div><button class="btn primary" type="submit">${icon('save')} Kaydet</button></div>
+          </form>
+        </div>
+      </section>
+      <section class="settings-section">
+        <h2>${yi('chart')} Verilerin</h2>
+        <div class="card"><p>İlerlemen ve tema seçimin yalnızca bu tarayıcıda saklanır; cihazlar arasında otomatik senkronize olmaz. Yedek almak ya da başka bir tarayıcıya taşımak için Gelişim Paneli’ndeki JSON dışa/içe aktarma araçlarını kullan.</p>
+          <a class="btn" href="#/panel/oz">${icon('download')} Veri araçlarına git</a></div>
+      </section>`;
+    const cards = [...el.querySelectorAll('.theme-card')];
+    const select = (card, focus) => {
+      const t = Theme.set(card.dataset.themeId);
+      cards.forEach(c => { const on = c === card; c.setAttribute('aria-checked', on); c.tabIndex = on ? 0 : -1; });
+      if (focus) card.focus();
+      toast(`${t.name} teması uygulandı.`, 'ok');
+    };
+    cards.forEach((c, i) => {
+      c.addEventListener('click', () => select(c));
+      c.addEventListener('keydown', (e) => {
+        const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+        if (d) { e.preventDefault(); select(cards[(i + d + cards.length) % cards.length], true); }
+      });
+    });
+    el.querySelector('#setProfile').addEventListener('submit', (e) => {
+      e.preventDefault(); const f = new FormData(e.target);
+      Store.update(s => { s.profile.name = String(f.get('name') || '').trim().slice(0, 40); s.profile.dailyGoal = Number(f.get('goal')); });
+      toast('Profilin kaydedildi.', 'ok'); updateChrome();
+    });
+  }
+
   /* ================================================ Yönlendirme */
   const NAV = [
     ['#/', 'home', 'Ana Sayfa'], ['#/baslangic', 'sprout', "Yoga'ya Başlangıç"], ['#/moduller', 'book', 'Eğitim Modülleri'],
     ['#/pozlar', 'pose', 'Yoga Pozisyonları'], ['#/nefes', 'wind', 'Nefes Teknikleri'], ['#/meditasyon', 'lotus', 'Meditasyon'],
     ['#/program', 'calendar', '30 Günlük Program'], ['#/panel', 'chart', 'Gelişim Paneli'], ['#/quiz', 'quiz', 'Quiz ve Sınavlar'],
-    ['#/rozetler', 'medal', 'Başarı Rozetleri'], ['#/kaynakca', 'books', 'Kaynakça']
+    ['#/rozetler', 'medal', 'Başarı Rozetleri'], ['#/kaynakca', 'books', 'Kaynakça'], ['#/ayarlar', 'settings', 'Ayarlar']
   ];
-  const navKey = { '': '#/', baslangic: '#/baslangic', moduller: '#/moduller', modul: '#/moduller', pozlar: '#/pozlar', poz: '#/pozlar', nefes: '#/nefes', meditasyon: '#/meditasyon', program: '#/program', gun: '#/program', panel: '#/panel', rapor: '#/panel', quiz: '#/quiz', rozetler: '#/rozetler', kaynakca: '#/kaynakca', programlar: '#/moduller' };
-  const TITLES = { '': 'Ana Sayfa', baslangic: "Yoga'ya Başlangıç", moduller: 'Eğitim Modülleri', modul: 'Modül', pozlar: 'Yoga Pozisyonları', poz: 'Pozisyon', nefes: 'Nefes Teknikleri', meditasyon: 'Meditasyon', program: '30 Günlük Program', gun: 'Günlük Görev', panel: 'Gelişim Paneli', rapor: 'Gelişim Raporu', quiz: 'Quiz ve Sınavlar', rozetler: 'Başarı Rozetleri', kaynakca: 'Kaynakça', programlar: 'Yoga Programları' };
+  const navKey = { '': '#/', baslangic: '#/baslangic', moduller: '#/moduller', modul: '#/moduller', pozlar: '#/pozlar', poz: '#/pozlar', nefes: '#/nefes', meditasyon: '#/meditasyon', program: '#/program', gun: '#/program', panel: '#/panel', rapor: '#/panel', quiz: '#/quiz', rozetler: '#/rozetler', kaynakca: '#/kaynakca', programlar: '#/moduller', ayarlar: '#/ayarlar' };
+  const TITLES = { '': 'Ana Sayfa', baslangic: "Yoga'ya Başlangıç", moduller: 'Eğitim Modülleri', modul: 'Modül', pozlar: 'Yoga Pozisyonları', poz: 'Pozisyon', nefes: 'Nefes Teknikleri', meditasyon: 'Meditasyon', program: '30 Günlük Program', gun: 'Günlük Görev', panel: 'Gelişim Paneli', rapor: 'Gelişim Raporu', quiz: 'Quiz ve Sınavlar', rozetler: 'Başarı Rozetleri', kaynakca: 'Kaynakça', programlar: 'Yoga Programları', ayarlar: 'Ayarlar' };
 
   function renderCrumbs(p0, p1, p2) {
     const c = [['#/', 'Ana Sayfa']];
@@ -891,6 +957,7 @@ const App = (() => {
       case 'quiz': p1 ? Quiz.renderQuiz(el, p1) : Quiz.renderList(el); break;
       case 'rozetler': pageBadges(el); break;
       case 'kaynakca': pageSources(el); break;
+      case 'ayarlar': pageSettings(el); break;
       default: notFound(el);
     }
     decorateHead(el, p0, p1);
@@ -935,7 +1002,7 @@ const App = (() => {
     nefes: ['nefes', 'Nefese odaklanan kişi ve nefes dalgaları'], meditasyon: ['meditasyon', 'Ay ışığında meditasyon yapan kişi'],
     program: ['program', 'Tamamlanan günleri gösteren takvim ve büyüyen bitki'], gun: ['program', 'Takvim ve büyüyen bitki'],
     panel: ['panel', 'Yükselen gelişim grafiği'], rapor: ['panel', 'Yükselen gelişim grafiği'], quiz: ['quiz', 'Soru ve onay işaretli konuşma balonları'],
-    rozetler: ['rozetler', 'Kupa ve madalyalar'], kaynakca: ['kaynakca', 'Kitap yığını ve büyüteç'], programlar: ['programlar', 'Ağaç duruşunda kişi ve kronometre']
+    rozetler: ['rozetler', 'Kupa ve madalyalar'], ayarlar: ['baslangic', 'Hazırlanan kişi ve kontrol listesi'], kaynakca: ['kaynakca', 'Kitap yığını ve büyüteç'], programlar: ['programlar', 'Ağaç duruşunda kişi ve kronometre']
   };
   function decorateHead(el, p0, p1) {
     const ill = HEAD_ILL[p0];
@@ -958,6 +1025,8 @@ const App = (() => {
 
   function init() {
     loadSprite();
+    try { if (!localStorage.getItem('yogaAkademisi.theme') && Store.state.profile.theme) Theme.set(Store.state.profile.theme); } catch (e) { /* yok say */ }
+    document.addEventListener('themechange', () => { const p0 = (location.hash.replace(/^#\/?/, '').split('/')[0]) || ''; if (p0 === 'panel' || p0 === 'rapor') route(); });
     buildNav();
     document.getElementById('menuBtn').addEventListener('click', () => setMenu(!document.body.classList.contains('nav-open')));
     document.getElementById('menuClose').addEventListener('click', () => { setMenu(false); document.getElementById('menuBtn').focus(); });

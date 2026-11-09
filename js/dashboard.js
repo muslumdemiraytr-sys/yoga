@@ -4,7 +4,13 @@
 const Dashboard = (() => {
   const h = (s) => App.h(s);
   const charts = [];
-  const C = { sage: '#879B83', sageD: '#5f7a5b', brown: '#776858', sand: '#D9C9A8', sky: '#7FA3AE', rose: '#B98A8A', plum: '#8E7CA8', grid: 'rgba(119,104,88,.15)', text: '#5c5348' };
+  let C = {};
+  /** Grafik renkleri seçili temadan okunur (js/theme.js) */
+  function palette() {
+    const v = (typeof Theme !== 'undefined' ? Theme.vars() : {});
+    C = { sage: v['--chart-1'] || '#647663', sageD: v['--color-primary-deep'] || '#44583f', brown: v['--color-accent-deep'] || '#776858', sand: v['--chart-soft'] || '#e6e1d4', sky: v['--chart-3'] || '#7FA3AE', rose: v['--chart-5'] || '#B98A8A', plum: v['--chart-4'] || '#8E7CA8', accent: v['--chart-2'] || '#C4A98A', grid: v['--chart-grid'] || 'rgba(0,0,0,.1)', text: v['--color-muted'] || '#5c5348', tip: v['--color-heading'] || '#3d362e', rest: v['--color-surface-2'] || '#E8E1D2' };
+    DIMS[0].color = v['--chart-1'] || DIMS[0].color; DIMS[1].color = v['--chart-3'] || DIMS[1].color; DIMS[2].color = v['--chart-4'] || DIMS[2].color; DIMS[3].color = v['--chart-2'] || DIMS[3].color; DIMS[4].color = v['--chart-5'] || DIMS[4].color;
+  }
   const DIMS = [
     { k: 'flex', label: 'Esneklik algısı', color: C.sage },
     { k: 'balance', label: 'Denge algısı', color: C.sky },
@@ -134,6 +140,7 @@ const Dashboard = (() => {
         try {
           if (!confirm('İçe aktarılan yedek, bu tarayıcıdaki mevcut ilerlemenin yerine geçecek. Devam edilsin mi?')) return;
           Store.importJSON(reader.result);
+          if (typeof Theme !== 'undefined' && Store.state.profile.theme) Theme.set(Store.state.profile.theme);
           Progress.checkBadges(true);
           App.toast('Yedek başarıyla içe aktarıldı.', 'ok'); render(el); App.refreshIcons(); App.updateChrome();
         } catch (err) { App.toast(err.message, 'warn'); }
@@ -149,7 +156,7 @@ const Dashboard = (() => {
   function baseOpts(extra) {
     return Object.assign({
       responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { display: false }, tooltip: { backgroundColor: '#3d362e', padding: 10, cornerRadius: 8 } },
+      plugins: { legend: { display: false }, tooltip: { backgroundColor: C.tip, padding: 10, cornerRadius: 8 } },
       scales: {
         x: { grid: { display: false }, ticks: { color: C.text, font: { family: 'Nunito Sans' } } },
         y: { beginAtZero: true, grid: { color: C.grid }, ticks: { color: C.text, precision: 0 } }
@@ -161,12 +168,13 @@ const Dashboard = (() => {
 
   function drawCharts(s) {
     if (typeof Chart === 'undefined') return;
+    palette();
     Chart.defaults.font.family = "'Nunito Sans', system-ui, sans-serif";
     const w = Progress.lastNDays(7);
     charts.push(new Chart(document.getElementById('chWeek'), {
       type: 'bar',
       data: { labels: w.map(d => wd(d.date)), datasets: [
-        { label: 'Dakika', data: w.map(d => d.minutes), backgroundColor: w.map(d => d.minutes >= s.goal ? C.sage : C.sand), borderRadius: 8, maxBarThickness: 36 },
+        { label: 'Dakika', data: w.map(d => d.minutes), backgroundColor: w.map(d => d.minutes >= s.goal ? C.sage : C.accent), borderRadius: 8, maxBarThickness: 36 },
         { type: 'line', label: 'Hedef', data: w.map(() => s.goal), borderColor: C.brown, borderDash: [5, 5], pointRadius: 0, borderWidth: 1.5 }
       ] },
       options: baseOpts({ plugins: { legend: { display: true, labels: { boxWidth: 12, color: C.text } } } })
@@ -174,7 +182,7 @@ const Dashboard = (() => {
     const m = Progress.lastNDays(30);
     charts.push(new Chart(document.getElementById('chMonth'), {
       type: 'line',
-      data: { labels: m.map(d => dayLabel(d.date)), datasets: [{ label: 'Dakika', data: m.map(d => d.minutes), borderColor: C.sageD, backgroundColor: 'rgba(135,155,131,.22)', fill: true, tension: .35, pointRadius: 2 }] },
+      data: { labels: m.map(d => dayLabel(d.date)), datasets: [{ label: 'Dakika', data: m.map(d => d.minutes), borderColor: C.sageD, backgroundColor: C.sand, fill: true, tension: .35, pointRadius: 2 }] },
       options: baseOpts({ scales: { x: { grid: { display: false }, ticks: { maxTicksLimit: 8, color: C.text } }, y: { beginAtZero: true, grid: { color: C.grid }, ticks: { color: C.text, precision: 0 } } } })
     }));
     const weeks = YA.weeks.map(wk => {
@@ -185,13 +193,13 @@ const Dashboard = (() => {
       type: 'bar',
       data: { labels: YA.weeks.map(w => 'Hafta ' + w.no), datasets: [
         { label: 'Tamamlanan', data: weeks.map(w => w.done), backgroundColor: C.sage, borderRadius: 6 },
-        { label: 'Kalan', data: weeks.map(w => w.total - w.done), backgroundColor: '#E8E1D2', borderRadius: 6 }
+        { label: 'Kalan', data: weeks.map(w => w.total - w.done), backgroundColor: C.rest, borderRadius: 6 }
       ] },
       options: baseOpts({ plugins: { legend: { display: true, labels: { boxWidth: 12, color: C.text } } }, scales: { x: { stacked: true, grid: { display: false }, ticks: { color: C.text } }, y: { stacked: true, beginAtZero: true, max: 9, grid: { color: C.grid }, ticks: { color: C.text, precision: 0 } } } })
     }));
     charts.push(new Chart(document.getElementById('chModules'), {
       type: 'bar',
-      data: { labels: s.modules.map((x, i) => 'M' + (i + 1)), datasets: [{ label: '%', data: s.modules.map(x => x.pct), backgroundColor: s.modules.map(x => x.complete ? C.sage : C.sky), borderRadius: 6 }] },
+      data: { labels: s.modules.map((x, i) => 'M' + (i + 1)), datasets: [{ label: '%', data: s.modules.map(x => x.pct), backgroundColor: s.modules.map(x => x.complete ? C.sage : C.accent), borderRadius: 6 }] },
       options: baseOpts({ indexAxis: 'y', plugins: { legend: { display: false }, tooltip: { callbacks: { title: (it) => s.modules[it[0].dataIndex].title, label: (it) => ` %${it.raw} tamamlandı` } } }, scales: { x: { beginAtZero: true, max: 100, grid: { color: C.grid }, ticks: { color: C.text } }, y: { grid: { display: false }, ticks: { color: C.text } } } })
     }));
     const a = Store.state.assessments;

@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Yoga Akademisi</title>
   <meta name="description" content="Sıfırdan orta seviyeye Türkçe, interaktif yoga eğitimi: 30 günlük program, nefes ve meditasyon rehberleri, pozisyon kütüphanesi, sınavlar ve gelişim paneli.">
-  <meta name="theme-color" content="#879B83">
+  <meta name="theme-color" content="#647663">
+  <!-- Seçili tema ilk boyamadan önce uygulanır -->
+  <script src="js/theme.js"></script>
   <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +21,7 @@
   <header class="topbar">
     <a class="brand" href="#/"><img src="assets/icons/logo.svg" alt="" width="34" height="34"><span>Yoga <b>Akademisi</b></span></a>
     <div class="chrome-stats" id="chromeStats"></div>
+    <a class="theme-btn" href="#/ayarlar" aria-label="Görünüm ve tema ayarları" title="Görünüm ve Tema"><i data-lucide="palette" aria-hidden="true"></i></a>
     <button class="menu-btn" id="menuBtn" aria-label="Menüyü aç" aria-expanded="false" aria-controls="sidebar"><span>Menü</span><i data-lucide="menu" aria-hidden="true"></i></button>
   </header>
   <nav class="crumbbar" id="crumbbar" aria-label="Konum"></nav>
