@@ -217,8 +217,8 @@ const Viz = (() => {
       { icon: 'droplet', title: 'Su', text: 'Pratik öncesi ve sonrası' }
     ], { title: 'Başlangıç ekipmanı ve evdeki karşılıkları' }),
     'm1/yanlislar': () => compare(
-      { title: 'Yaygın yanlış', icon: 'circle-x', tone: 'bad', items: ['Önce esnek olmak gerekir', 'Ne kadar acıtırsa o kadar etkili', 'Yalnızca kadınlar / gençler içindir', 'Her hastalığı iyileştirir', 'Hiç yaralanma riski yoktur'] },
-      { title: 'Doğrusu', icon: 'circle-check', tone: 'good', items: ['Esneklik pratikle gelir; destekler bunun için var', 'Keskin ağrı bir uyarıdır, dur', 'Her yaşa ve bedene uyarlanabilir', 'Destekleyicidir, tedavinin yerini tutmaz', 'Doğru ve zorlamadan yapıldığında genellikle güvenlidir'] },
+      { title: 'Yaygın yanlış', icon: 'circle-x', tone: 'bad', items: ['Önce esnek olmak gerekir', 'Ne kadar acıtırsa o kadar etkili', 'Yalnızca kadınlar / gençler içindir', 'Tıbbi tedavinin yerini alabilir', 'Hiç yaralanma riski yoktur'] },
+      { title: 'Doğrusu', icon: 'circle-check', tone: 'good', items: ['Esneklik pratikle gelir; destekler bunun için var', 'Keskin ağrı bir uyarıdır, dur', 'Her yaşa ve bedene uyarlanabilir', 'Bazı kişilerde yardımcı olabilir; tıbbi değerlendirme veya tedavinin yerine geçmez', 'Yaralanma olabilir; zorlamadan, kendi sınırınla çalış'] },
       { title: 'Doğru bilinen yanlışlar ve gerçekleri', vs: '→' }),
     'm2/blok-kayis': () => compare(
       { title: 'Blok', icon: 'box', items: ['Zemini yükseltir', '3 farklı yükseklik', 'Ör. Üçgen’de eli bloğa koy'] },
@@ -324,6 +324,7 @@ const Viz = (() => {
     const tag = (txt) => BREATH_RE.in.test(txt) ? [{ label: 'Nefes al', kind: 'in', icon: 'arrow-down-to-line' }] : BREATH_RE.out.test(txt) ? [{ label: 'Nefes ver', kind: 'out', icon: 'arrow-up-from-line' }] : null;
     const stages = p.steps.slice(1).map(s => ({ text: s, html: true, tags: tag(s) }));
     return `
+      <div class="callout info small">${ic('info')} <div>Adımları kendi hızında uygula. Zorlanırsan hareketi bırak ya da aşağıdaki kolaylaştırılmış alternatife geç. Bu hareket herkes için uygun olmayabilir; sağlık durumundan emin değilsen uzmana danış.</div></div>
       <div class="pi-grid">
         <section class="card pi-card pi-start"><h2>${ic('flag')} Başlangıç pozisyonu</h2><p>${p.steps[0]}</p>
           <dl class="pi-facts"><div><dt>Seviye</dt><dd>${p.level === 'b' ? 'Başlangıç' : 'Orta'}</dd></div><div><dt>Süre</dt><dd>${h(p.hold)}</dd></div><div><dt>Adım</dt><dd>${p.steps.length}</dd></div></dl></section>

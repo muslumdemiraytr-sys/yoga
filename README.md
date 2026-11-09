@@ -19,7 +19,7 @@ GitHub Pages üzerinde ücretsiz yayınlanacak şekilde yapılandırılmıştır
 | Meditasyon | Rehberli, zilli meditasyon zamanlayıcısı (nefes odağı, beden taraması, farkındalık) |
 | Yoga Programları | 7 hazır program, adım/dinlenme süreleri, tam ekran zamanlayıcılı oynatıcı |
 | 30 Günlük Program | 4 hafta × günlük görev: konu, hedef, okuma, görsel, pratik, süre, tamamlandı butonu, değerlendirme sorusu |
-| Gelişim Paneli | 8 metrik, 5 Chart.js grafiği, 1–5 öz-değerlendirme, JSON dışa/içe aktarma, kişisel gelişim raporu |
+| Gelişim Paneli | 8 metrik, Chart.js grafikleri, 30/60/90 günlük görsel rapor, JSON dışa/içe aktarma, kişisel gelişim raporu |
 | Quiz ve Sınavlar | 7 modül sınavı + 15 soruluk final; anında geri bildirim, açıklama, başarı yüzdesi, tekrar çözme |
 | Başarı Rozetleri | 10 görsel rozet, otomatik kazanım ve ilerleme çubukları |
 | Kaynakça | NCCIH, NHS, Harvard Health, Cleveland Clinic, Yoga Journal, Yoga Alliance, IAYT bağlantıları; görsel lisansları |
@@ -51,6 +51,21 @@ yoga-academy/
 ```
 
 Pozisyon çizimleri `yoga-content.js` içindeki eklem koordinatlarından SVG olarak üretilir; tüm görseller yereldir.
+
+## Sağlık ve güvenlik ilkeleri
+
+- **Amaç:** kullanıcıya güvenli, kademeli ve kanıta dayalı başlangıç yoga eğitimi sunmak. Uygulama teşhis, tedavi
+  veya rehabilitasyon aracı değildir; kişiye özel tıbbi öneri ya da sağlık değerlendirmesi yerine geçen test içermez.
+- **Sorumluluk Reddi** ilk kullanımda gösterilir ve her zaman **Ayarlar → Sağlık ve Güvenlik Bilgilendirmesi**
+  (`#/ayarlar/guvenlik`) bölümünde ve sayfa altındaki bağlantıda bulunur. Ders, poz, program, nefes ve meditasyon
+  sayfalarında kısa güvenlik hatırlatmaları yer alır.
+- **İfade politikası:** “Araştırmalar yoga uygulamasının bazı kişilerde yardımcı olabileceğini düşündürmektedir.”,
+  “Kanıtın gücü çalışmaya, yoga türüne, süreye ve katılımcı grubuna göre değişir.”, “Yoga, tıbbi değerlendirme veya
+  tedavinin yerine geçmez.” Kesinlik bildiren, tedavi vaat eden ya da bir pozun herkes için güvenli olduğunu
+  söyleyen ifadeler kullanılmaz.
+- **Başlangıç programı:** baş üstü ve omuz duruşu gibi ters duruşlar, uzun nefes tutma ve hızlı/zorlayıcı nefes
+  teknikleri yer almaz (ileri duruşlar yalnızca bilgi kartıdır). Kutu nefesi varsayılan olarak beklemesizdir; isteğe
+  bağlı bekleme en fazla 3 sn’dir. Akışlarda her zaman bırakma, kısaltma ya da kolaylaştırma seçeneği sunulur.
 
 ## Görsel anlatım sistemi
 
@@ -161,7 +176,7 @@ Yönlendirme `#/` tabanlı olduğu için sayfa yenilemede 404 hatası oluşmaz.
 
 ## Veri saklama
 
-- Tüm ilerleme (görevler, pratik süreleri, okunan bölümler, sınav puanları, öz-değerlendirmeler, rozetler)
+- Tüm ilerleme (görevler, pratik süreleri, okunan bölümler, sınav puanları, rozetler)
   tarayıcının **localStorage** alanında `yogaAkademisi.v1` anahtarıyla saklanır.
 - **Veriler cihazlar ve tarayıcılar arasında otomatik senkronize olmaz.** Tarayıcı verileri temizlenirse kaybolabilir.
 - Gelişim Paneli → “JSON olarak dışa aktar” ile yedek alınır, “JSON yedeğini içe aktar” ile başka bir tarayıcıya taşınır.
@@ -171,7 +186,7 @@ Yönlendirme `#/` tabanlı olduğu için sayfa yenilemede 404 hatası oluşmaz.
 - **Öğrenme ilerlemesi** = %50 tamamlanan günlük görevler + %30 okunan modül bölümleri + %20 %80 üzeri geçilen sınavlar.
 - **Seri (streak):** pratik kaydı olan ardışık takvim günleri (bugün henüz pratik yoksa dünden geriye sayılır).
 - **Günlük hedef oranı:** son 7 günde günlük hedef dakikasına ulaşılan günlerin oranı.
-- **Fiziksel gelişim:** yalnızca kullanıcının 1–5 arası öz-değerlendirmesidir; tıbbi/objektif ölçüm iddiası yoktur.
+- Fiziksel gelişim puanlaması yapılmaz; takip yalnızca eğitim ve pratik düzenini kapsar.
 - Başarı puanları fiziksel yeteneği değil, içerik anlama ve görev tamamlamayı ölçer.
 
 ## Videolar
@@ -213,7 +228,7 @@ Tamamen çevrimdışı kullanım istersen iki kütüphaneyi `js/vendor/` altına
 - [ ] Mobil (375 px), tablet (768 px) ve masaüstü görünümleri
 - [ ] Menü bağlantıları ve hash yönlendirme, tarayıcı geri/ileri
 - [ ] Gün tamamlama / geri alma, ilerleme yüzdesi
-- [ ] Panel grafikleri ve öz-değerlendirme kaydı
+- [ ] Panel grafikleri ve görsel rapor
 - [ ] Rozet kazanımı (ör. ilk görev → “İlk Adım”)
 - [ ] Quiz: geri bildirim, sonuç, tekrar çözme
 - [ ] JSON dışa aktar → sıfırla → içe aktar

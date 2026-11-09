@@ -49,10 +49,10 @@ YA.days = [
   practice: 'Bir aynanın karşısında (ya da duvara yakın) Dağ Duruşu’nda dur ve 6 maddelik hizalama listesini sırayla kontrol et. Gözlerini kapatıp 5 nefes boyunca aynı hizayı hissetmeye çalış.',
   q: { q: 'Aşağıdakilerden hangisi yeni başlayanların sık yaptığı bir hatadır?', o: ['Destek kullanmak', 'Zorlanınca nefesi tutmak', 'Savasana yapmak'], a: 1, e: 'Zorlandığımızda nefes farkında olmadan durabilir; nefes akmıyorsa duruşu hafifletmek gerekir.' } },
 { n: 7, w: 1, title: 'Haftalık tekrar ve değerlendirme', min: 15, review: true,
-  goal: 'İlk haftayı gözden geçirmek, Modül 1 ve 2 quizlerini çözmek ve ilk öz-değerlendirmeyi yapmak.',
+  goal: 'İlk haftayı gözden geçirmek, Modül 1 ve 2 quizlerini çözmek ve güvenli pratik kurallarını tekrar etmek.',
   read: [['Modül 2 › Güvenli pratik kuralları', '#/modul/m2/guvenlik'], ['Modül 1 quiz', '#/quiz/m1'], ['Modül 2 quiz', '#/quiz/m2']],
   visual: { type: 'program', id: 'p5' },
-  practice: '5 Dakikalık Başlangıç Rutini’ni zamanlayıcıyla yap. Ardından Gelişim Paneli’nde esneklik, denge, farkındalık, enerji ve rahatlama algını 1-5 arası puanla.',
+  practice: '5 Dakikalık Başlangıç Rutini’ni zamanlayıcıyla yap. Zorlanırsan hareketi bırak ya da Çocuk Duruşu’nda dinlen.',
   action: ['5 dakikalık rutini başlat', '#/programlar/p5'],
   q: { q: 'Pratik sırasında baş dönmesi hissedersen ne yapmalısın?', o: ['Duruşu tamamlamaya çalışmak', 'Pozisyondan çıkıp oturmak ya da uzanmak', 'Nefesi tutmak'], a: 1, e: 'Baş dönmesi, nefes darlığı ve ağrı pratiği durdurma sinyalleridir.' } },
 /* ---------------- HAFTA 2 */
@@ -96,7 +96,7 @@ YA.days = [
   goal: 'İkinci haftanın duruşlarını bir seans hâlinde birleştirmek ve Modül 4 quizini çözmek.',
   read: [['Modül 4 › Pozisyonlar', '#/modul/m4'], ['Modül 4 quiz', '#/quiz/m4']],
   visual: { type: 'program', id: 'p10-sabah' },
-  practice: '10 Dakikalık Sabah Yogası’nı zamanlayıcıyla yap. Gelişim Paneli’nde öz-değerlendirmeni güncelle.',
+  practice: '10 Dakikalık Sabah Yogası’nı zamanlayıcıyla yap. Zorlanırsan hareketi kısalt ya da atla.',
   action: ['Sabah yogasını başlat', '#/programlar/p10-sabah'],
   q: { q: 'Bir duruşta keskin ağrı hissedersen ne yapmalısın?', o: ['Nefes alıp devam etmek', 'Duruştan çıkmak', 'Daha derine gitmek'], a: 1, e: 'Hafif germe hissi normaldir; keskin ya da batıcı ağrı durma sinyalidir.' } },
 /* ---------------- HAFTA 3 */
@@ -111,7 +111,7 @@ YA.days = [
   goal: 'Öğrendiğin duruşları nefesle birbirine bağlayan kısa bir akış oluşturmak.',
   read: [['Modül 1 › Yoga türleri (Vinyasa)', '#/modul/m1/turler']],
   visual: { type: 'pose', id: 'asagi-kopek' },
-  practice: 'Akış (3 tur): Dört ayak → Kedi-İnek (3 nefes) → Aşağı Bakan Köpek (3 nefes) → Dizleri indir → Kobra (2 nefes) → Çocuk Duruşu (3 nefes).',
+  practice: 'Akış (3 tur): Dört ayak → Kedi-İnek (3 nefes) → Aşağı Bakan Köpek (3 nefes) → Dizleri indir → Kobra (2 nefes) → Çocuk Duruşu (3 nefes). Zorlanırsan turu yarıda bırak ve dinlen.',
   q: { q: 'Vinyasa stilinin temel özelliği nedir?', o: ['Duruşların nefesle akıcı biçimde bağlanması', 'Sadece meditasyon', 'Duruşları 5 dakika tutmak'], a: 0, e: 'Vinyasa, duruşların nefesle senkronize bir akış hâlinde yapılmasıdır.' } },
 { n: 17, w: 3, title: 'Kalça hareketliliği', min: 12,
   goal: 'Kalça ekleminin yapısını anlamak ve kalçayı farklı yönlerde nazikçe hareket ettirmek.',
@@ -143,7 +143,7 @@ YA.days = [
   goal: 'Nefes ve anatomi bilgilerini pekiştirmek; Modül 3 ve 6 quizlerini çözmek.',
   read: [['Modül 3 quiz', '#/quiz/m3'], ['Modül 6 quiz', '#/quiz/m6']],
   visual: { type: 'program', id: 'p15-temel' },
-  practice: '15 Dakikalık Temel Yoga’yı yap ve öz-değerlendirmeni güncelle. İlk haftayla karşılaştır.',
+  practice: '15 Dakikalık Temel Yoga’yı kendi hızında yap; istediğin an duraklatıp dinlenebilirsin.',
   action: ['15 dakikalık seansı başlat', '#/programlar/p15-temel'],
   q: { q: 'Bu programda nefes tutma teknikleri için hangisi doğrudur?', o: ['Zorunludur', 'İsteğe bağlıdır ve kısaltılabilir', 'Her gün 1 dakika yapılmalıdır'], a: 1, e: 'Başlangıç seviyesinde nefes tutma zorunlu değildir; kutu nefesindeki beklemeler isteğe bağlıdır.' } },
 /* ---------------- HAFTA 4 */
@@ -172,7 +172,7 @@ YA.days = [
   goal: 'Ayakta duruşları nefesle birbirine bağlayan bir akışı ezberden yapmak.',
   read: [['Savaşçı I', '#/poz/savasci-1'], ['Savaşçı II', '#/poz/savasci-2']],
   visual: { type: 'pose', id: 'savasci-1' },
-  practice: 'Akış (her taraf 2 tur): Dağ → kollar yukarı → Aşağı Bakan Köpek → Savaşçı I → Savaşçı II → Aşağı Bakan Köpek → Çocuk. Bitirişte 2 dk Savasana.',
+  practice: 'Akış (her taraf 2 tur): Dağ → kollar yukarı → Aşağı Bakan Köpek → Savaşçı I → Savaşçı II → Aşağı Bakan Köpek → Çocuk. Bitirişte 2 dk Savasana. Bir duruş zorlarsa onu atla ya da kolaylaştırılmış alternatifini kullan.',
   q: { q: 'Akış sırasında nefes ve hareket arasında hangisi önde gelir?', o: ['Hareket', 'Nefes', 'Hız'], a: 1, e: 'Hareket nefese uydurulur; nefes yarışa çevrilmez.' } },
 { n: 26, w: 4, title: 'Denge ve beden farkındalığı', min: 10, tags: ['balance'],
   goal: 'Denge duruşlarında propriosepsiyona odaklanmak; beden taramasını pratiğe katmak.',
@@ -203,7 +203,7 @@ YA.days = [
   goal: '30 günlük yolculuğu final sınavıyla değerlendirmek ve kişisel gelişim raporunu oluşturmak.',
   read: [['Final sınavı', '#/quiz/final'], ['Kişisel gelişim raporu', '#/rapor']],
   visual: { type: 'pose', id: 'savasana' },
-  practice: 'Final sınavını çöz, son öz-değerlendirmeni yap ve kişisel gelişim raporunu incele. Kapanış olarak 5 dakika Savasana ya da meditasyon.',
+  practice: 'Final sınavını çöz ve kişisel gelişim raporunu incele. Kapanış olarak 5 dakika Savasana ya da meditasyon.',
   action: ['Final sınavına git', '#/quiz/final'],
   q: { q: '30 gün sonunda yoga pratiğini sürdürmenin en sürdürülebilir yolu hangisidir?', o: ['Haftada bir kez 2 saat', 'Kısa ama düzenli pratik', 'Sadece canın istediğinde, zorlayarak'], a: 1, e: 'Kısa ama düzenli pratik alışkanlığı korumanın en etkili yoludur.' } }
 ];
@@ -314,7 +314,6 @@ const Daily = (() => {
             <ul class="link-list">${d.read.map(([l, r]) => `<li><a href="${r}">${App.icon('chevron-right')} ${h(l)}</a></li>`).join('')}</ul></div>
           <div class="card"><h3>${App.icon('activity')} Yapılacak pratik</h3><p>${h(d.practice)}</p>
             ${d.action ? `<a class="btn" href="${d.action[1]}">${App.icon('play')} ${h(d.action[0])}</a>` : ''}
-            ${d.n === 7 || d.n === 14 || d.n === 21 || d.n === 30 ? `<a class="btn ghost" href="#/panel/oz">${App.icon('sliders-horizontal')} Öz-değerlendirme yap</a>` : ''}
           </div>
           <div class="card quiz-mini" id="dayq"><h3>${App.icon('circle-help')} Kısa değerlendirme sorusu</h3>
             <p class="q">${h(d.q.q)}</p>

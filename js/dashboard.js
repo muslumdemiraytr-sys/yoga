@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Gelişim Paneli (Dashboard), öz-değerlendirme ve kişisel gelişim raporu
+   Gelişim Paneli (Dashboard) ve kişisel gelişim raporu
    ========================================================================== */
 const Dashboard = (() => {
   const h = (s) => App.h(s);
@@ -10,16 +10,7 @@ const Dashboard = (() => {
   function palette() {
     const v = (typeof Theme !== 'undefined' ? Theme.vars() : {});
     C = { sage: v['--chart-1'] || '#647663', sageD: v['--color-primary-deep'] || '#44583f', brown: v['--color-accent-deep'] || '#776858', sand: v['--chart-soft'] || '#e6e1d4', sky: v['--chart-3'] || '#7FA3AE', rose: v['--chart-5'] || '#B98A8A', plum: v['--chart-4'] || '#8E7CA8', accent: v['--chart-2'] || '#C4A98A', grid: v['--chart-grid'] || 'rgba(0,0,0,.1)', text: v['--color-muted'] || '#5c5348', tip: v['--color-heading'] || '#3d362e', rest: v['--color-surface-2'] || '#E8E1D2' };
-    DIMS[0].color = v['--chart-1'] || DIMS[0].color; DIMS[1].color = v['--chart-3'] || DIMS[1].color; DIMS[2].color = v['--chart-4'] || DIMS[2].color; DIMS[3].color = v['--chart-2'] || DIMS[3].color; DIMS[4].color = v['--chart-5'] || DIMS[4].color;
   }
-  const DIMS = [
-    { k: 'flex', label: 'Esneklik algısı', color: C.sage },
-    { k: 'balance', label: 'Denge algısı', color: C.sky },
-    { k: 'awareness', label: 'Beden farkındalığı', color: C.plum },
-    { k: 'energy', label: 'Enerji seviyesi', color: '#C9A15B' },
-    { k: 'relax', label: 'Rahatlama seviyesi', color: C.rose }
-  ];
-  const DISCLAIMER = 'Bu puanlar tamamen senin kendi algına dayanır. Tıbbi bir ölçüm ya da objektif fiziksel gelişim göstergesi değildir.';
 
   function destroyCharts() { while (charts.length) { try { charts.pop().destroy(); } catch (e) { /* yok say */ } } }
 
@@ -31,13 +22,12 @@ const Dashboard = (() => {
     destroyCharts();
     const s = Progress.summary();
     const st = Store.state;
-    const last = st.assessments[st.assessments.length - 1];
     const name = st.profile.name ? `, ${h(st.profile.name)}` : '';
     el.innerHTML = `
       <section class="page-head">
         <p class="eyebrow">Gelişim Paneli</p>
         <h1>Kişisel gelişimin${name}</h1>
-        <p class="lead">Pratik süren, görevlerin, öğrenme ilerlemen ve kendi değerlendirmelerin tek bakışta.</p>
+        <p class="lead">Pratik süren, görevlerin ve öğrenme ilerlemen tek bakışta.</p>
       </section>
 
       <h2 class="section-title">Görsel gelişim raporu</h2>
@@ -69,23 +59,6 @@ const Dashboard = (() => {
         <div class="card chart-card"><h3>Aylık pratik grafiği</h3><p class="muted tiny">Son 30 gün, dakika</p><div class="chart-box"><canvas id="chMonth" aria-label="Son 30 günün pratik süreleri" role="img"></canvas></div></div>
         <div class="card chart-card"><h3>Görev tamamlama</h3><p class="muted tiny">30 günlük plan, haftalara göre</p><div class="chart-box"><canvas id="chTasks" aria-label="Haftalara göre tamamlanan görevler" role="img"></canvas></div></div>
         <div class="card chart-card"><h3>Öğrenme modüllerindeki ilerleme</h3><p class="muted tiny">Okunan / öğrenilen bölüm yüzdesi</p><div class="chart-box"><canvas id="chModules" aria-label="Modül ilerleme yüzdeleri" role="img"></canvas></div></div>
-        <div class="card chart-card wide"><h3>Gelişim değerlendirme grafiği</h3><p class="muted tiny">${DISCLAIMER}</p><div class="chart-box tall"><canvas id="chAssess" aria-label="Öz-değerlendirme puanlarının zaman içindeki değişimi" role="img"></canvas></div>
-          ${st.assessments.length ? '' : '<p class="empty">Henüz öz-değerlendirme yok. Aşağıdan ilkini ekle.</p>'}</div>
-      </div>
-
-      <h2 class="section-title" id="oz">Fiziksel gelişim takibi – öz-değerlendirme</h2>
-      <div class="card">
-        <div class="callout info small">${App.icon('info')} ${DISCLAIMER} Haftada bir (ör. 7., 14., 21. ve 30. günlerde) doldurman önerilir.</div>
-        <form id="assessForm" class="assess">
-          ${DIMS.map(d => {
-            const v = last ? last[d.k] : 3;
-            return `<label class="range-field"><span>${d.label}</span>
-              <input type="range" name="${d.k}" min="1" max="5" step="1" value="${v}" aria-valuetext="${v} / 5">
-              <output>${v}</output><span class="scale"><em>1 · düşük</em><em>5 · yüksek</em></span></label>`;
-          }).join('')}
-          <button class="btn primary" type="submit">${App.icon('save')} Değerlendirmeyi kaydet</button>
-          ${last ? `<p class="muted tiny">Son kayıt: ${App.fmtDate(last.date)} · Toplam ${st.assessments.length} kayıt</p>` : ''}
-        </form>
       </div>
 
       <h2 class="section-title">Son pratikler</h2>
@@ -127,20 +100,6 @@ const Dashboard = (() => {
       if (!n || n < 1 || n > 240) { App.toast('Lütfen 1–240 arasında bir sayı gir.', 'warn'); return; }
       Progress.logSession({ minutes: n, type: 'serbest', label: 'Serbest pratik' });
       Progress.checkBadges(); App.toast(`${n} dk pratik kaydedildi.`, 'ok'); render(el); App.refreshIcons(); App.updateChrome();
-    });
-    el.querySelectorAll('.range-field input').forEach(r => r.addEventListener('input', () => {
-      r.nextElementSibling.textContent = r.value; r.setAttribute('aria-valuetext', r.value + ' / 5');
-    }));
-    el.querySelector('#assessForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const f = new FormData(e.target);
-      const rec = { date: App.today() };
-      DIMS.forEach(d => { rec[d.k] = Number(f.get(d.k)); });
-      Store.update(s => {
-        const i = s.assessments.findIndex(a => a.date === rec.date);
-        if (i >= 0) s.assessments[i] = rec; else s.assessments.push(rec);
-      });
-      App.toast('Öz-değerlendirmen kaydedildi.', 'ok'); render(el); App.refreshIcons();
     });
     el.querySelector('#exp').addEventListener('click', () => { Store.exportJSON(); App.toast('Yedek dosyası indirildi.', 'ok'); });
     el.querySelector('#impFile').addEventListener('change', (e) => {
@@ -212,12 +171,6 @@ const Dashboard = (() => {
       data: { labels: s.modules.map((x, i) => 'M' + (i + 1)), datasets: [{ label: '%', data: s.modules.map(x => x.pct), backgroundColor: s.modules.map(x => x.complete ? C.sage : C.accent), borderRadius: 6 }] },
       options: baseOpts({ indexAxis: 'y', plugins: { legend: { display: false }, tooltip: { callbacks: { title: (it) => s.modules[it[0].dataIndex].title, label: (it) => ` %${it.raw} tamamlandı` } } }, scales: { x: { beginAtZero: true, max: 100, grid: { color: C.grid }, ticks: { color: C.text } }, y: { grid: { display: false }, ticks: { color: C.text } } } })
     }));
-    const a = Store.state.assessments;
-    charts.push(new Chart(document.getElementById('chAssess'), {
-      type: 'line',
-      data: { labels: a.map(x => dayLabel(x.date)), datasets: DIMS.map(d => ({ label: d.label, data: a.map(x => x[d.k]), borderColor: d.color, backgroundColor: d.color, tension: .3, pointRadius: 4 })) },
-      options: baseOpts({ plugins: { legend: { display: true, position: 'bottom', labels: { boxWidth: 12, color: C.text } } }, scales: { x: { grid: { display: false }, ticks: { color: C.text } }, y: { min: 1, max: 5, ticks: { stepSize: 1, color: C.text }, grid: { color: C.grid } } } })
-    }));
   }
 
   /* ---------- Kişisel gelişim raporu (30. gün) */
@@ -225,8 +178,6 @@ const Dashboard = (() => {
     destroyCharts();
     const s = Progress.summary();
     const st = Store.state;
-    const a = st.assessments;
-    const first = a[0], last = a[a.length - 1];
     const fin = st.quizzes.final;
     const strong = YA.quizzes.filter(q => st.quizzes[q.id]).map(q => ({ t: q.title, b: st.quizzes[q.id].best })).sort((x, y) => y.b - x.b);
     el.innerHTML = `
@@ -253,12 +204,6 @@ const Dashboard = (() => {
           <p class="muted tiny">Başarı puanı fiziksel yeteneği değil, eğitim içeriğini anlama ve görevleri tamamlamayı ölçer.</p></div>
         <div class="card"><h3>${App.icon('list-checks')} Sınav sonuçları</h3>
           ${strong.length ? `<ul class="session-list">${strong.map(q => `<li><span>${h(q.t)}</span><strong class="${q.b >= 80 ? 'okc' : ''}">%${q.b}</strong></li>`).join('')}</ul>` : '<p class="empty">Henüz çözülen sınav yok.</p>'}</div>
-      </div>
-      <div class="card"><h3>${App.icon('sliders-horizontal')} Öz-değerlendirme karşılaştırması</h3>
-        <p class="muted tiny">${DISCLAIMER}</p>
-        ${first && last && a.length > 1 ? `<table class="table"><thead><tr><th>Alan</th><th>İlk (${App.fmtDate(first.date)})</th><th>Son (${App.fmtDate(last.date)})</th><th>Değişim</th></tr></thead><tbody>
-          ${DIMS.map(d => { const diff = last[d.k] - first[d.k]; return `<tr><td>${d.label}</td><td>${first[d.k]}</td><td>${last[d.k]}</td><td class="${diff > 0 ? 'okc' : diff < 0 ? 'badc' : ''}">${diff > 0 ? '+' : ''}${diff}</td></tr>`; }).join('')}
-        </tbody></table>` : '<p class="empty">Karşılaştırma için en az iki öz-değerlendirme gerekir. <a href="#/panel/oz">Değerlendirme ekle</a></p>'}
       </div>
       <div class="card"><h3>${App.icon('award')} Kazanılan rozetler</h3>
         <div class="badge-row">${YA.badges.filter(b => st.badges[b.id]).map(b => App.badgeMedal(b, true, true)).join('') || '<p class="empty">Henüz rozet kazanılmadı.</p>'}</div></div>

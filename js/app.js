@@ -102,7 +102,14 @@ const App = (() => {
   function notFound(el) {
     el.innerHTML = `<div class="card empty-state"><img src="assets/illustrations/kayip.svg" alt="" width="300" height="225"><h1>Sayfa bulunamadı</h1><p>Aradığın sayfa taşınmış ya da hiç var olmamış olabilir.</p><a class="btn primary" href="#/">Ana sayfaya dön</a></div>`;
   }
-  const safetyNote = () => `<div class="callout warn small">${icon('shield-alert')} <div>Yoga tıbbi tedavinin yerine geçmez. Baş dönmesi, nefes darlığı veya ağrı hissedersen pratiği durdur. Hamilelik, yaralanma, kronik rahatsızlık veya denge problemin varsa uzman görüşü al.</div></div>`;
+  /** Sağlık ve Güvenlik Bilgilendirmesi – metin değiştirilmeden kullanılır */
+  const disclaimer = () => `<div class="disclaimer"><h3>Sorumluluk Reddi</h3><ul>
+      <li>İçerikler eğitim amaçlıdır.</li>
+      <li>Tıbbi tanı veya tedavi yerine geçmez.</li>
+      <li>Kullanıcı kendi sınırlarına saygı göstermelidir.</li>
+      <li>Yeni başlayanlar gerektiğinde nitelikli eğitmen veya sağlık uzmanından destek almalıdır.</li>
+      <li>Acil belirtilerde uygulama bırakılmalı ve uygun sağlık hizmetine başvurulmalıdır.</li></ul></div>`;
+  const safetyNote = () => `<div class="callout warn small">${icon('shield-alert')} <div>Yoga, tıbbi değerlendirme veya tedavinin yerine geçmez. Kendi sınırlarına saygı göster; zorlanırsan hareketi bırak ya da kolaylaştır. Baş dönmesi, nefes darlığı veya ağrıda dur. <a href="#/ayarlar/guvenlik">Sağlık ve Güvenlik Bilgilendirmesi</a></div></div>`;
 
   /* ------------------------------------------------ Ses (zil) */
   let actx = null;
@@ -158,8 +165,8 @@ const App = (() => {
       </section>
 
       <section class="goal">
-        <h2>Amacımız: yogayı herkes için anlaşılır kılmak</h2>
-        <p>Yoga Akademisi; temel bilgileri, güvenli pratik kurallarını ve 18 temel pozisyonu güvenilir kaynaklara dayanarak sade bir dille anlatır. Teoriyi kısa günlük pratiklerle birleştirir; esneklik ya da zor duruşlar değil, güvenli ve sürdürülebilir bir alışkanlık hedeflenir.</p>
+        <h2>Amacımız: güvenli, kademeli ve kanıta dayalı başlangıç</h2>
+        <p>Yoga Akademisi’nin amacı, kullanıcıya güvenli, kademeli ve kanıta dayalı başlangıç yoga eğitimi sunmaktır. Temel bilgiler bilimsel kaynaklara dayanarak sade bir dille anlatılır; kısa günlük görevlerle kendi hızında ilerlersin. Fiziksel sınırlarını zorlaman beklenmez. Yoga, tıbbi değerlendirme veya tedavinin yerine geçmez.</p>
       </section>
 
       <section id="egitimler" class="courses">
@@ -222,7 +229,7 @@ const App = (() => {
         <a class="feature" href="#/programlar">${yi('sequence')}<h3>Hazır programlar</h3><p>5–20 dakikalık zamanlayıcılı rutinler.</p></a>
         <a class="feature" href="#/quiz">${yi('quiz')}<h3>Quiz ve sınavlar</h3><p>Anında geri bildirim ve final değerlendirmesi.</p></a>
         <a class="feature" href="#/harita">${yi('compass')}<h3>Öğrenme haritası</h3><p>Yolculuğun, anatomi ve pozlar arası geçişler.</p></a>
-        <a class="feature" href="#/panel">${yi('chart')}<h3>Gelişim paneli</h3><p>Grafikler, seri ve öz-değerlendirme.</p></a>
+        <a class="feature" href="#/panel">${yi('chart')}<h3>Gelişim paneli</h3><p>Grafikler ve seri takibi.</p></a>
       </div>
       ${safetyNote()}`;
     el.querySelector('#toCourses').addEventListener('click', () => el.querySelector('#egitimler').scrollIntoView({ behavior: 'smooth' }));
@@ -254,12 +261,11 @@ const App = (() => {
           <p class="tiny muted">Hesap ya da sunucu yoktur. Bilgilerin yalnızca bu tarayıcıda saklanır ve cihazlar arasında otomatik senkronize olmaz; Gelişim Paneli’nden JSON yedeği alabilirsin.</p>
         </div>
         <div class="card">
-          <h2>${icon('shield-check')} Sağlık ve güvenlik kontrol listesi</h2>
-          <p>Aşağıdakilerden biri senin için geçerliyse başlamadan önce doktoruna veya bir sağlık profesyoneline danış:</p>
-          <ul class="check-list" id="safetyList">
-            ${['Hamileyim ya da yakın zamanda doğum yaptım', 'Son 6 ayda ameliyat geçirdim ya da sakatlandım', 'Kalp-damar hastalığım veya kontrolsüz yüksek tansiyonum var', 'Bel/boyun fıtığı, osteoporoz ya da eklem problemim var', 'Sık baş dönmesi veya denge problemi yaşıyorum', 'Glokom ya da göz tansiyonu tanım var', 'Başka bir kronik rahatsızlık için tedavi görüyorum'].map((t, i) => `<li><label><input type="checkbox" data-i="${i}"> ${t}</label></li>`).join('')}
+          <h2>${icon('shield-check')} Uzman görüşü almanın önerildiği durumlar</h2>
+          <p>Aşağıdaki durumlardan biri senin için geçerliyse başlamadan önce doktoruna veya bir sağlık profesyoneline danış. Bu liste bir değerlendirme ya da test değildir; sağlık uzmanının değerlendirmesinin yerine geçmez.</p>
+          <ul class="x-list warnish">
+            ${['Hamilelik ya da yakın zamanda doğum', 'Son 6 ayda ameliyat ya da sakatlanma', 'Kalp-damar hastalığı veya kontrolsüz yüksek tansiyon', 'Bel/boyun fıtığı, osteoporoz ya da eklem problemi', 'Sık baş dönmesi veya denge problemi', 'Glokom ya da göz tansiyonu', 'Başka bir kronik rahatsızlık için süren tedavi'].map(t => `<li>${t}</li>`).join('')}
           </ul>
-          <div class="feedback" id="safetyFb" aria-live="polite"></div>
         </div>
       </div>
       <div class="card">
@@ -283,13 +289,6 @@ const App = (() => {
       Store.update(s => { s.profile.name = String(f.get('name') || '').trim().slice(0, 40); s.profile.dailyGoal = Number(f.get('goal')); s.profile.onboarded = true; if (!s.profile.createdAt) s.profile.createdAt = today(); });
       toast('Profilin kaydedildi.', 'ok'); updateChrome();
     });
-    el.querySelectorAll('#safetyList input').forEach(cb => cb.addEventListener('change', () => {
-      const any = [...el.querySelectorAll('#safetyList input')].some(x => x.checked);
-      el.querySelector('#safetyFb').innerHTML = any
-        ? `<div class="callout warn small">${icon('stethoscope')} İşaretlediğin durum(lar) için başlamadan önce sağlık profesyoneline danışmanı öneriyoruz. Onay aldıktan sonra pratiği kendi durumuna göre uyarlayarak ve mümkünse nitelikli bir eğitmenle yapabilirsin.</div>`
-        : '';
-      refreshIcons();
-    }));
   }
 
   /* ---------- Kurs yapısı: modül → bölüm satırları */
@@ -395,6 +394,7 @@ const App = (() => {
         ${Viz.SECTION[m.id + '/' + s.id] ? `<div class="sec-visual"><p class="eyebrow">${icon('eye')} Görsel özet</p>${Viz.SECTION[m.id + '/' + s.id]()}</div>` : ''}
         ${s.ill ? `<figure class="lesson-ill"><img src="${s.ill}" alt="${h(s.title)} illüstrasyonu" loading="lazy"></figure>` : ''}
         <div class="prose prose-lg">${s.html}</div>
+        ${safetyNote()}
         <div class="sec-end">
           <p class="muted">${read ? `${icon('circle-check')} Bu bölümü okudun.` : 'Bölümü bitirdiğinde işaretleyip devam et.'}</p>
           <div class="btn-row">
@@ -501,7 +501,7 @@ const App = (() => {
           <h2>${icon('wind')} Nefes rehberi</h2>
           <label class="field"><span>Teknik</span><select id="pTech">${YA.breaths.map(b => `<option value="${b.id}" ${sel && sel.id === b.id ? 'selected' : ''}>${h(b.title)}</option>`).join('')}</select></label>
           <label class="field"><span>Süre</span><select id="pDur">${[1, 2, 3, 5].map(v => `<option value="${v}" ${v === 3 ? 'selected' : ''}>${v} dakika</option>`).join('')}</select></label>
-          <label class="field" id="holdField" hidden><span>Bekleme süresi (isteğe bağlı): <output id="holdOut">2</output> sn</span><input type="range" id="pHold" min="0" max="4" value="2"></label>
+          <label class="field" id="holdField" hidden><span>Bekleme süresi (isteğe bağlı): <output id="holdOut">0</output> sn</span><input type="range" id="pHold" min="0" max="3" value="0"></label>
           <p class="tiny muted" id="pPattern"></p>
           <div class="btn-row"><button class="btn primary" id="pStart">${icon('play')} Başlat</button><button class="btn ghost" id="pStop" disabled>${icon('square')} Bitir</button></div>
           <p class="tiny muted">Baş dönmesi ya da nefes darlığı hissedersen “Bitir”e bas ve normal nefesine dön.</p>
@@ -545,7 +545,7 @@ const App = (() => {
   function breathInfographic(b) {
     if (b.ill) return `<figure class="infographic"><img src="${b.ill}" alt="Diyafram nefesinde diyaframın hareketini gösteren şema" loading="lazy"><figcaption>Nefes alırken diyafram aşağı iner; verirken yukarı, gevşeme konumuna döner.</figcaption></figure>`;
     if (b.box) return `<figure class="infographic"><svg viewBox="0 0 220 220" class="box-svg" role="img" aria-label="Kutu nefesi şeması"><rect x="40" y="40" width="140" height="140" rx="10"/><circle r="8" class="dot"><animateMotion dur="12s" repeatCount="indefinite" path="M40,180 L40,40 L180,40 L180,180 Z"/></circle>
-      <text x="20" y="115" transform="rotate(-90 20 115)">Al · 4</text><text x="110" y="28">Bekle · 2 (isteğe bağlı)</text><text x="200" y="110" transform="rotate(90 200 110)">Ver · 4</text><text x="110" y="205">Bekle · 2 (isteğe bağlı)</text></svg>
+      <text x="20" y="115" transform="rotate(-90 20 115)">Al · 4</text><text x="110" y="28">Bekle · isteğe bağlı</text><text x="200" y="110" transform="rotate(90 200 110)">Ver · 4</text><text x="110" y="205">Bekle · isteğe bağlı</text></svg>
       <figcaption>Kare boyunca ilerleyen nokta: dört eşit kenar, dört evre.</figcaption></figure>`;
     if (b.alternate) return `<figure class="infographic"><svg viewBox="0 0 240 150" class="nadi-svg" role="img" aria-label="Dönüşümlü burun nefesi şeması">
       <path d="M120 20 C100 60 95 90 92 110 Q120 128 148 110 C145 90 140 60 120 20Z" class="nose"/>
@@ -635,6 +635,7 @@ const App = (() => {
           <p class="med-cue" id="mCue" aria-live="polite">Rahat bir oturuş bul ve “Başlat”a bas.</p>
         </div>
       </div>
+      ${safetyNote()}
       <div class="module-progress">${bar(ms.pct)}<span class="muted">Modül 5: ${ms.done}/${ms.total} bölüm</span></div>
       ${m.sections.map(s => `<article class="card lesson" id="sec-${s.id}"><h2>${h(s.title)}</h2><div class="prose">${s.html}</div>
         <button class="btn read-btn ${Progress.isRead('m5', s.id) ? 'is-read' : ''}" data-sec="${s.id}">${icon(Progress.isRead('m5', s.id) ? 'circle-check' : 'circle')} ${Progress.isRead('m5', s.id) ? 'Okundu' : 'Okudum'}</button></article>`).join('')}
@@ -831,7 +832,7 @@ const App = (() => {
       </span>
       <span class="tc-swatches" aria-hidden="true">${[t.bg, t.primary, t.secondary, t.accent, t.text].map(c => `<span style="background:${c}"></span>`).join('')}</span>`;
   }
-  function pageSettings(el) {
+  function pageSettings(el, sec) {
     const st = Store.state;
     const cur = Theme.current();
     el.innerHTML = `
@@ -859,10 +860,15 @@ const App = (() => {
           </form>
         </div>
       </section>
+      <section class="settings-section" id="guvenlik">
+        <h2>${icon('shield-alert')} Sağlık ve Güvenlik Bilgilendirmesi</h2>
+        <div class="card">${disclaimer()}
+          <p class="tiny muted">Yoga Akademisi bir teşhis, tedavi veya rehabilitasyon aracı değildir; kişiye özel tıbbi öneri vermez.</p></div>
+      </section>
       <section class="settings-section">
         <h2>${yi('chart')} Verilerin</h2>
         <div class="card"><p>İlerlemen ve tema seçimin yalnızca bu tarayıcıda saklanır; cihazlar arasında otomatik senkronize olmaz. Yedek almak ya da başka bir tarayıcıya taşımak için Gelişim Paneli’ndeki JSON dışa/içe aktarma araçlarını kullan.</p>
-          <a class="btn" href="#/panel/oz">${icon('download')} Veri araçlarına git</a></div>
+          <a class="btn" href="#/panel">${icon('download')} Veri araçlarına git</a></div>
       </section>`;
     const cards = [...el.querySelectorAll('.theme-card')];
     const select = (card, focus) => {
@@ -953,7 +959,7 @@ const App = (() => {
       case 'quiz': p1 ? Quiz.renderQuiz(el, p1) : Quiz.renderList(el); break;
       case 'rozetler': pageBadges(el); break;
       case 'kaynakca': pageSources(el); break;
-      case 'ayarlar': pageSettings(el); break;
+      case 'ayarlar': pageSettings(el, p1); if (p1) setTimeout(() => { const t = document.getElementById(p1); if (t) t.scrollIntoView({ behavior: 'smooth' }); }, 60); break;
       case 'harita': Viz.renderMap(el); break;
       default: notFound(el);
     }
@@ -963,7 +969,7 @@ const App = (() => {
     document.querySelectorAll('#nav a').forEach(a => { const on = a.dataset.nav === (p0 === 'programlar' ? '#/moduller' : key); a.classList.toggle('active', on); on ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'); });
     document.title = `${TITLES[p0] || 'Sayfa'} · Yoga Akademisi`;
     if (document.body.classList.contains('nav-open')) setMenu(false);
-    const hasSection = (p0 === 'nefes' && p1) || (p0 === 'panel' && p1);
+    const hasSection = (p0 === 'nefes' && p1) || (p0 === 'panel' && p1) || (p0 === 'ayarlar' && p1);
     if (!hasSection) window.scrollTo(0, 0);
     el.classList.remove('enter'); void el.offsetWidth; el.classList.add('enter');
     refreshIcons();
@@ -971,22 +977,23 @@ const App = (() => {
 
   /* ------------------------------------------------ Karşılama penceresi */
   function onboarding() {
-    if (Store.state.profile.safetyAck) return;
+    if (Store.state.profile.safetyAck && Store.state.profile.disclaimerAck) return;
     const root = document.getElementById('modal-root');
     root.innerHTML = `<div class="modal-back"><div class="modal card" role="dialog" aria-modal="true" aria-labelledby="obTitle">
       <img src="assets/icons/logo.svg" alt="" width="56" height="56">
       <h2 id="obTitle">Yoga Akademisi’ne hoş geldin</h2>
       <p>Sıfırdan başlayarak 30 günde güvenli bir yoga alışkanlığı kurman için buradayız.</p>
       <label class="field"><span>Sana nasıl hitap edelim? (isteğe bağlı)</span><input id="obName" maxlength="40" placeholder="Adın"></label>
-      <div class="callout warn small">${icon('shield-alert')} <div><strong>Önemli:</strong> Yoga tıbbi tedavinin yerine geçmez. Hamilelik, yaralanma, kronik rahatsızlık veya denge problemin varsa başlamadan önce uzman görüşü al. Baş dönmesi, nefes darlığı veya ağrı olursa pratiği durdur.</div></div>
+      <h3 class="disc-title">${icon('shield-alert')} Sağlık ve Güvenlik Bilgilendirmesi</h3>
+      ${disclaimer()}
       <div class="callout info small">${icon('hard-drive')} <div>İlerlemen yalnızca bu tarayıcıda saklanır ve cihazlar arasında otomatik senkronize olmaz. Gelişim Paneli’nden JSON yedeği alabilirsin.</div></div>
-      <label class="check-inline"><input type="checkbox" id="obAck"> Güvenlik uyarılarını okudum ve anladım.</label>
+      <label class="check-inline"><input type="checkbox" id="obAck"> Sağlık ve Güvenlik Bilgilendirmesini okudum ve anladım.</label>
       <button class="btn primary block" id="obGo" disabled>${icon('arrow-right')} Başlayalım</button></div></div>`;
     refreshIcons();
     const ack = root.querySelector('#obAck'), go_ = root.querySelector('#obGo');
     ack.addEventListener('change', () => { go_.disabled = !ack.checked; });
     go_.addEventListener('click', () => {
-      Store.update(s => { s.profile.safetyAck = true; s.profile.onboarded = true; s.profile.name = root.querySelector('#obName').value.trim().slice(0, 40) || s.profile.name; if (!s.profile.createdAt) s.profile.createdAt = today(); });
+      Store.update(s => { s.profile.safetyAck = true; s.profile.disclaimerAck = true; s.profile.onboarded = true; s.profile.name = root.querySelector('#obName').value.trim().slice(0, 40) || s.profile.name; if (!s.profile.createdAt) s.profile.createdAt = today(); });
       root.innerHTML = ''; route(); updateChrome();
     });
     setTimeout(() => root.querySelector('#obName').focus(), 50);

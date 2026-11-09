@@ -85,7 +85,7 @@ YA.modules = [
 <div class="mini-card"><h4>Fiziksel boyut</h4><p>Duruşlar; kas kuvveti, eklem hareketliliği, esneklik ve denge üzerinde çalışmayı sağlar. Hareketler yavaş ve kontrollü olduğundan beden farkındalığı da gelişir.</p></div>
 <div class="mini-card"><h4>Zihinsel boyut</h4><p>Nefese ve bedensel duyumlara dikkat vermek, dikkati “şimdi”ye getirmeye yardım eder. Pratiğin sonundaki gevşeme bölümü dinlenmeyi destekler.</p></div>
 </div>
-<div class="callout science"><strong>Bilimsel bulgular ne diyor?</strong> NCCIH’e göre araştırmalar yoganın bel ve boyun ağrısında, stresin yönetiminde, genel iyi oluşta ve bazı kişilerde uyku kalitesinde yardımcı olabileceğini düşündürmektedir; ancak pek çok konuda kanıtlar hâlâ sınırlıdır ve çalışmalar küçük ölçeklidir. Yoga hiçbir hastalığın tedavisinin yerine geçmez.</div>` },
+<div class="callout science"><strong>Bilimsel bulgular ne diyor?</strong> Araştırmalar yoga uygulamasının bazı kişilerde yardımcı olabileceğini düşündürmektedir; NCCIH bu alanlar arasında bel ve boyun ağrısını, stres yönetimini, genel iyi oluşu ve uyku kalitesini sayar. Kanıtın gücü çalışmaya, yoga türüne, süreye ve katılımcı grubuna göre değişir. Pek çok konuda kanıt hâlâ sınırlıdır ve çalışmaların bir kısmı küçük ölçeklidir. Yoga, tıbbi değerlendirme veya tedavinin yerine geçmez.</div>` },
     { id: 'turler', title: 'Yoga türleri', html: `
 <p>Farklı ekoller aynı temel duruşları farklı tempo, yoğunluk ve vurguyla uygular. En yaygın beş stil:</p>
 <div class="style-grid">
@@ -110,7 +110,7 @@ YA.modules = [
 <div class="myth"><strong>Yanlış:</strong> “Yoga yapmak için esnek olmak gerekir.”<br><strong>Doğrusu:</strong> Esneklik yoganın ön koşulu değil, düzenli pratiğin zamanla getirebileceği sonuçlardan biridir. Blok ve kayış gibi destekler bu yüzden vardır.</div>
 <div class="myth"><strong>Yanlış:</strong> “Ne kadar acıtırsa o kadar etkili.”<br><strong>Doğrusu:</strong> Keskin, batıcı ya da eklem içinde hissedilen ağrı bir uyarıdır. Hafif bir germe hissi normaldir; ağrı varsa pozisyondan çık.</div>
 <div class="myth"><strong>Yanlış:</strong> “Yoga sadece kadınlar / gençler içindir.”<br><strong>Doğrusu:</strong> Yoga her yaştan ve cinsiyetten kişi için uyarlanabilir; sandalye yogası gibi biçimler hareket kısıtlılığı olanlar için bile seçenek sunar.</div>
-<div class="myth"><strong>Yanlış:</strong> “Yoga her hastalığı iyileştirir.”<br><strong>Doğrusu:</strong> Yoga bazı durumlarda destekleyici olabilir; ancak tıbbi tanı ve tedavinin yerini tutmaz.</div>
+<div class="myth"><strong>Yanlış:</strong> “Yoga tıbbi tedavinin yerini alabilir.”<br><strong>Doğrusu:</strong> Araştırmalar yoga uygulamasının bazı kişilerde yardımcı olabileceğini düşündürmektedir; ancak yoga, tıbbi değerlendirme veya tedavinin yerine geçmez.</div>
 <div class="myth"><strong>Yanlış:</strong> “Yoga hiç yaralanma riski taşımaz.”<br><strong>Doğrusu:</strong> NCCIH’e göre yoga sağlıklı kişilerde, doğru uygulandığında genellikle güvenlidir; yine de burkulma ve zorlanma gibi yaralanmalar görülebilir. Bu yüzden zorlamadan çalışmak önemlidir.</div>` }
   ]
 },
@@ -200,7 +200,7 @@ YA.modules = [
   sources: ['ccDiaphragm', 'ccBox', 'ccNadi', 'nhsBreathing', 'harvardBreath', 'nccihRelax'],
   intro: `
 <p><strong>Pranayama</strong>, Sanskritçe <em>prana</em> (yaşam enerjisi, nefes) ve <em>ayama</em> (uzatma, düzenleme) sözcüklerinden oluşur. Modern dilde nefesin hızını, derinliğini ve ritmini bilinçli olarak düzenleme çalışmalarıdır.</p>
-<div class="callout science"><strong>Bilimsel çerçeve:</strong> Harvard Health Publishing ve NHS, yavaş ve derin nefes egzersizlerinin bazı kişilerde stres tepkisini yatıştırmaya ve rahatlamaya yardımcı olabileceğini belirtir. Bu teknikler tedavi değil, kendine bakım araçlarıdır.</div>
+<div class="callout science"><strong>Bilimsel çerçeve:</strong> Harvard Health Publishing ve NHS, yavaş ve derin nefes egzersizlerinin bazı kişilerde stres tepkisini yatıştırmaya ve rahatlamaya yardımcı olabileceğini belirtir. Bu teknikler tedavi değil, kendine bakım araçlarıdır. Kanıtın gücü çalışmaya, yoga türüne, süreye ve katılımcı grubuna göre değişir.</div>
 <div class="callout warn"><strong>Bu programda:</strong> Nefes tutma ve hızlı/yoğun nefes teknikleri (ör. Kapalabhati, Bhastrika) <em>zorunlu değildir ve önerilmez</em>. Kutu nefesindeki bekleme süreleri isteğe bağlıdır ve kısaltılabilir. Baş dönmesi veya nefes darlığı hissedersen normal nefesine dön.</div>`
 },
 {
@@ -221,7 +221,7 @@ YA.modules = [
   sections: [
     { id: 'giris', title: 'Meditasyona giriş', html: `
 <p>Meditasyon, dikkati eğitmeye yönelik zihinsel uygulamaların genel adıdır. Amaç “düşünceleri durdurmak” değildir; zihin doğal olarak dağılır. Meditasyon, dikkatin dağıldığını <em>fark edip</em> nazikçe seçtiğin odağa geri getirme becerisini çalıştırır.</p>
-<div class="callout science"><strong>Bilimsel çerçeve:</strong> NCCIH, meditasyon ve farkındalık uygulamalarının bazı kişilerde kaygı, stres ve uyku sorunları üzerinde olumlu etkileri olabileceğini; ancak araştırmaların sonuçlarının değişken olduğunu ve meditasyonun tıbbi tedavinin yerine kullanılmaması gerektiğini vurgular. Nadiren de olsa meditasyon sırasında rahatsız edici duygular yükselebilir; bu durumda uygulamaya ara ver.</div>
+<div class="callout science"><strong>Bilimsel çerçeve:</strong> NCCIH, meditasyon ve farkındalık uygulamalarının bazı kişilerde kaygı, stres ve uyku sorunları üzerinde olumlu etkileri olabileceğini; ancak araştırmaların sonuçlarının değişken olduğunu ve meditasyonun tıbbi tedavinin yerine kullanılmaması gerektiğini vurgular. Kanıtın gücü çalışmaya, yoga türüne, süreye ve katılımcı grubuna göre değişir. Nadiren de olsa meditasyon sırasında rahatsız edici duygular yükselebilir; bu durumda uygulamaya ara ver.</div>
 <p><strong>Başlangıç önerisi:</strong> Günde 3–5 dakika, rahat bir oturuşla (sandalye de olur), gözler kapalı ya da yere bakarak.</p>` },
     { id: 'mindfulness', title: 'Mindfulness (bilinçli farkındalık)', html: `
 <p>Mindfulness; dikkati şu ana, olup biteni değiştirmeye çalışmadan ve yargılamadan yöneltmektir. NHS bunu, kendi düşüncelerine, duygularına ve çevrene daha fazla dikkat etmek olarak özetler.</p>
@@ -422,12 +422,12 @@ YA.breaths = [
 },
 {
   id: 'kutu', title: 'Kutu Nefesi', alt: 'Box breathing', level: 'Başlangıç (bekleme isteğe bağlı)',
-  pattern: [4, 2, 4, 2], duration: '1–4 dakika', box: true,
-  desc: `Kutu nefesi, nefes al – bekle – nefes ver – bekle aşamalarının eşit sürelerde yapıldığı ve bir karenin dört kenarı gibi düşünüldüğü bir tekniktir. Cleveland Clinic, bu tekniğin stresli anlarda sakinleşmeye yardımcı olarak kullanıldığını belirtir. Klasik oran 4-4-4-4’tür; ancak bu akademide yeni başlayanlar için bekleme süreleri <strong>2 saniye ile başlar ve tamamen isteğe bağlıdır</strong>. Rahat değilse bekleme süresini 0’a indirebilirsin.`,
+  pattern: [4, 0, 4, 0], duration: '1–4 dakika', box: true,
+  desc: `Kutu nefesi, nefes al – bekle – nefes ver – bekle aşamalarının eşit sürelerde yapıldığı ve bir karenin dört kenarı gibi düşünüldüğü bir tekniktir. Cleveland Clinic, bu tekniğin stresli anlarda sakinleşmeye yardımcı olarak kullanıldığını belirtir. Klasik oran 4-4-4-4’tür; bu akademide ise yeni başlayanlar için <strong>varsayılan olarak beklemesizdir</strong>. Rahat hissedersen en fazla 3 saniyelik kısa beklemeler ekleyebilirsin; uzun süreli nefes tutma bu programda yer almaz.`,
   steps: [
     'Dik ve rahat otur, omuzlarını gevşet. Bir kez tamamen nefes ver.',
     'Burundan 4’e kadar sayarak nefes al (karenin 1. kenarı).',
-    'Rahat hissediyorsan 2 saniye kadar bekle; zorlanıyorsan beklemeden devam et.',
+    'İstersen 1–3 saniye kısa bir bekleme ekle; zorlanıyorsan beklemeden devam et.',
     '4’e kadar sayarak nefes ver.',
     'Yine isteğe bağlı kısa bir bekleme yap ve döngüyü tekrarla.'
   ],

@@ -16,7 +16,6 @@ const Store = (() => {
     sessions: [],      // { id, date, ts, minutes, type, label, ref }
     read: {},          // { [modülId]: [bölümId, ...] }
     quizzes: {},       // { [quizId]: { best, last, attempts, history[] } }
-    assessments: [],   // { date, flex, balance, awareness, energy, relax }
     badges: {}         // { [rozetId]: tarih }
   });
 
