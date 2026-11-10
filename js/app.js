@@ -595,7 +595,7 @@ const App = (() => {
               <h3>3. Süre</h3><p>${h(b.duration)} · Ritim: al ${b.pattern[0]} sn${b.pattern[1] ? ` · bekle ${b.pattern[1]} sn (isteğe bağlı)` : ''} · ver ${b.pattern[2]} sn${b.pattern[3] ? ` · bekle ${b.pattern[3]} sn (isteğe bağlı)` : ''}</p>
               <h3>5. Dikkat edilmesi gerekenler</h3><ul class="x-list warnish">${b.cautions.map(c => `<li>${c}</li>`).join('')}</ul>
             </div>
-            <div><h3>4. Görsel anlatım</h3>${Viz.breathCycle(b)}${breathInfographic(b)}<h3>${icon('video')} Videolu gösterim</h3>${videoBlock('nefes-' + b.id, b.title + ' nefes tekniği nasıl yapılır')}</div>
+            <div><h3>4. Görsel anlatım</h3>${BreathViz.rhythm(b)}${breathInfographic(b)}<h3>${icon('video')} Videolu gösterim</h3>${videoBlock('nefes-' + b.id, b.title + ' nefes tekniği nasıl yapılır')}</div>
           </div>
           <div class="btn-row"><button class="btn primary try" data-id="${b.id}">${icon('play')} Rehberle uygula</button>
           <button class="btn read-b ${Progress.isRead('m3', b.id) ? 'is-read' : ''}" data-id="${b.id}">${icon(Progress.isRead('m3', b.id) ? 'circle-check' : 'circle')} ${Progress.isRead('m3', b.id) ? 'Tamamlandı' : 'Okudum ve uyguladım'}</button></div>
@@ -616,16 +616,9 @@ const App = (() => {
     if (sel) setTimeout(() => { const t = document.getElementById('br-' + sel.id); if (t) t.scrollIntoView({ behavior: 'smooth' }); }, 60);
   }
   function breathInfographic(b) {
-    if (b.ill) return `<figure class="infographic"><img src="${b.ill}" alt="Diyafram nefesinde diyaframın hareketini gösteren şema" loading="lazy" width="420" height="240"><figcaption>Nefes alırken diyafram aşağı iner; verirken yukarı, gevşeme konumuna döner.</figcaption></figure>`;
-    if (b.box) return `<figure class="infographic"><svg viewBox="0 0 220 220" class="box-svg" role="img" aria-label="Kutu nefesi şeması"><rect x="40" y="40" width="140" height="140" rx="10"/><circle r="8" class="dot"><animateMotion dur="12s" repeatCount="indefinite" path="M40,180 L40,40 L180,40 L180,180 Z"/></circle>
-      <text x="20" y="115" transform="rotate(-90 20 115)">Al · 4</text><text x="110" y="28">Bekle · isteğe bağlı</text><text x="200" y="110" transform="rotate(90 200 110)">Ver · 4</text><text x="110" y="205">Bekle · isteğe bağlı</text></svg>
-      <figcaption>Kare boyunca ilerleyen nokta: dört eşit kenar, dört evre.</figcaption></figure>`;
-    if (b.alternate) return `<figure class="infographic"><svg viewBox="0 0 240 150" class="nadi-svg" role="img" aria-label="Dönüşümlü burun nefesi şeması">
-      <path d="M120 20 C100 60 95 90 92 110 Q120 128 148 110 C145 90 140 60 120 20Z" class="nose"/>
-      <circle cx="106" cy="112" r="6" class="nos"/><circle cx="134" cy="112" r="6" class="nos"/>
-      <path d="M40 120 C60 120 80 116 100 112" class="arrow in"/><path d="M140 112 C160 116 180 120 200 120" class="arrow out"/>
-      <text x="40" y="140">Sol: al</text><text x="160" y="140">Sağ: ver</text><text x="70" y="30">Sonra tersi: sağdan al, soldan ver</text></svg>
-      <figcaption>Bir tur: soldan al → sağdan ver → sağdan al → soldan ver.</figcaption></figure>`;
+    if (b.ill) return BreathViz.diaphragm();
+    if (b.box) return BreathViz.box();
+    if (b.alternate) return BreathViz.nadi();
     return '';
   }
   function initPacer(el) {

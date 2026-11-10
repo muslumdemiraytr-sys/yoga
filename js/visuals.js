@@ -77,13 +77,22 @@ const Viz = (() => {
 
   /* ---------- Dağılım (iki eksenli konumlandırma) */
   function scatter(points, o = {}) {
-    const X = (v) => 46 + v * 2.5, Y = (v) => 206 - v * 1.8;
-    const zone = o.zone ? `<rect x="${X(o.zone[0])}" y="${Y(o.zone[3])}" width="${X(o.zone[1]) - X(o.zone[0])}" height="${Y(o.zone[2]) - Y(o.zone[3])}" rx="10" class="vz-zone"/><text x="${X(o.zone[0]) + 8}" y="${Y(o.zone[3]) + 16}" class="vz-zone-t">${h(o.zoneLabel || '')}</text>` : '';
-    const svg = `<svg viewBox="0 0 310 240" class="vz-scatter-svg" role="img" aria-label="${h(o.label || '')}">
-      ${zone}<path d="M46 14V206H300" class="vz-axis"/>
-      <text x="173" y="232" class="vz-axis-t">${h(o.x)} →</text><text x="16" y="110" class="vz-axis-t" transform="rotate(-90 16 110)">${h(o.y)} →</text>
-      ${points.map((p, i) => `<g class="vz-pt ${p.cls || ''}"><circle cx="${X(p.x)}" cy="${Y(p.y)}" r="8" class="k-n${i % 4}"/><text x="${X(p.x) + (p.dx ?? 12)}" y="${Y(p.y) + (p.dy ?? 4)}" text-anchor="${p.anchor || 'start'}">${h(p.label)}</text></g>`).join('')}</svg>`;
-    const list = `<ul class="vz-scatter-list">${points.map((p, i) => `<li><span class="sw k-n${i % 4}"></span><strong>${h(p.label)}</strong> ${h(p.text || '')}</li>`).join('')}</ul>`;
+    const L = 64, R = 344, T = 26, B = 226, X = (v) => L + v * (R - L) / 100, Y = (v) => B - v * (B - T) / 100;
+    const grid = [25, 50, 75].map(v => `<path class="sc2-grid" d="M${X(v)} ${T}V${B}M${L} ${Y(v)}H${R}"/>`).join('');
+    const zone = o.zone ? `<rect x="${X(o.zone[0])}" y="${Y(o.zone[3])}" width="${X(o.zone[1]) - X(o.zone[0])}" height="${Y(o.zone[2]) - Y(o.zone[3])}" rx="12" class="sc2-zone"/>
+      <g class="sc2-zone-tag" transform="translate(${X(o.zone[0]) + 2} ${Y(o.zone[3]) - 22})"><rect width="${(o.zoneLabel || '').length * 6.4 + 22}" height="18" rx="9"/><circle cx="10" cy="9" r="3.5"/><text x="18" y="13">${h(o.zoneLabel || '')}</text></g>` : '';
+    const pts = points.map((p, i) => {
+      const cx = X(p.x), cy = Y(p.y), end = p.anchor === 'end';
+      return `<g class="sc2-pt k-n${i % 5}"><circle cx="${cx}" cy="${cy}" r="13" class="halo"/><circle cx="${cx}" cy="${cy}" r="7.5" class="dot"/>
+        <text x="${cx + (end ? -14 : 14)}" y="${cy + 4.5}" text-anchor="${end ? 'end' : 'start'}">${h(p.label)}</text></g>`;
+    }).join('');
+    const svg = `<svg viewBox="0 0 360 272" class="vz-scatter-svg sc2" role="img" aria-label="${h(o.label || '')}">
+      ${grid}${zone}<path d="M${L} ${T - 6}V${B}H${R + 6}" class="sc2-axis"/>
+      <text x="${L}" y="${B + 20}" class="sc2-tick">yavaş</text><text x="${R}" y="${B + 20}" class="sc2-tick end">hızlı</text>
+      <text x="${(L + R) / 2}" y="${B + 40}" class="sc2-axis-t">${h(o.x)} →</text>
+      <text x="${L - 10}" y="${B}" class="sc2-tick end">hafif</text><text x="${L - 10}" y="${T + 6}" class="sc2-tick end">yoğun</text>
+      <text x="18" y="${(T + B) / 2}" class="sc2-axis-t" transform="rotate(-90 18 ${(T + B) / 2})">${h(o.y)} →</text>${pts}</svg>`;
+    const list = `<ul class="vz-scatter-list sc2-list">${points.map((p, i) => `<li><span class="sw k-n${i % 5}"></span><div><strong>${h(p.label)}</strong><span>${h((p.text || '').replace(/^–\s*/, ''))}</span></div></li>`).join('')}</ul>`;
     return fig(o.title, `<div class="vz-scatter">${svg}${list}</div>`, o.cap);
   }
 
@@ -203,7 +212,7 @@ const Viz = (() => {
     'm1/turler': () => scatter([
       { label: 'Restoratif', x: 8, y: 8, text: '– destekli, en sakin' }, { label: 'Yin', x: 16, y: 30, text: '– pasif, uzun tutuşlar' },
       { label: 'Hatha', x: 38, y: 42, text: '– tek tek, yavaş; başlangıç için ideal' }, { label: 'Vinyasa', x: 72, y: 64, text: '– nefesle akış' },
-      { label: 'Ashtanga', x: 88, y: 88, dx: -12, anchor: 'end', text: '– sabit seri, yoğun' }
+      { label: 'Ashtanga', x: 88, y: 88, anchor: 'end', text: '– sabit seri, yoğun' }
     ], { title: 'Yoga stilleri: tempo ve yoğunluk', x: 'Tempo', y: 'Fiziksel yoğunluk', zone: [0, 50, 0, 50], zoneLabel: 'Başlangıç için uygun', label: 'Yoga stillerinin tempo ve yoğunluğa göre konumu' }),
     'm1/meditasyon-farki': () => venn([
       { title: 'Yoga', items: ['Duruşlar ve hareket', 'Kas çalışması', 'Akışlar'] },
