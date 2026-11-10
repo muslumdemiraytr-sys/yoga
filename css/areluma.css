@@ -203,3 +203,101 @@ a.card:active, .feature:active, .course-card:active, .day-tile:active, .btn:acti
   .celebrate .cel-burst { display: none; }
   a.card:hover, .feature:hover, .course-card:hover, .pose-card:hover .pose-fig { transform: none !important; }
 }
+
+/* ================================================================ Nefes görselleri (js/breathviz.js) */
+/* Alış / veriş / bekleme her temada birbirinden ayırt edilir (grafik paleti zaten mesafe kontrollü) */
+.k-in { --k: var(--chart-1); } .k-out { --k: var(--chart-2); } .k-hold { --k: color-mix(in srgb, var(--color-text) 28%, var(--color-surface)); }
+.k-n4, .sw.k-n4 { --k: var(--chart-5); }
+.br-card { margin: 18px 0; padding: 18px 18px 16px; border-radius: 18px; background: var(--color-surface); border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent); box-shadow: 0 1px 2px var(--color-shadow); }
+.br-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 0 0 10px; font: 600 1.05rem/1.3 var(--serif); color: var(--color-heading); }
+.br-title small { font: 600 .78rem var(--font); color: var(--color-muted); letter-spacing: .02em; }
+.br-note { margin: 10px 0 0; font-size: .88rem; color: var(--color-muted); line-height: 1.5; }
+.br-card svg text { font-family: var(--font); }
+
+/* Ritim grafiği */
+.br-rhythm { display: block; width: 100%; height: auto; overflow: visible; }
+.br-grid { stroke: color-mix(in srgb, var(--color-text) 9%, transparent); stroke-width: 1; stroke-dasharray: 2 5; }
+.br-axis { font-size: 12px; font-weight: 700; fill: var(--color-muted); text-anchor: end; }
+.br-sep { stroke: color-mix(in srgb, var(--color-text) 16%, transparent); stroke-width: 1.2; stroke-dasharray: 3 4; }
+.br-g0 { stop-color: var(--chart-1); stop-opacity: .32; } .br-g1 { stop-color: var(--chart-1); stop-opacity: .02; }
+.br-line { fill: none; stroke: var(--chart-1); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+.br-dot { fill: var(--color-surface); stroke: var(--color-cta); stroke-width: 4; }
+.br-head { stroke: color-mix(in srgb, var(--color-cta) 45%, transparent); stroke-width: 1.5; }
+.br-band rect { fill: var(--k); }
+.br-band-t { font-size: 14px; font-weight: 800; fill: var(--color-heading); text-anchor: middle; }
+.br-band-s { font-size: 12.5px; font-weight: 700; fill: var(--color-muted); text-anchor: middle; }
+.br-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.br-chips span { padding: 6px 12px; border-radius: 999px; background: color-mix(in srgb, var(--color-primary) 9%, var(--color-surface)); font-size: .85rem; color: var(--color-text); }
+.br-chips b { font-weight: 800; color: var(--color-heading); margin-right: 3px; }
+.br-chips .br-chip-note { background: color-mix(in srgb, var(--chart-2) 14%, var(--color-surface)); }
+
+/* Diyafram */
+.dg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+.dg-panel { border-radius: 14px; padding: 10px 10px 12px; background: color-mix(in srgb, var(--k) 7%, var(--color-surface)); }
+.dg-panel.in { --k: var(--chart-1); } .dg-panel.out { --k: var(--chart-2); }
+.dg-head { margin: 0 0 4px; }
+.dg-pill { display: inline-block; padding: 4px 12px; border-radius: 999px; background: var(--k); color: #fff; font: 800 .8rem var(--font); }
+.dg-svg { display: block; width: 100%; height: auto; }
+.dg-hair { fill: var(--fig-hair); } .dg-skin { fill: var(--fig-skin); }
+.dg-body { fill: color-mix(in srgb, var(--fig-skin) 42%, var(--color-surface)); stroke: color-mix(in srgb, var(--fig-skin-shade) 70%, transparent); stroke-width: 1.5; }
+.dg-rib { fill: none; stroke: color-mix(in srgb, var(--fig-skin-shade) 55%, transparent); stroke-width: 1.4; stroke-linecap: round; }
+.dg-trachea { fill: none; stroke: #D98C84; stroke-width: 4; stroke-linecap: round; }
+.dg-lung { fill: #EFAFA6; stroke: #D98C84; stroke-width: 1.5; }
+.dg-bronch { fill: none; stroke: #D98C84; stroke-width: 1.6; stroke-linecap: round; }
+.dg-dome { fill: none; stroke: var(--k); stroke-width: 5.5; stroke-linecap: round; }
+.dg-arrow { fill: none; stroke: var(--k); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.dg-lead { stroke: color-mix(in srgb, var(--color-text) 35%, transparent); stroke-width: 1; }
+.dg-label { font-size: 11.5px; font-weight: 800; fill: var(--color-heading); }
+.dg-cap { margin: 4px 2px 0; font-size: .86rem; line-height: 1.45; color: var(--color-text); }
+
+/* Dönüşümlü burun nefesi */
+.nd-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 10px; }
+.nd-steps li { position: relative; margin: 0; padding: 12px 8px 12px; border-radius: 14px; text-align: center; background: color-mix(in srgb, var(--k) 8%, var(--color-surface)); display: grid; justify-items: center; gap: 2px; }
+.nd-steps li.in { --k: var(--chart-1); } .nd-steps li.out { --k: var(--chart-2); }
+.nd-no { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--k); color: #fff; font: 800 .78rem var(--font); }
+.nd-svg { width: 100%; max-width: 120px; height: auto; }
+.nd-nose { fill: var(--fig-skin); }
+.nd-hole { fill: #5B3A30; }
+.nd-finger ellipse { fill: var(--fig-skin-shade); stroke: color-mix(in srgb, var(--fig-skin-shade) 70%, #000); stroke-width: 1; }
+.nd-finger path { fill: none; stroke: color-mix(in srgb, #fff 60%, var(--fig-skin)); stroke-width: 2; stroke-linecap: round; }
+.nd-flow { fill: none; stroke: var(--k); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.nd-side { font-size: 10px; font-weight: 800; letter-spacing: .08em; fill: var(--color-muted); text-anchor: middle; }
+.nd-steps strong { font-size: .92rem; color: var(--color-heading); }
+.nd-sub { font-size: .76rem; color: var(--color-muted); line-height: 1.3; }
+
+/* Kutu nefesi */
+.bx-svg { display: block; width: 100%; max-width: 340px; height: auto; margin: 0 auto; overflow: visible; }
+.bx-fill { fill: color-mix(in srgb, var(--color-primary) 6%, var(--color-surface)); }
+.bx-side { fill: none; stroke: var(--k); stroke-width: 9; stroke-linecap: round; }
+.bx-side.opt { stroke-dasharray: 2 13; stroke-width: 7; }
+.bx-corner circle { fill: var(--color-surface); stroke: color-mix(in srgb, var(--color-text) 20%, transparent); stroke-width: 1.5; }
+.bx-corner text { font-size: 11px; font-weight: 800; fill: var(--color-heading); text-anchor: middle; }
+.bx-big { font: 600 22px var(--serif) !important; fill: var(--color-heading); text-anchor: middle; }
+.bx-small { font-size: 12px; font-weight: 700; fill: var(--color-muted); text-anchor: middle; }
+.bx-lab text { text-anchor: middle; }
+.bx-lab .t { font-size: 14px; font-weight: 800; fill: var(--color-heading); }
+.bx-lab .s { font-size: 11px; font-weight: 700; fill: var(--color-muted); }
+.bx-dot { fill: var(--color-surface); stroke: var(--color-cta); stroke-width: 4; }
+
+/* Yoga stilleri grafiği */
+.sc2 { max-width: 460px; overflow: visible; }
+.sc2-grid { stroke: color-mix(in srgb, var(--color-text) 8%, transparent); stroke-width: 1; }
+.sc2-axis { fill: none; stroke: color-mix(in srgb, var(--color-text) 45%, transparent); stroke-width: 1.5; stroke-linecap: round; }
+.sc2-axis-t { font: 800 11.5px var(--font); fill: var(--color-heading); text-anchor: middle; }
+.sc2-tick { font: 700 10.5px var(--font); fill: var(--color-muted); }
+.sc2-tick.end { text-anchor: end; }
+.sc2-zone { fill: color-mix(in srgb, var(--color-success) 9%, transparent); stroke: color-mix(in srgb, var(--color-success) 55%, transparent); stroke-width: 1.2; stroke-dasharray: 5 4; }
+.sc2-zone-tag rect { fill: color-mix(in srgb, var(--color-success) 14%, var(--color-surface)); stroke: color-mix(in srgb, var(--color-success) 40%, transparent); }
+.sc2-zone-tag circle { fill: var(--color-success); }
+.sc2-zone-tag text { font: 800 10.5px var(--font); fill: var(--color-success); }
+.sc2-pt .halo { fill: var(--k); opacity: .16; }
+.sc2-pt .dot { fill: var(--k); stroke: var(--color-surface); stroke-width: 2.5; }
+.sc2-pt text { font: 800 12.5px var(--font); fill: var(--color-heading); paint-order: stroke; stroke: var(--color-surface); stroke-width: 4px; stroke-linejoin: round; }
+.sc2-list li { display: flex; gap: 10px; align-items: flex-start; }
+.sc2-list .sw { flex: none; width: 12px; height: 12px; border-radius: 50%; margin-top: 5px; background: var(--k); }
+.sc2-list div { display: grid; }
+.sc2-list span:not(.sw) { color: var(--color-muted); font-size: .88rem; }
+
+@media (max-width: 640px) {
+  .br-card { padding: 14px 12px; }
+}
