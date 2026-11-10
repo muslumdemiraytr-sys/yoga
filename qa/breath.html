@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nefes görselleri kontrol sayfası</title>
+  <script src="../js/theme.js"></script>
+  <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/visuals.css"><link rel="stylesheet" href="../css/areluma.css">
+  <style>body{padding:20px;background:var(--color-background)} .cols{display:grid;grid-template-columns:640px 300px;gap:24px;align-items:start}</style>
+</head>
+<body>
+  <p>Tema: <select id="t"></select></p>
+  <div class="cols"><div id="wide"></div><div id="narrow"></div></div>
+  <script src="../js/yoga-content.js"></script><script src="../js/breathviz.js"></script>
+  <script>
+    const sel = document.getElementById('t');
+    Theme.THEMES.forEach(x => sel.insertAdjacentHTML('beforeend', `<option value="${x.id}">${x.name || x.id}</option>`));
+    sel.value = Theme.current(); sel.onchange = () => Theme.apply(sel.value);
+    const all = () => YA.breaths.slice(0, 1).map(b => BreathViz.rhythm(b)).join('') + BreathViz.rhythm(YA.breaths.find(b => b.alternate)) + BreathViz.diaphragm() + BreathViz.nadi() + BreathViz.box();
+    document.getElementById('wide').innerHTML = all(); document.getElementById('narrow').innerHTML = all();
+  </script>
+</body>
+</html>
