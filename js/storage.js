@@ -69,7 +69,7 @@ const Store = (() => {
       let data;
       try { data = JSON.parse(text); } catch (e) { throw new Error('Dosya geçerli bir JSON değil.'); }
       if (!data || typeof data !== 'object' || data.app !== 'yoga-akademisi') {
-        throw new Error('Bu dosya bir Yoga Akademisi yedeği gibi görünmüyor.');
+        throw new Error('Bu dosya bir Areluma Yoga yedeği gibi görünmüyor.');
       }
       if (typeof data.days !== 'object' || !Array.isArray(data.sessions)) {
         throw new Error('Yedek dosyası eksik ya da bozuk.');

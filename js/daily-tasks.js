@@ -348,7 +348,8 @@ const Daily = (() => {
     if (doneBtn) doneBtn.addEventListener('click', () => {
       const v = Math.max(0, Math.min(180, parseInt(el.querySelector('#dayMin').value, 10) || 0));
       Progress.completeDay(d.n, v);
-      App.toast(`Gün ${d.n} tamamlandı! ${v ? v + ' dk pratik kaydedildi.' : ''}`, 'ok');
+      if (typeof Motion !== 'undefined') Motion.celebrate({ title: `Gün ${d.n} tamamlandı`, text: `${App.h(d.title)}${v ? ` · ${v} dk pratik kaydedildi.` : ''}`, fig: 'ayakta' });
+      else App.toast(`Gün ${d.n} tamamlandı! ${v ? v + ' dk pratik kaydedildi.' : ''}`, 'ok');
       Progress.checkBadges();
       renderDay(el, n); App.refreshIcons(); App.updateChrome();
     });

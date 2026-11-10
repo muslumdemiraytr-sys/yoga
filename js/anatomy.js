@@ -473,7 +473,7 @@ const Anatomy = (() => {
     const done = (c) => Progress.isRead(m.id, c);
     el.innerHTML = `
       <section class="band band-center chapter-band tone-3"><p class="band-label">Modül ${m.no}/${YA.modules.length}</p><h1 class="display">${h(m.title)}</h1>
-        <p class="lead">${h(m.summary)}</p><img class="band-ill" src="assets/illustrations/pozlar.svg" alt="" width="400" height="300"></section>
+        <p class="lead">${h(m.summary)}</p>${App.ill('pozlar', '')}</section>
       <div class="reading an-hub">
         <div class="prose">${m.intro}</div>
         <h2 class="list-title" id="kategoriler">Anatomik etki kategorileri</h2>

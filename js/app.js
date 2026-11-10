@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Yoga Akademisi – uygulama çekirdeği: yönlendirme, ortak bileşenler, sayfalar
+   Areluma Yoga – uygulama çekirdeği: yönlendirme, ortak bileşenler, sayfalar
    ========================================================================== */
 const App = (() => {
   const main = () => document.getElementById('main');
@@ -48,22 +48,13 @@ const App = (() => {
     setTimeout(() => t.remove(), 5600);
   }
 
-  /* ------------------------------------------------ Çizgi figür (pozisyon illüstrasyonu) */
-  function figure(f, opts = {}) {
-    if (typeof f === 'string') f = YA.extraFigs[f] || YA.extraFigs.ayakta;
-    if (!f) return '';
-    const P = (a) => `${a[0]},${a[1]}`;
-    const limb = (a, b, c, cls) => `<polyline points="${P(a)} ${P(b)} ${P(c)}" class="${cls}"/>`;
-    const torso = f.c ? `<path d="M${P(f.n)} Q${P(f.c)} ${P(f.p)}" class="torso"/>` : `<line x1="${f.n[0]}" y1="${f.n[1]}" x2="${f.p[0]}" y2="${f.p[1]}" class="torso"/>`;
-    const ground = f.top
-      ? '<rect x="14" y="30" width="172" height="140" rx="10" class="mat-top"/>'
-      : '<rect x="8" y="182" width="184" height="6" rx="3" class="mat"/>';
-    const chair = f.chair ? '<path d="M70 124 H140 M76 124 V184 M136 124 V184 M72 124 V60" class="chair"/>' : '';
-    return `<svg class="pose-fig ${opts.small ? 'small' : ''}" viewBox="0 0 200 200" role="img" aria-label="${h(opts.label || 'Pozisyon çizimi')}">
-      ${ground}${chair}
-      <g class="back">${limb(f.p, f.rk, f.rf, 'limb')}${limb(f.n, f.re, f.rh, 'limb')}</g>
-      <g class="front">${limb(f.p, f.lk, f.lf, 'limb')}${torso}${limb(f.n, f.le, f.lh, 'limb')}<circle cx="${f.h[0]}" cy="${f.h[1]}" r="11" class="head"/></g>
-    </svg>`;
+  /* ------------------------------------------------ Figür (pozisyon illüstrasyonu) – js/figure.js
+     Aynı sözleşme: tek <svg class="pose-fig">, viewBox 200×200; anatomy.js üzerine katman ekler. */
+  function figure(f, opts = {}) { return Figure.svg(f, opts); }
+  /** Sahne illüstrasyonu (tema renkli, satır içi SVG); sahnesi olmayanlar için dosya */
+  function ill(name, alt, cls = 'band-ill') {
+    const svg = Figure.scene(name, alt, cls);
+    return svg || `<img class="${cls}" src="assets/illustrations/${name}.svg" alt="${h(alt || '')}" width="400" height="300" loading="lazy">`;
   }
 
   function sourceList(keys) {
@@ -100,7 +91,7 @@ const App = (() => {
   }
 
   function notFound(el) {
-    el.innerHTML = `<div class="card empty-state"><img src="assets/illustrations/kayip.svg" alt="" width="300" height="225"><h1>Sayfa bulunamadı</h1><p>Aradığın sayfa taşınmış ya da hiç var olmamış olabilir.</p><a class="btn primary" href="#/">Ana sayfaya dön</a></div>`;
+    el.innerHTML = `<div class="card empty-state"><div class="empty-ill">${ill('kayip', '', 'scene')}</div><h1>Sayfa bulunamadı</h1><p>Aradığın sayfa taşınmış ya da hiç var olmamış olabilir.</p><a class="btn primary" href="#/">Ana sayfaya dön</a></div>`;
   }
   /** Sağlık ve Güvenlik Bilgilendirmesi – metin değiştirilmeden kullanılır */
   const disclaimer = () => `<div class="disclaimer"><h3>Sorumluluk Reddi</h3><ul>
@@ -149,9 +140,9 @@ const App = (() => {
     el.innerHTML = `
       <section class="band band-center home-band">
         <a class="announce" href="#/pozlar">${icon('sparkles')} <span><strong>Yeni:</strong> Her pozisyon için videolu anlatım eklendi.</span> <u>Göz at</u></a>
-        <h1 class="display">${name ? `Hoş geldin, ${h(name)}!` : 'Yoga Akademisi’ne hoş geldin!'}</h1>
+        <h1 class="display">${name ? `Hoş geldin, ${h(name)}!` : 'Areluma Yoga’ya hoş geldin!'}</h1>
         <p class="lead">Sıfırdan başlayanlar için ücretsiz, Türkçe ve adım adım bir yoga eğitimi. Kendi hızında öğren, günlük pratiğini takip et.</p>
-        <img class="band-ill" src="assets/illustrations/hero.svg" alt="Bitki ve güneşin yanında matın üzerinde meditasyon yapan kişi illüstrasyonu" width="400" height="300">
+        ${ill('hero', 'Gün doğumunda kemerin önünde Savaşçı II duruşunda bir kişi')}
         <div class="btn-row center">
           ${next ? `<a class="btn pill light lg" href="#/gun/${next.n}">${s.daysDone ? `Gün ${next.n} ile devam et` : 'Eğitime başla'} ${icon('arrow-right')}</a>` : `<a class="btn pill light lg" href="#/rapor">Raporunu gör ${icon('arrow-right')}</a>`}
           <button class="btn pill outline-light lg" id="toCourses">Eğitimlere göz at ${icon('arrow-down')}</button>
@@ -166,21 +157,21 @@ const App = (() => {
 
       <section class="goal">
         <h2>Amacımız: güvenli, kademeli ve kanıta dayalı başlangıç</h2>
-        <p>Yoga Akademisi’nin amacı, kullanıcıya güvenli, kademeli ve kanıta dayalı başlangıç yoga eğitimi sunmaktır. Temel bilgiler bilimsel kaynaklara dayanarak sade bir dille anlatılır; kısa günlük görevlerle kendi hızında ilerlersin. Fiziksel sınırlarını zorlaman beklenmez. Yoga, tıbbi değerlendirme veya tedavinin yerine geçmez.</p>
+        <p>Areluma Yoga’nın amacı, kullanıcıya güvenli, kademeli ve kanıta dayalı başlangıç yoga eğitimi sunmaktır. Temel bilgiler bilimsel kaynaklara dayanarak sade bir dille anlatılır; kısa günlük görevlerle kendi hızında ilerlersin. Fiziksel sınırlarını zorlaman beklenmez. Yoga, tıbbi değerlendirme veya tedavinin yerine geçmez.</p>
       </section>
 
       <section id="egitimler" class="courses">
         <h2 class="center-title">Eğitimler</h2>
         <div class="course-grid">
           <article class="course-card">
-            <a class="cc-banner tone-1" href="#/program"><img src="assets/illustrations/program.svg" alt="" loading="lazy" width="400" height="300"></a>
+            <a class="cc-banner tone-1" href="#/program" aria-label="30 Günlük Program">${ill('program', '', 'scene')}</a>
             <div class="cc-body"><p class="cc-label">Bölüm 1</p><h3><a href="#/program">30 Günlük Program</a></h3>
               <p>Her gün bir konu, bir öğrenme hedefi, kısa bir pratik ve değerlendirme sorusu. 4 haftada sıfırdan bağımsız pratiğe.</p>
               ${bar(s.daysDone / 30 * 100)}<p class="tiny muted">${s.daysDone}/30 gün tamamlandı</p>
               <a class="link" href="${next ? '#/gun/' + next.n : '#/program'}">${s.daysDone ? 'Devam et' : 'Programa başla'} ${icon('arrow-right')}</a></div>
           </article>
           <article class="course-card">
-            <a class="cc-banner tone-2" href="#/moduller"><img src="assets/illustrations/moduller.svg" alt="" loading="lazy" width="400" height="300"></a>
+            <a class="cc-banner tone-2" href="#/moduller" aria-label="Eğitim Modülleri">${ill('moduller', '', 'scene')}</a>
             <div class="cc-body"><p class="cc-label">Bölüm 2</p><h3><a href="#/moduller">Eğitim Modülleri</a></h3>
               <p>Felsefeden anatomiye ${YA.modules.length} modül, ${s.secTotal} bölüm. Her modülün sonunda kısa bir sınav ve kaynakça.</p>
               ${bar(s.secDone / s.secTotal * 100)}<p class="tiny muted">${s.secDone}/${s.secTotal} bölüm okundu</p>
@@ -337,7 +328,7 @@ const App = (() => {
       <div class="course-grid">${YA.modules.map(m => {
         const ms = Progress.moduleStats(m.id);
         return `<article class="course-card">
-          <a class="cc-banner ${tone(m)}" href="#/modul/${m.id}" aria-label="Modül ${m.no}: ${h(m.title)}"><img src="assets/illustrations/${MOD_ILL[m.id]}.svg" alt="" loading="lazy" width="${MOD_ILL[m.id] === 'spine' ? 240 : 400}" height="${MOD_ILL[m.id] === 'spine' ? 420 : 300}"></a>
+          <a class="cc-banner ${tone(m)}" href="#/modul/${m.id}" aria-label="Modül ${m.no}: ${h(m.title)}">${MOD_ILL[m.id] === 'spine' ? `<img src="assets/illustrations/spine.svg" alt="" loading="lazy" width="240" height="420">` : ill(MOD_ILL[m.id], '', 'scene')}</a>
           <div class="cc-body">
             <p class="cc-label">Modül ${m.no} ${ms.complete ? `<span class="chip ok">${icon('check')} Tamamlandı</span>` : ''}</p>
             <h3><a href="#/modul/${m.id}">${h(m.title)}</a></h3>
@@ -361,7 +352,7 @@ const App = (() => {
       <section class="band band-center chapter-band ${tone(m)}">
         <p class="band-label">Modül ${m.no}/${YA.modules.length}</p>
         <h1 class="display">${h(m.title)}</h1>
-        <img class="band-ill" src="assets/illustrations/${MOD_ILL[m.id]}.svg" alt="" width="400" height="300">
+        ${ill(MOD_ILL[m.id], '')}
       </section>
       <div class="reading">
         <p class="intro-lead">${h(m.summary)}</p>
@@ -387,7 +378,7 @@ const App = (() => {
     const prev = m.sections[i - 1], next = m.sections[i + 1];
     const read = Progress.isRead(m.id, s.id);
     el.innerHTML = `
-      <section class="band section-band ${tone(m)}"><img class="band-ill" src="assets/illustrations/${MOD_ILL[m.id]}.svg" alt="" width="400" height="300"></section>
+      <section class="band section-band ${tone(m)}">${ill(MOD_ILL[m.id], '')}</section>
       <article class="reading lesson-page">
         <p class="sec-progress">Modül ${m.no}: ${h(m.title)} · Bölüm ${i + 1}/${m.sections.length}</p>
         <div class="sec-dots" aria-hidden="true">${m.sections.map((x, k) => `<a href="#/modul/${m.id}/${x.id}" class="${k === i ? 'cur' : ''} ${Progress.isRead(m.id, x.id) ? 'done' : ''}" tabindex="-1"></a>`).join('')}</div>
@@ -476,6 +467,7 @@ const App = (() => {
           <button class="btn ${learned ? 'is-read' : 'primary'}" id="learnBtn">${icon(learned ? 'circle-check' : 'graduation-cap')} ${learned ? 'Öğrenildi' : 'Öğrendim'}</button>
         </div>
       </div>
+      ${stepperCard(p)}
       <div class="card video-card"><h2>${icon('video')} Videolu gösterim</h2>
         ${p.level === 'i' ? `<p class="tiny muted">Orta seviye duruştur; videoyu izlerken kolaylaştırılmış alternatifi tercih et.</p>` : ''}
         ${videoBlock(p.id, `${p.sa} ${p.tr} yoga nasıl yapılır`)}</div>
@@ -485,12 +477,85 @@ const App = (() => {
       ${sourceList(['nccihYogaSafety', 'adverseEvents', 'tagteach', 'openstaxAP', 'yogaJournalPoses', 'nhsYoga'])}
       <div class="pager">${prev ? `<a class="btn ghost" href="#/poz/${prev.id}">${icon('arrow-left')} ${h(prev.tr)}</a>` : '<span></span>'}${next ? `<a class="btn ghost" href="#/poz/${next.id}">${h(next.tr)} ${icon('arrow-right')}</a>` : ''}</div>`;
     bindVideos(el);
+    initStepper(el, p);
     if (Anatomy.has(p.id)) Anatomy.mount(el.querySelector('#anHost'), p.id);
     el.querySelector('#learnBtn').addEventListener('click', () => {
       Progress.setRead('m4', p.id, !Progress.isRead('m4', p.id));
       if (Progress.isRead('m4', p.id)) toast(`${p.tr} öğrenildi olarak işaretlendi.`, 'ok');
       Progress.checkBadges(); pagePose(el, id); refreshIcons(); updateChrome();
     });
+  }
+
+  /* ---------- Poza giriş: adım adım görsel anlatım
+     Başlangıç duruşundan hedef poza eklem açıları üzerinden geçiş; her adım bir ara kare. */
+  const START = {
+    stand: 'tadasana', table: 'kedi-inek',
+    prone: { h: [36, 170], n: [56, 173], p: [112, 177], le: [72, 160], lh: [62, 180], re: [74, 161], rh: [64, 180], lk: [146, 179], lf: [182, 179], rk: [148, 180], rf: [184, 180] },
+    supine: { h: [28, 170], n: [48, 172], p: [100, 174], le: [74, 178], lh: [100, 180], re: [76, 178], rh: [102, 180], lk: [107, 133], lf: [148, 180], rk: [109, 134], rf: [150, 180] },
+    staff: { h: [64, 98], n: [62, 116], p: [58, 172], le: [64, 144], lh: [66, 172], re: [66, 144], rh: [68, 172], lk: [110, 174], lf: [160, 176], rk: [112, 175], rf: [162, 177] },
+    supineTop: { top: true, h: [36, 100], n: [52, 100], p: [112, 100], le: [56, 70], lh: [58, 42], re: [56, 130], rh: [58, 158], lk: [142, 106], lf: [174, 108], rk: [142, 94], rf: [174, 92] },
+    squat: { h: [70, 96], n: [80, 110], p: [118, 150], c: [96, 126], le: [84, 140], lh: [80, 172], re: [86, 140], rh: [82, 172], lk: [96, 156], lf: [118, 180], rk: [98, 157], rf: [120, 180] },
+    seated: { h: [118, 98], n: [112, 114], p: [104, 170], le: [92, 140], lh: [84, 168], re: [94, 141], rh: [86, 168], lk: [76, 140], lf: [52, 176], rk: [78, 141], rf: [54, 177] }
+  };
+  const POSE_START = {
+    'savasci-1': 'stand', 'savasci-2': 'stand', agac: 'stand', ucgen: 'stand', sandalye: 'stand', 'yan-aci': 'stand', 'yarim-ay': 'stand',
+    'asagi-kopek': 'table', balasana: 'table', kobra: 'prone', kopru: 'supine', 'oturarak-one-egilme': 'staff', 'sirtustu-burgu': 'supineTop',
+    karga: 'squat', kayik: 'seated'
+  };
+  function startFig(p) { const k = POSE_START[p.id]; if (!k) return null; const v = START[k]; return typeof v === 'string' ? poseById(v).fig : v; }
+  const stepT = (i, n) => n <= 2 ? (i ? 1 : 0) : Math.min(1, i / (n - 2));
+  function stepperCard(p) {
+    const st = startFig(p), anat = Anatomy.has(p.id) && Anatomy.POSES[p.id];
+    return `<section class="card stepper-card" id="stepper" aria-labelledby="stTitle">
+      <div class="st-stage">
+        <div class="st-fig">${figure(st || p.fig, { label: `${p.tr}: poza giriş çizimi` })}</div>
+        ${anat ? `<label class="check-inline st-anat"><input type="checkbox" id="stAnat"> Çalışan bölgeleri göster</label>
+          <ul class="an-legend st-legend" hidden>${['a', 's', 't'].map(r => `<li><span class="an-sw r-${r}"></span>${Anatomy.ROLE[r]}</li>`).join('')}</ul>` : ''}
+      </div>
+      <div class="st-body">
+        <p class="eyebrow">Adım adım</p><h2 id="stTitle">${st ? 'Poza giriş' : 'Uygulama adımları'}</h2>
+        <ol class="st-steps">${p.steps.map((x, i) => `<li><button type="button" data-i="${i}"${i === 0 ? ' aria-current="step"' : ''}><span class="st-no">${i + 1}</span><span>${x}</span></button></li>`).join('')}</ol>
+        <div class="btn-row st-ctrl">
+          <button class="btn ghost" id="stPrev" disabled aria-label="Önceki adım">${icon('arrow-left')}</button>
+          <button class="btn primary" id="stPlay">${icon('play')} ${st ? 'Geçişi oynat' : 'Adımları oynat'}</button>
+          <button class="btn ghost" id="stNext" aria-label="Sonraki adım">${icon('arrow-right')}</button>
+        </div>
+        <p class="tiny muted">${st ? 'Çizim, başlangıç duruşundan pozun son hâline geçişi adımlara bölerek gösterir; ara kareler yaklaşık hareket yolunu temsil eder.' : 'Adımlara dokunarak sırayla ilerleyebilirsin.'}</p>
+      </div></section>`;
+  }
+  function initStepper(el, p) {
+    const box = el.querySelector('#stepper'); if (!box) return;
+    const st = startFig(p), n = p.steps.length, svg = box.querySelector('.st-fig svg');
+    const btns = Array.from(box.querySelectorAll('.st-steps button'));
+    let idx = 0, cur = st || p.fig, timer = null, focus = null;
+    const figAt = (i) => st ? (stepT(i, n) >= 1 ? p.fig : Figure.mix(st, p.fig, stepT(i, n))) : p.fig;
+    function go_(i, user) {
+      idx = Math.max(0, Math.min(n - 1, i));
+      btns.forEach((b, k) => { b.classList.toggle('done', k < idx); k === idx ? b.setAttribute('aria-current', 'step') : b.removeAttribute('aria-current'); });
+      box.querySelector('#stPrev').disabled = idx === 0;
+      box.querySelector('#stNext').disabled = idx === n - 1;
+      const next = figAt(idx);
+      if (next !== cur) Figure.morph(svg, cur, next, { duration: 1100, focus });
+      cur = next;
+      if (user) stop();
+    }
+    function stop() { clearInterval(timer); timer = null; const b = box.querySelector('#stPlay'); b.innerHTML = `${icon('play')} ${st ? 'Geçişi oynat' : 'Adımları oynat'}`; refreshIcons(); }
+    btns.forEach(b => b.addEventListener('click', () => go_(Number(b.dataset.i), true)));
+    box.querySelector('#stPrev').addEventListener('click', () => go_(idx - 1, true));
+    box.querySelector('#stNext').addEventListener('click', () => go_(idx + 1, true));
+    box.querySelector('#stPlay').addEventListener('click', (e) => {
+      if (timer) return stop();
+      if (idx >= n - 1) { go_(0); }
+      e.currentTarget.innerHTML = `${icon('pause')} Duraklat`; refreshIcons();
+      timer = setInterval(() => { if (idx >= n - 1) return stop(); go_(idx + 1); }, 2600);
+    });
+    const anat = box.querySelector('#stAnat');
+    if (anat) anat.addEventListener('change', () => {
+      focus = anat.checked ? Figure.focusFrom(Anatomy.POSES[p.id].m) : null;
+      box.querySelector('.st-legend').hidden = !anat.checked;
+      svg.innerHTML = Figure.inner(cur, { focus });
+    });
+    onCleanup(() => clearInterval(timer));
   }
 
   /* ---------- Nefes */
@@ -510,7 +575,12 @@ const App = (() => {
           <p class="tiny muted">Baş dönmesi ya da nefes darlığı hissedersen “Bitir”e bas ve normal nefesine dön.</p>
         </div>
         <div class="pacer-stage" aria-live="polite">
-          <div class="pacer-circle" id="pCircle"><div class="pacer-inner"><span id="pPhase">Hazır</span><small id="pCount"></small></div></div>
+          <div class="pacer-circle" id="pCircle">
+            <svg class="pacer-bloom" viewBox="0 0 300 300" aria-hidden="true">
+              <circle class="pb-track" cx="150" cy="150" r="142"/><circle class="pb-arc" id="pArc" cx="150" cy="150" r="142" pathLength="1"/>
+              <g class="pb-layer l1"><path class="pb-petal" transform="rotate(0.0 150 150)" d="M150 150C127 122 131 72 150 42C169 72 173 122 150 150Z"/><path class="pb-petal" transform="rotate(45.0 150 150)" d="M150 150C127 122 131 72 150 42C169 72 173 122 150 150Z"/><path class="pb-petal" transform="rotate(90.0 150 150)" d="M150 150C127 122 131 72 150 42C169 72 173 122 150 150Z"/><path class="pb-petal" transform="rotate(135.0 150 150)" d="M150 150C127 122 131 72 150 42C169 72 173 122 150 150Z"/><path class="pb-petal" transform="rotate(180.0 150 150)" d="M150 150C127 122 131 72 150 42C169 72 173 122 150 150Z"/><path class="pb-petal" transform="rotate(225.0 150 150)" d="M150 150C127 122 131 72 150 42C169 72 173 122 150 150Z"/><path class="pb-petal" transform="rotate(270.0 150 150)" d="M150 150C127 122 131 72 150 42C169 72 173 122 150 150Z"/><path class="pb-petal" transform="rotate(315.0 150 150)" d="M150 150C127 122 131 72 150 42C169 72 173 122 150 150Z"/></g><g class="pb-layer l2"><path class="pb-petal b" transform="rotate(0.0 150 150)" d="M150 150C127 122 131 72 150 42C169 72 173 122 150 150Z"/><path class="pb-petal b" transform="rotate(60.0 150 150)" d="M150 150C127 122 131 72 150 42C169 72 173 122 150 150Z"/><path class="pb-petal b" transform="rotate(120.0 150 150)" d="M150 150C127 122 131 72 150 42C169 72 173 122 150 150Z"/><path class="pb-petal b" transform="rotate(180.0 150 150)" d="M150 150C127 122 131 72 150 42C169 72 173 122 150 150Z"/><path class="pb-petal b" transform="rotate(240.0 150 150)" d="M150 150C127 122 131 72 150 42C169 72 173 122 150 150Z"/><path class="pb-petal b" transform="rotate(300.0 150 150)" d="M150 150C127 122 131 72 150 42C169 72 173 122 150 150Z"/></g>
+              <circle class="pb-core" cx="150" cy="150" r="74"/></svg>
+            <div class="pacer-inner"><span id="pPhase">Hazır</span><small id="pCount"></small></div></div>
           <p class="pacer-time" id="pTime"></p>
         </div>
       </div>
@@ -587,6 +657,7 @@ const App = (() => {
       $('#pPhase').textContent = label;
       circle.style.transitionDuration = dur + 's';
       circle.className = 'pacer-circle ' + (i === 0 ? 'grow' : i === 2 ? 'shrink' : (i === 1 ? 'hold-big' : 'hold-small'));
+      Motion.phaseArc($('#pArc'), dur);
       let left = dur; $('#pCount').textContent = left;
       clearInterval(tickInt);
       tickInt = setInterval(() => { if (!running) return; left--; if (left > 0) $('#pCount').textContent = left; $('#pTime').textContent = 'Kalan: ' + fmtSec((endAt - Date.now()) / 1000); }, 1000);
@@ -597,7 +668,7 @@ const App = (() => {
       running = false; stopTimers(); keepAwake(false);
       const cfg = update();
       const mins = (Date.now() - started) / 60000;
-      circle.className = 'pacer-circle'; circle.style.transitionDuration = '1s';
+      circle.className = 'pacer-circle'; circle.style.transitionDuration = '1.2s'; Motion.resetArc($('#pArc'));
       $('#pPhase').textContent = complete ? 'Tamamlandı' : 'Durduruldu'; $('#pCount').textContent = ''; $('#pTime').textContent = '';
       $('#pStart').disabled = false; $('#pStop').disabled = true;
       if (mins >= 0.5) {
@@ -633,8 +704,9 @@ const App = (() => {
           <label class="check-inline"><input type="checkbox" id="mBell" checked> Başlangıç ve bitişte zil sesi</label>
           <div class="btn-row"><button class="btn primary" id="mStart">${icon('play')} Başlat</button><button class="btn ghost" id="mPause" disabled>${icon('pause')} Duraklat</button><button class="btn ghost" id="mStop" disabled>${icon('square')} Bitir</button></div>
         </div>
-        <div class="med-stage">
-          <div class="ring big" id="mRing" style="--p:0"><span id="mTime">5:00</span></div>
+        <div class="med-stage" id="mStage">
+          <div class="med-ambient" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="ring big" id="mRing" style="--p:0"><div class="med-center"><div class="med-fig">${figure('nefes', { label: 'Bağdaş kurarak meditasyon yapan kişi' })}</div><span id="mTime">5:00</span></div></div>
           <p class="med-cue" id="mCue" aria-live="polite">Rahat bir oturuş bul ve “Başlat”a bas.</p>
         </div>
       </div>
@@ -660,6 +732,7 @@ const App = (() => {
     }
     function end(complete) {
       clearInterval(int); running = false; keepAwake(false);
+      $('#mStage').classList.remove('is-running', 'is-paused');
       const mins = elapsed / 60;
       $('#mStart').disabled = false; $('#mPause').disabled = true; $('#mStop').disabled = true; $('#mType').disabled = false; $('#mDur').disabled = false;
       $('#mCue').textContent = complete ? 'Meditasyon tamamlandı. Birkaç nefes daha al ve yavaşça gözlerini aç.' : 'Meditasyon sonlandırıldı.';
@@ -674,9 +747,10 @@ const App = (() => {
       total = remaining = Number($('#mDur').value) * 60; elapsed = 0; running = true; paused = false;
       $('#mStart').disabled = true; $('#mPause').disabled = false; $('#mStop').disabled = false; $('#mType').disabled = true; $('#mDur').disabled = true;
       $('#mCue').dataset.i = ''; if ($('#mBell').checked) bell(528, 3); keepAwake(true); render();
+      $('#mStage').classList.add('is-running');
       int = setInterval(() => { if (paused) return; remaining--; elapsed++; if (remaining <= 0) { remaining = 0; render(); end(true); } else render(); }, 1000);
     });
-    $('#mPause').addEventListener('click', () => { paused = !paused; $('#mPause').innerHTML = paused ? `${icon('play')} Devam` : `${icon('pause')} Duraklat`; refreshIcons(); });
+    $('#mPause').addEventListener('click', () => { paused = !paused; $('#mStage').classList.toggle('is-paused', paused); $('#mPause').innerHTML = paused ? `${icon('play')} Devam` : `${icon('pause')} Duraklat`; refreshIcons(); });
     $('#mStop').addEventListener('click', () => end(false));
     onCleanup(() => { if (running) { clearInterval(int); running = false; keepAwake(false); } });
   }
@@ -729,7 +803,7 @@ const App = (() => {
   }
   function runPlayer(el, p) {
     const pl = el.querySelector('#player');
-    let i = 0, left = p.steps[0].s, paused = false, elapsed = 0, int = null;
+    let i = 0, left = p.steps[0].s, paused = false, elapsed = 0, int = null, shownFig = null;
     const total = progTotal(p);
     document.body.classList.add('no-scroll');
     pl.hidden = false;
@@ -753,6 +827,9 @@ const App = (() => {
         </div>
         <p class="tiny pl-warn">${icon('triangle-alert')} Ağrı, baş dönmesi veya nefes darlığında duraklat ve dinlen.</p></div>`;
       refreshIcons();
+      const svg = pl.querySelector('.pl-fig svg');
+      if (shownFig && shownFig !== x.fig) Figure.morph(svg, shownFig, x.fig, { duration: 950 });
+      shownFig = x.fig;
       pl.querySelector('#plClose').onclick = () => stop(false);
       pl.querySelector('#plPrev').onclick = () => { if (i > 0) { i--; left = p.steps[i].s; draw(); } };
       pl.querySelector('#plNext').onclick = () => next();
@@ -772,7 +849,7 @@ const App = (() => {
         bell(528, 2.5);
         Progress.setRead('m7', p.id, true);
         Progress.logSession({ minutes: Math.max(1, Math.round(mins)), type: 'program', label: p.title, ref: p.id });
-        toast(`Tebrikler! ${p.title} tamamlandı.`, 'ok');
+        Motion.celebrate({ title: 'Program tamamlandı', text: `${h(p.title)} · ${Math.max(1, Math.round(mins))} dk pratik kaydedildi.`, fig: 'ayakta' });
         Progress.checkBadges(); updateChrome(); pageProgram(el, p.id); refreshIcons();
       } else if (mins >= 1 && confirm(`Program yarıda kaldı. Yapılan ${Math.round(mins)} dakikalık pratik kaydedilsin mi?`)) {
         Progress.logSession({ minutes: Math.round(mins), type: 'program', label: p.title + ' (kısmi)', ref: p.id });
@@ -870,7 +947,7 @@ const App = (() => {
       <section class="settings-section" id="guvenlik">
         <h2>${icon('shield-alert')} Sağlık ve Güvenlik Bilgilendirmesi</h2>
         <div class="card">${disclaimer()}
-          <p class="tiny muted">Yoga Akademisi bir teşhis, tedavi veya rehabilitasyon aracı değildir; kişiye özel tıbbi öneri vermez.</p></div>
+          <p class="tiny muted">Areluma Yoga bir teşhis, tedavi veya rehabilitasyon aracı değildir; kişiye özel tıbbi öneri vermez.</p></div>
       </section>
       <section class="settings-section">
         <h2>${yi('chart')} Verilerin</h2>
@@ -974,12 +1051,13 @@ const App = (() => {
     renderCrumbs(p0, p1, p2);
     const key = navKey[p0] || '#/';
     document.querySelectorAll('#nav a').forEach(a => { const on = a.dataset.nav === (p0 === 'programlar' ? '#/moduller' : key); a.classList.toggle('active', on); on ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'); });
-    document.title = `${TITLES[p0] || 'Sayfa'} · Yoga Akademisi`;
+    document.title = `${TITLES[p0] || 'Sayfa'} · Areluma Yoga`;
     if (document.body.classList.contains('nav-open')) setMenu(false);
     const hasSection = (p0 === 'nefes' && p1) || (p0 === 'panel' && p1) || (p0 === 'ayarlar' && p1);
     if (!hasSection) window.scrollTo(0, 0);
     el.classList.remove('enter'); void el.offsetWidth; el.classList.add('enter');
     refreshIcons();
+    Motion.enhance(el);
   }
 
   /* ------------------------------------------------ Karşılama penceresi */
@@ -987,8 +1065,8 @@ const App = (() => {
     if (Store.state.profile.safetyAck && Store.state.profile.disclaimerAck) return;
     const root = document.getElementById('modal-root');
     root.innerHTML = `<div class="modal-back"><div class="modal card" role="dialog" aria-modal="true" aria-labelledby="obTitle">
-      <img src="assets/icons/logo.svg" alt="" width="56" height="56">
-      <h2 id="obTitle">Yoga Akademisi’ne hoş geldin</h2>
+      <div class="ob-ill">${ill('hero', '', 'scene')}</div>
+      <h2 id="obTitle">Areluma Yoga’ya hoş geldin</h2>
       <p>Sıfırdan başlayarak 30 günde güvenli bir yoga alışkanlığı kurman için buradayız.</p>
       <label class="field"><span>Sana nasıl hitap edelim? (isteğe bağlı)</span><input id="obName" maxlength="40" placeholder="Adın"></label>
       <h3 class="disc-title">${icon('shield-alert')} Sağlık ve Güvenlik Bilgilendirmesi</h3>
@@ -1009,20 +1087,20 @@ const App = (() => {
   /* ------------------------------------------------ Sayfa başlığı illüstrasyonları */
   const PROG_ICON = { p5: 'sprout', 'p10-sabah': 'home', 'p15-temel': 'pose', 'p20-tum': 'mountain', 'p10-aksam': 'lotus', 'p-masa': 'chart', 'p-denge': 'balance' };
   const HEAD_ILL = {
-    baslangic: ['baslangic', 'Kontrol listesi ve mat ile yogaya hazırlanan kişi'], pozlar: ['pozlar', 'Savaşçı II duruşunda kişi'],
+    baslangic: ['baslangic', 'Kontrol listesi ve mat ile yogaya hazırlanan kişi'], pozlar: ['pozlar', 'Kemerin önünde Ağaç duruşunda kişi'],
     nefes: ['nefes', 'Nefese odaklanan kişi ve nefes dalgaları'], meditasyon: ['meditasyon', 'Ay ışığında meditasyon yapan kişi'],
     program: ['program', 'Tamamlanan günleri gösteren takvim ve büyüyen bitki'], gun: ['program', 'Takvim ve büyüyen bitki'],
     panel: ['panel', 'Yükselen gelişim grafiği'], rapor: ['panel', 'Yükselen gelişim grafiği'], quiz: ['quiz', 'Soru ve onay işaretli konuşma balonları'],
-    rozetler: ['rozetler', 'Kupa ve madalyalar'], harita: ['moduller', 'Açık kitaptan filizlenen bitki'], ayarlar: ['baslangic', 'Hazırlanan kişi ve kontrol listesi'], kaynakca: ['kaynakca', 'Kitap yığını ve büyüteç'], programlar: ['programlar', 'Ağaç duruşunda kişi ve kronometre']
+    rozetler: ['rozetler', 'Kupa ve madalyalar'], harita: ['moduller', 'Açık kitaptan filizlenen bitki'], ayarlar: ['ayarlar', 'Dağ duruşunda kişi ve renk örnekleri'], kaynakca: ['kaynakca', 'Kitap yığını ve büyüteç'], programlar: ['programlar', 'Dağ, Savaşçı I ve Ağaç duruşlarından oluşan akış ve kronometre']
   };
   function decorateHead(el, p0, p1) {
-    const ill = HEAD_ILL[p0];
+    const il = HEAD_ILL[p0];
     const head = el.querySelector('.page-head');
     if (!head) return;
     head.classList.add('band', 'band-center');
     const eb = head.querySelector('.eyebrow'); if (eb) eb.classList.add('band-label');
     const h1 = head.querySelector('h1'); if (h1) h1.classList.add('display');
-    if (ill && !(p0 === 'quiz' && p1)) head.insertAdjacentHTML('beforeend', `<img class="band-ill" src="assets/illustrations/${ill[0]}.svg" alt="${h(ill[1])}" width="400" height="300">`);
+    if (il && !(p0 === 'quiz' && p1)) head.insertAdjacentHTML('beforeend', ill(il[0], il[1]));
   }
   async function loadSprite() {
     try {
@@ -1048,7 +1126,7 @@ const App = (() => {
     route(); updateChrome(); onboarding();
   }
 
-  return { init, yi, videoBlock, bindVideos, h, icon, bar, today, fmtDate, toast, badgeToast, badgeMedal, figure, poseById, sourceList, notFound, refreshIcons, updateChrome, go };
+  return { init, yi, ill, videoBlock, bindVideos, h, icon, bar, today, fmtDate, toast, badgeToast, badgeMedal, figure, poseById, sourceList, notFound, refreshIcons, updateChrome, go };
 })();
 
 document.addEventListener('DOMContentLoaded', App.init);
