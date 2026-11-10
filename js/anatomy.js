@@ -314,35 +314,93 @@ const Anatomy = (() => {
   const has = (id) => !!POSES[id];
   const mid = (a, b) => [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
 
+  /** Atlas tarzı kas haritası (js/anatomy-art.js); her kas tıklanabilir ve klavyeyle seçilebilir */
   function musclesSvg(d, view, sel) {
-    const shapes = (view === 'back' ? BACK : FRONT).flatMap(([id, pts, m]) => {
-      const r = roleOf(d, id), mu = MUSCLES[id];
-      const one = (pp, side) => `<polygon points="${P(pp)}" class="an-m r-${r} ${sel === id ? 'sel' : ''}" data-m="${id}" tabindex="0" role="button" aria-label="${h(mu.tr)} (${h(mu.la)}): ${ROLE[r]}"><title>${h(mu.tr)} · ${ROLE[r]}</title></polygon>`;
-      return m ? [one(pts), one(mir(pts))] : [one(pts)];
-    }).join('');
-    return `<svg viewBox="0 0 160 340" class="an-svg" role="group" aria-label="${view === 'back' ? 'Arka' : 'Ön'} görünüm kas haritası">${silhouette}${shapes}</svg>`;
+    const seen = new Set();
+    return AnatomyArt.svg(view, {
+      role: (id) => roleOf(d, id), sel, interactive: true, cls: 'an-svg',
+      label: `${view === 'back' ? 'Arka' : 'Ön'} görünüm kas haritası`,
+      attrs: (id, r, mirror) => {
+        const mu = MUSCLES[id]; if (!mu) return '';
+        const first = !mirror && !seen.has(id); if (first) seen.add(id);
+        return first ? `tabindex="0" role="button" aria-label="${h(mu.tr)} (${h(mu.la)}): ${ROLE[r]}"` : 'aria-hidden="true"';
+      }
+    });
   }
+  /* ---- Çizim yardımcıları: kemik kapsülü (uçları eklem başı gibi genişleyen) */
+  const f1 = (n) => Math.round(n * 10) / 10;
+  function boneCap(a, b, w, knob = 1.35) {
+    const dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy) || 1, ux = dx / L, uy = dy / L, nx = -uy, ny = ux;
+    const P = (p, k, t) => `${f1(p[0] + nx * k + ux * t)} ${f1(p[1] + ny * k + uy * t)}`;
+    const kw = w * knob, sh = w * 0.62;
+    return `M${P(a, kw, 0)}C${P(a, kw, L * .12)} ${P(a, sh, L * .2)} ${P(a, sh, L * .3)}L${P(b, sh, -L * .3)}C${P(b, sh, -L * .2)} ${P(b, kw, -L * .12)} ${P(b, kw, 0)}`
+      + `A${f1(kw)} ${f1(kw)} 0 0 1 ${P(b, -kw, 0)}C${P(b, -kw, -L * .12)} ${P(b, -sh, -L * .2)} ${P(b, -sh, -L * .3)}L${P(a, -sh, L * .3)}C${P(a, -sh, L * .2)} ${P(a, -kw, L * .12)} ${P(a, -kw, 0)}A${f1(kw)} ${f1(kw)} 0 0 1 ${P(a, kw, 0)}Z`;
+  }
+  const MIR = 'transform="translate(160 0) scale(-1 1)"';
+  /** Önden iskelet (160 × 340) – eklem işaretleri SKEL_J ile aynı koordinatlarda */
   function skeletonSvg(d) {
     const on = new Set(d.j.map(x => x[0]));
-    const bones = `<g class="an-bone"><circle cx="80" cy="26" r="15"/><path d="M80 42V150"/>${Array.from({ length: 16 }, (_, i) => `<rect x="76" y="${46 + i * 6.6}" width="8" height="4.6" rx="1.5"/>`).join('')}
-      <path d="M60 70Q80 58 100 70M57 82Q80 70 103 82M57 94Q80 82 103 94M59 106Q80 94 101 106M62 118Q80 108 98 118"/><path d="M58 60L80 54L102 60"/>
-      <path d="M62 152Q80 140 98 152L100 170Q80 186 60 170Z"/><path d="M56 62L45 124L40 178M104 62L115 124L120 178"/><path d="M67 176L63 258L61 322M93 176L97 258L99 322"/></g>`;
-    const joints = Object.entries(SKEL_J).map(([k, pts]) => pts.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="${on.has(k) ? 6 : 3.5}" class="an-j ${on.has(k) ? 'on' : ''}" data-j="${k}" ${on.has(k) ? `tabindex="0" role="button" aria-label="${JOINT[k]}"` : ''}><title>${JOINT[k]}${on.has(k) ? ': ' + h(d.j.find(x => x[0] === k)[1]) : ''}</title></circle>`).join('')).join('');
-    return `<svg viewBox="0 0 160 340" class="an-svg" role="img" aria-label="İskelet ve eklemler">${bones}${joints}</svg>`;
+    const ribs = Array.from({ length: 10 }, (_, i) => { const y = 64 + i * 6.2, out = 54 + Math.min(i, 5) * -0.4 + (i > 6 ? (i - 6) * 1.6 : 0);
+      return `<path d="M79 ${f1(y)}C${f1(out + 6)} ${f1(y - 5)} ${f1(out - 2)} ${f1(y + 4)} ${f1(out + 1)} ${f1(y + 13)}C${f1(out + 4)} ${f1(y + 18)} ${f1(out + 14)} ${f1(y + 17)} ${i < 7 ? `76 ${f1(y + 10)}` : `${f1(out + 16)} ${f1(y + 16)}`}" class="ak-rib"/>`; }).join('');
+    const half = `${ribs}
+      <path d="${boneCap([79, 58], [57, 61], 2.4, 1.2)}" class="ak-bone"/>
+      <path d="M57 60C52 64 52 74 58 82C62 76 62 68 60 61Z" class="ak-bone dim"/>
+      <path d="${boneCap([56, 65], [46, 121], 3.6)}" class="ak-bone"/>
+      <path d="${boneCap([44, 127], [38, 175], 2.2)}" class="ak-bone"/><path d="${boneCap([48, 127], [43, 175], 2)}" class="ak-bone"/>
+      <path d="M36 178C32 186 32 196 36 202C40 200 44 194 46 184C44 178 40 176 36 178Z" class="ak-bone"/>
+      <path d="M79 156C70 148 58 146 54 156C52 168 58 178 66 182C70 186 76 186 79 184Z" class="ak-bone"/><path d="M79 172C74 176 72 182 74 186" class="ak-line"/>
+      <path d="${boneCap([67, 180], [63, 252], 4.2)}" class="ak-bone"/><ellipse cx="63" cy="259" rx="4.6" ry="5.4" class="ak-bone"/>
+      <path d="${boneCap([62, 264], [61, 318], 3.4)}" class="ak-bone"/><path d="${boneCap([68, 266], [66, 318], 1.5, 1.6)}" class="ak-bone dim"/>
+      <path d="M57 322C54 328 54 334 58 336L72 336C72 330 68 324 64 322Z" class="ak-bone"/>`;
+    const spine = Array.from({ length: 19 }, (_, i) => { const y = 46 + i * 6.6, w = 5 + Math.min(i, 18) * 0.22; return `<rect x="${f1(80 - w / 2)}" y="${f1(y)}" width="${f1(w)}" height="4.8" rx="1.6" class="ak-vert"/>`; }).join('');
+    const bones = `<g class="ak-skel">${half}<g ${MIR}>${half}</g>
+      <rect x="77" y="62" width="6" height="44" rx="3" class="ak-bone"/>${spine}
+      <path d="M72 168C76 186 84 186 88 168C86 178 82 182 80 182S74 178 72 168Z" class="ak-bone"/>
+      <ellipse cx="80" cy="25" rx="14.5" ry="17" class="ak-bone"/><path d="M68 32C68 44 74 48 80 48S92 44 92 32C88 38 84 40 80 40S72 38 68 32Z" class="ak-bone"/>
+      <ellipse cx="74" cy="24" rx="3.6" ry="3" class="ak-hole"/><ellipse cx="86" cy="24" rx="3.6" ry="3" class="ak-hole"/><path d="M80 28L78 33H82Z" class="ak-hole"/></g>`;
+    const joints = Object.entries(SKEL_J).map(([k, pts]) => pts.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="${on.has(k) ? 6 : 3}" class="an-j ${on.has(k) ? 'on' : ''}" data-j="${k}" ${on.has(k) ? `tabindex="0" role="button" aria-label="${JOINT[k]}"` : ''}><title>${JOINT[k]}${on.has(k) ? ': ' + h(d.j.find(x => x[0] === k)[1]) : ''}</title></circle>`).join('')).join('');
+    return `<svg viewBox="0 0 160 340" class="an-svg ak-svg" role="img" aria-label="İskelet ve eklemler">${bones}${joints}</svg>`;
   }
+  /** Omurga – yandan görünüm, doğal eğrilerle; bölgeler pozdaki etkilenmeye göre renklenir */
   function spineSvg(d) {
-    const seg = [['Boyun (servikal)', 7, d.spine.c], ['Sırt (torakal)', 12, d.spine.t], ['Bel (lomber)', 5, d.spine.l]];
-    let y = 10;
-    const parts = seg.map(([lbl, n, lv]) => { const out = Array.from({ length: n }, (_, i) => `<rect x="62" y="${y + i * 13}" width="36" height="10" rx="3" class="an-v lv${lv}"/>`).join('') + `<text x="108" y="${y + n * 6.5 + 4}" class="an-t">${lbl}</text>`; y += n * 13 + 8; return out; }).join('');
-    return `<svg viewBox="0 0 220 ${y + 30}" class="an-svg spine" role="img" aria-label="Omurga bölgelerinin pozdaki etkisi: ${h(d.spine.move)}">${parts}<path d="M66 ${y}h28l-4 22h-20z" class="an-v lv0"/><text x="108" y="${y + 14}" class="an-t">Sakrum</text></svg>`;
+    const LV = ['az', 'orta', 'belirgin'];
+    const regions = [['Boyun (servikal)', 'C1–C7', 7, 8.5, 17, d.spine.c], ['Sırt (torakal)', 'T1–T12', 12, 10.5, 21, d.spine.t], ['Bel (lomber)', 'L1–L5', 5, 14.5, 27, d.spine.l]];
+    const ctrl = [[118, 12], [108, 52], [114, 92], [128, 150], [126, 204], [110, 252], [106, 284]];
+    const cx = (y) => { for (let i = 1; i < ctrl.length; i++) { const [x0, y0] = ctrl[i - 1], [x1, y1] = ctrl[i]; if (y <= y1) { const k = (y - y0) / (y1 - y0), e = 0.5 - Math.cos(k * Math.PI) / 2; return x0 + (x1 - x0) * e; } } return ctrl[ctrl.length - 1][0]; };
+    let y = 14, out = '', labels = '';
+    regions.forEach(([name, code, n, hgt, w, lv]) => {
+      const y0 = y;
+      for (let i = 0; i < n; i++) {
+        const yc = y + hgt / 2, x = cx(yc), a = Math.atan2(cx(yc + 4) - cx(yc - 4), 8) * -180 / Math.PI;
+        const sp = name.startsWith('Sırt') ? `M${f1(w / 2 - 2)} -2L${f1(w / 2 + 16)} ${f1(hgt * 0.9)}L${f1(w / 2 + 12)} ${f1(hgt * 1.15)}L${f1(w / 2 - 2)} ${f1(hgt / 2)}Z`
+          : `M${f1(w / 2 - 2)} ${f1(-hgt * .3)}L${f1(w / 2 + 12)} ${f1(-hgt * .1)}L${f1(w / 2 + 12)} ${f1(hgt * .35)}L${f1(w / 2 - 2)} ${f1(hgt * .35)}Z`;
+        out += `<g transform="translate(${f1(x)} ${f1(yc)}) rotate(${f1(a)})"><path d="${sp}" class="ak-vert-p lv${lv}"/><rect x="${f1(-w / 2)}" y="${f1(-hgt / 2)}" width="${w}" height="${hgt}" rx="${f1(hgt * .28)}" class="ak-vert-b lv${lv}"/></g>`;
+        y += hgt;
+        if (i < n - 1 || name.startsWith('Boyun') || name.startsWith('Sırt')) { const xd = cx(y + 1.6); out += `<rect x="${f1(xd - w / 2 + 1)}" y="${f1(y + .3)}" width="${w - 2}" height="2.6" rx="1.3" class="ak-disc"/>`; }
+        y += 3.2;
+      }
+      const ym = (y0 + y) / 2;
+      labels += `<path d="M168 ${f1(y0 + 2)}H172V${f1(y - 5)}H168" class="ak-brace"/><text x="180" y="${f1(ym - 4)}" class="an-t">${name}</text><text x="180" y="${f1(ym + 10)}" class="ak-sub">${code} · etki: ${LV[lv] || 'az'}</text>`;
+    });
+    const sx = cx(y + 18);
+    out += `<path d="M${f1(sx - 15)} ${f1(y)}C${f1(sx - 12)} ${f1(y + 20)} ${f1(sx - 2)} ${f1(y + 38)} ${f1(sx + 10)} ${f1(y + 48)}L${f1(sx + 18)} ${f1(y + 44)}C${f1(sx + 12)} ${f1(y + 30)} ${f1(sx + 12)} ${f1(y + 14)} ${f1(sx + 16)} ${f1(y)}Z" class="ak-bone"/>
+      <path d="M${f1(sx + 10)} ${f1(y + 50)}l3 7 4-2-2-6z" class="ak-bone"/>`;
+    labels += `<path d="M168 ${f1(y + 2)}H172V${f1(y + 50)}H168" class="ak-brace"/><text x="180" y="${f1(y + 24)}" class="an-t">Sakrum ve kuyruk sokumu</text>`;
+    return `<svg viewBox="0 0 330 ${f1(y + 70)}" class="an-svg spine ak-svg" role="img" aria-label="Omurga bölgelerinin pozdaki etkisi: ${h(d.spine.move)}">
+      <text x="62" y="${f1(y + 66)}" class="ak-sub">← ön</text><text x="140" y="${f1(y + 66)}" class="ak-sub">arka →</text>${out}${labels}</svg>`;
   }
+  /** Göğüs kafesi, akciğerler ve diyafram – önden */
   function breathSvg(d) {
     const dia = d.m.some(x => x[0] === 'diaphragm'), ic2 = d.m.some(x => x[0] === 'intercostals');
-    return `<svg viewBox="0 0 160 200" class="an-svg" role="img" aria-label="Göğüs kafesi, akciğerler ve diyafram">
-      <path d="M80 20C46 30 34 70 36 120C38 150 50 166 60 168L80 150L100 168C110 166 122 150 124 120C126 70 114 30 80 20Z" class="an-rib"/>
-      <path d="M78 36C60 40 48 70 48 110C48 136 56 150 64 150C72 150 76 136 76 120Z" class="an-lung"/><path d="M82 36C100 40 112 70 112 110C112 136 104 150 96 150C88 150 84 136 84 120Z" class="an-lung"/>
-      ${[56, 76, 96, 116].map(y => `<path d="M42 ${y}Q80 ${y - 14} 118 ${y}" class="an-ribline ${ic2 ? 'on' : ''}"/>`).join('')}
-      <path d="M40 150Q80 112 120 150" class="an-dia ${dia ? 'on' : ''}"/><text x="80" y="186" class="an-t mid">Diyafram</text></svg>`;
+    const lungL = 'M76 44C62 46 46 70 44 104C42 128 46 146 52 152C60 150 70 146 78 148C80 128 78 92 79 62C79 52 78 46 76 44Z';
+    const ribs = Array.from({ length: 8 }, (_, i) => { const y = 50 + i * 13; return `<path d="M80 ${y}C60 ${y - 8} 36 ${y + 2} 34 ${y + 18}C34 ${y + 26} 44 ${y + 30} 58 ${y + 26}" class="ak-rib2 ${ic2 ? 'on' : ''}"/>`; }).join('');
+    const half = `<path d="${lungL}" class="ak-lung"/><path d="M50 98C58 92 68 96 76 92M47 122C58 116 66 120 74 114" class="ak-fiss"/>${ribs}`;
+    return `<svg viewBox="0 0 160 200" class="an-svg ak-svg" role="img" aria-label="Göğüs kafesi, akciğerler ve diyafram">
+      ${half}<g ${MIR}>${half}</g>
+      <path d="M80 14V44M80 44L69 58M80 44L91 58" class="ak-trachea"/>
+      <rect x="76" y="46" width="8" height="70" rx="4" class="ak-bone"/>
+      <path d="M28 172C36 150 56 150 80 157C104 150 124 150 132 172" class="ak-dia ${dia ? 'on' : ''}"/>
+      <text x="80" y="186" class="an-t mid">Diyafram${dia ? ' · aktif' : ''}</text><text x="80" y="198" class="ak-sub mid">${ic2 ? 'Kaburgalar arası kaslar da çalışır' : ''}</text></svg>`;
   }
   function figureWithJoints(pose, d) {
     const f = pose.fig; const pos = { neck: mid(f.h, f.n), shoulder: f.n, elbow: f.le, wrist: f.lh, spine: f.c || mid(f.n, f.p), hip: f.p, knee: f.lk, ankle: f.lf };
@@ -499,5 +557,5 @@ const Anatomy = (() => {
     if (cat) setTimeout(() => { const t = document.getElementById('cat-' + cat) || document.getElementById(cat); if (t) t.scrollIntoView({ behavior: 'smooth' }); }, 60);
   }
 
-  return { MUSCLES, CATS, POSES, ROLE, has, mount, infoCards, renderHub, musclesSvg, quizQuestions };
+  return { MUSCLES, CATS, POSES, ROLE, has, mount, infoCards, renderHub, musclesSvg, skeletonSvg, spineSvg, breathSvg, quizQuestions };
 })();

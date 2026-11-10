@@ -138,10 +138,13 @@ const Viz = (() => {
     ['quads', 'hamstrings', 'r', 42, 129, 17, 52, 8], ['quads', 'hamstrings', 'r', 61, 129, 17, 52, 8],
     ['calves', 'calves', 'r', 44, 184, 13, 50, 6], ['calves', 'calves', 'r', 63, 184, 13, 50, 6]
   ];
+  /* Bölge → kas eşlemesi: atlas çizimindeki kaslar bölge açıkken "aktif" renklenir */
+  const REGION_MUSCLES = { neck: ['neck', 'trapezius'], shoulders: ['deltoid'], arms: ['biceps', 'triceps', 'forearm'], chest: ['pectoralis', 'serratus'],
+    core: ['rectusAbd', 'obliques'], hipflex: ['hipFlexors'], quads: ['quadriceps'], back: ['trapezius', 'latissimus', 'erector'], glutes: ['gluteusMax', 'gluteusMed'],
+    hamstrings: ['hamstrings'], calves: ['gastrocnemius', 'tibialis'] };
   function bodySvg(active, back) {
-    const on = new Set(active);
-    return `<svg viewBox="0 0 120 244" class="vz-body-svg" aria-hidden="true"><circle cx="60" cy="19" r="13" class="vb-head"/>
-      ${SHAPES.map(s => { const reg = back ? s[1] : s[0]; return `<rect x="${s[3]}" y="${s[4]}" width="${s[5]}" height="${s[6]}" rx="${s[7]}" class="vb ${on.has(reg) ? 'on' : ''}" data-region="${reg}"/>`; }).join('')}</svg>`;
+    const on = new Set(active.flatMap(r => REGION_MUSCLES[r] || []));
+    return AnatomyArt.svg(back ? 'back' : 'front', { role: (id) => on.has(id) ? 'a' : 'n', cls: 'vz-body-svg', label: back ? 'Arka görünüm' : 'Ön görünüm' }).replace('role="img"', 'aria-hidden="true"');
   }
   function bodymap(regions, o = {}) {
     const names = regions.map(r => REGION_LABEL[r]).filter(Boolean);
