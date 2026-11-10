@@ -1,0 +1,205 @@
+/* ==========================================================================
+   Areluma Yoga – görsel kimlik katmanı
+   Figür/sahne renkleri, hareket belirteçleri ve amaçlı animasyonlar.
+   Tüm renkler tema değişkenlerinden türetilir (10 tema ile uyumlu).
+   ========================================================================== */
+@property --p { syntax: '<number>'; inherits: true; initial-value: 0; }
+
+:root {
+  /* Hareket belirteçleri: tek bir dil, birkaç süre */
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --ease-breath: cubic-bezier(.45, .05, .55, .95);
+  --dur-fast: 180ms; --dur-base: 320ms; --dur-slow: 620ms;
+
+  /* Figür paleti */
+  --fig-skin: #E2AD8A;
+  --fig-skin-shade: #C78F6C;
+  --fig-hair: #2F2522;
+  --fig-top: var(--color-primary-strong, #5E7360);
+  --fig-pants: color-mix(in srgb, var(--color-text, #2b2b2b) 72%, var(--color-primary-deep, #3E4F3D));
+  --fig-pants-b: color-mix(in srgb, var(--fig-pants) 70%, var(--color-surface, #fff));
+}
+
+/* ---------------------------------------------------------------- Figür */
+.fg .fg-skin, .scene .fg-skin { fill: var(--fig-skin); }
+.fg .fg-skin-b, .scene .fg-skin-b { fill: var(--fig-skin-shade); }
+.fg .fg-hair, .scene .fg-hair { fill: var(--fig-hair); }
+.fg .fg-top, .scene .fg-top { fill: var(--fig-top); }
+.fg .fg-pants, .scene .fg-pants { fill: var(--fig-pants); }
+.fg .fg-pants-b, .scene .fg-pants-b { fill: var(--fig-pants-b); }
+.fg .fg-mat, .scene .fg-mat { fill: color-mix(in srgb, var(--color-primary) 30%, var(--color-surface)); }
+.fg .fg-mat-top { fill: color-mix(in srgb, var(--color-primary) 16%, var(--color-surface)); }
+.fg .fg-mat-edge { fill: none; stroke: color-mix(in srgb, var(--color-primary) 28%, var(--color-surface)); stroke-width: 1.5; stroke-dasharray: 2 5; }
+.fg .fg-shadow, .scene .fg-shadow { fill: var(--color-text); opacity: .1; }
+.fg .fg-chair, .scene .fg-chair { fill: none; stroke: color-mix(in srgb, var(--color-text) 45%, var(--color-surface)); stroke-width: 5; stroke-linecap: round; }
+.fg-hl { fill: var(--r); opacity: .92; }
+/* Anatomi görünümü: giysiler nötrleşir, vurgulanan bölgeler okunur */
+.fg-anat .fg-top, .fg-anat .fg-pants, .fg-anat .fg-skin { fill: color-mix(in srgb, var(--color-text) 16%, var(--color-surface)); }
+.fg-anat .fg-pants-b, .fg-anat .fg-skin-b { fill: color-mix(in srgb, var(--color-text) 9%, var(--color-surface)); }
+.fg-anat .fg-hair { fill: color-mix(in srgb, var(--color-text) 40%, var(--color-surface)); }
+.fg-anat .fg-back + .fg-front ~ .fg-hls .fg-hl { opacity: .92; }
+.fg-anat .fg-hl.r-s { opacity: .8; }
+.fg-hls { pointer-events: none; }
+.pose-fig.fg { overflow: visible; }
+
+/* ---------------------------------------------------------------- Sahneler (sayfa başlıkları) */
+.scene { display: block; width: 100%; height: auto; overflow: visible; }
+.scene .sc-arch { fill: color-mix(in srgb, var(--color-secondary-soft) 88%, #fff); }
+.scene .sc-arch.night { fill: color-mix(in srgb, var(--color-primary-deep) 70%, #1b1f2a); }
+.scene .sc-arch-line { fill: none; stroke: color-mix(in srgb, var(--color-primary) 34%, transparent); stroke-width: 1.6; stroke-dasharray: 1 7; stroke-linecap: round; }
+.scene .sc-sun { fill: color-mix(in srgb, var(--color-cta) 55%, #F6D9A8); }
+.scene .sc-sun-halo { fill: none; stroke: color-mix(in srgb, var(--color-cta) 40%, #F6D9A8); stroke-width: 1.5; opacity: .55; }
+.scene .sc-spark, .scene .sc-star { fill: color-mix(in srgb, var(--color-cta) 40%, #fff); }
+.scene .sc-star { fill: #F7E7C3; }
+.scene .sc-floor { stroke: color-mix(in srgb, var(--color-text) 18%, transparent); stroke-width: 2; stroke-linecap: round; }
+.scene .sc-floor-shade { fill: var(--color-text); opacity: .06; }
+.scene .sc-leaf { fill: color-mix(in srgb, var(--color-primary) 70%, #4b6b4a); }
+.scene .sc-stem { fill: none; stroke: color-mix(in srgb, var(--color-primary) 60%, #3f5a3e); stroke-width: 2.6; stroke-linecap: round; }
+.scene .sc-pot { fill: color-mix(in srgb, var(--color-cta) 70%, #8a5a3c); }
+.scene .sc-pot-rim { fill: color-mix(in srgb, var(--color-cta) 55%, #6e432b); }
+.scene .sc-card { fill: var(--color-surface); stroke: color-mix(in srgb, var(--color-text) 12%, transparent); stroke-width: 1.2; }
+.scene .sc-line { fill: none; stroke: color-mix(in srgb, var(--color-text) 28%, transparent); stroke-width: 2.2; stroke-linecap: round; }
+.scene .sc-accent { fill: var(--color-cta); }
+.scene .sc-check { fill: none; stroke: var(--color-cta-text, #fff); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.scene .sc-dot { fill: color-mix(in srgb, var(--color-text) 12%, var(--color-surface)); }
+.scene .sc-dot-on { fill: color-mix(in srgb, var(--color-primary) 55%, var(--color-surface)); }
+.scene .sc-ring-bg { fill: none; stroke: color-mix(in srgb, var(--color-text) 10%, var(--color-surface)); stroke-width: 7; }
+.scene .sc-ring { fill: none; stroke: var(--color-cta); stroke-width: 7; stroke-linecap: round; }
+.scene .sc-text { font: 700 11px var(--font, sans-serif); fill: var(--color-heading); }
+.scene .sc-ribbon { fill: color-mix(in srgb, var(--color-primary) 70%, var(--color-surface)); }
+.scene .sc-medal-in { fill: color-mix(in srgb, var(--color-cta) 55%, #fff); }
+.scene .sc-medal-star { fill: #fff; }
+.scene .sc-wave { fill: none; stroke: color-mix(in srgb, var(--color-primary) 55%, var(--color-surface)); stroke-width: 3; stroke-linecap: round; }
+.scene .sc-mat-roll { fill: color-mix(in srgb, var(--color-cta) 60%, var(--color-surface)); }
+.scene .sc-mat-end { fill: none; stroke: color-mix(in srgb, var(--color-cta) 80%, #5a3a28); stroke-width: 2; }
+.scene .sc-candle { fill: #F4EBDD; }
+.scene .sc-flame { fill: #F2B35C; }
+.scene .sc-q { fill: none; stroke: var(--color-cta); stroke-width: 3.4; stroke-linecap: round; }
+.scene .sc-mat-top { fill: none; }
+.band .scene { width: min(400px, 86%); margin: 18px auto 0; }
+.band-ill.scene { animation: none; }
+.cc-banner .scene { height: 100%; width: auto; max-width: 100%; margin: 0 auto; padding: 10px 0 0; }
+
+/* ---------------------------------------------------------------- Logo */
+.arl-mark { display: block; flex: none; }
+.arl-mark .m-bg { fill: var(--color-primary-strong); }
+.arl-mark .m-arch { fill: none; stroke: color-mix(in srgb, #fff 80%, var(--color-primary)); stroke-width: 3.4; stroke-linecap: round; }
+.arl-mark .m-sun { fill: color-mix(in srgb, var(--color-cta) 60%, #F6D9A8); }
+.arl-mark .m-fig { fill: #fff; }
+.brand .brand-word { font-family: var(--serif, serif); letter-spacing: .01em; }
+.brand .brand-word small { font: 700 .62rem/1 var(--font, sans-serif); letter-spacing: .18em; text-transform: uppercase; color: inherit; opacity: .8; margin-left: 6px; vertical-align: .3em; }
+
+/* Üst barda logo zemini bara karışmasın */
+.topbar .arl-mark .m-bg, .menu-head .arl-mark .m-bg { fill: color-mix(in srgb, #fff 16%, var(--color-primary-strong)); }
+.brand .brand-word { font-size: 1.25rem; }
+
+/* ---------------------------------------------------------------- Kartlar: zarif üzerine gelme / dokunma */
+a.card, .feature, .course-card, .pose-card, .program-card, .day-tile {
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) ease, background-color .3s ease;
+}
+@media (hover: hover) {
+  a.card:hover, .feature:hover, .course-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px -14px var(--color-shadow-strong), 0 2px 6px var(--color-shadow); }
+  .pose-card .pose-fig, .cc-banner .scene, .feature > .yi { transition: transform var(--dur-slow) var(--ease-out); }
+  .pose-card:hover .pose-fig { transform: translateY(-3px) scale(1.035); }
+  .course-card:hover .cc-banner .scene { transform: scale(1.03); }
+}
+a.card:active, .feature:active, .course-card:active, .day-tile:active, .btn:active { transform: scale(.985); transition-duration: var(--dur-fast); }
+.main.enter { animation: arlEnter .42s var(--ease-out) both; }
+@keyframes arlEnter { from { opacity: 0; } to { opacity: 1; } }
+.ob-ill { width: min(260px, 70%); margin: 0 auto 6px; }
+.empty-ill { width: min(320px, 80%); margin: 0 auto 10px; }
+
+/* ---------------------------------------------------------------- Nefes rehberi: Areluma çiçeği */
+.pacer-circle, .pacer-circle.grow, .pacer-circle.shrink, .pacer-circle.hold-big, .pacer-circle.hold-small {
+  position: relative; width: min(300px, 78vw); height: auto; aspect-ratio: 1; transform: none; background: none; box-shadow: none; border-radius: 0; display: grid; place-items: center;
+}
+.pacer-bloom { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; transition-duration: inherit; }
+.pb-track { fill: none; stroke: color-mix(in srgb, var(--color-primary) 16%, transparent); stroke-width: 3; }
+.pb-arc { fill: none; stroke: var(--color-cta); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 1 1; stroke-dashoffset: 1; transform: rotate(-90deg); transform-origin: 150px 150px; }
+.pb-layer, .pb-core { transform-box: view-box; transform-origin: 150px 150px; transition-property: transform; transition-duration: inherit; transition-timing-function: var(--ease-breath); }
+.pb-petal { fill: color-mix(in srgb, var(--color-primary) 42%, transparent); }
+.pb-petal.b { fill: color-mix(in srgb, var(--color-secondary) 70%, transparent); }
+.pb-core { fill: var(--color-surface); filter: drop-shadow(0 6px 14px var(--color-shadow-strong)); }
+.pb-layer.l1 { transform: scale(.64) rotate(0deg); }
+.pb-layer.l2 { transform: scale(.6) rotate(30deg); }
+.pb-core { transform: scale(.66); }
+.pacer-circle.grow .l1, .pacer-circle.hold-big .l1 { transform: scale(1) rotate(22.5deg); }
+.pacer-circle.grow .l2, .pacer-circle.hold-big .l2 { transform: scale(.86) rotate(0deg); }
+.pacer-circle.grow .pb-core, .pacer-circle.hold-big .pb-core { transform: scale(.82); }
+.pacer-inner { position: relative; color: var(--color-heading); text-align: center; max-width: 52%; }
+.pacer-inner span { font: 600 1.15rem/1.2 var(--serif); color: var(--color-heading); }
+.pacer-inner small { display: block; margin-top: 4px; font: 700 1.7rem/1 var(--font); color: var(--color-primary-ink); font-variant-numeric: tabular-nums; }
+.pacer-stage { background: radial-gradient(circle at 50% 45%, var(--color-secondary-soft), var(--color-background) 72%); }
+
+/* ---------------------------------------------------------------- Meditasyon: hafif ortam hareketi (yalnızca seans sırasında) */
+.med-stage { position: relative; overflow: hidden; isolation: isolate; }
+.med-ambient { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.med-ambient i { position: absolute; width: 60%; aspect-ratio: 1; border-radius: 50%; filter: blur(40px); opacity: .55; will-change: transform; }
+.med-ambient i:nth-child(1) { left: -12%; top: -16%; background: color-mix(in srgb, var(--color-secondary) 70%, transparent); }
+.med-ambient i:nth-child(2) { right: -18%; top: 20%; background: color-mix(in srgb, var(--color-primary) 35%, transparent); }
+.med-ambient i:nth-child(3) { left: 20%; bottom: -30%; background: color-mix(in srgb, var(--color-cta) 26%, transparent); }
+.med-stage.is-running .med-ambient i:nth-child(1) { animation: drift1 38s ease-in-out infinite alternate; }
+.med-stage.is-running .med-ambient i:nth-child(2) { animation: drift2 46s ease-in-out infinite alternate; }
+.med-stage.is-running .med-ambient i:nth-child(3) { animation: drift3 52s ease-in-out infinite alternate; }
+.med-stage.is-paused .med-ambient i, .med-stage.is-paused .med-fig { animation-play-state: paused !important; }
+@keyframes drift1 { to { transform: translate(18%, 14%) scale(1.12); } }
+@keyframes drift2 { to { transform: translate(-16%, -10%) scale(.92); } }
+@keyframes drift3 { to { transform: translate(-10%, -18%) scale(1.08); } }
+#mRing { transition: --p 1s linear; }
+.med-center { position: relative; display: grid; justify-items: center; gap: 0; }
+.med-fig { width: 92px; margin-top: -8px; transform-origin: 50% 90%; }
+.med-fig .fg-mat, .med-fig .fg-shadow { display: none; }
+.med-stage.is-running .med-fig { animation: medBreath 11s var(--ease-breath) infinite; }
+@keyframes medBreath { 0%, 100% { transform: scale(1); } 45% { transform: scale(1.035); } }
+.ring.big .med-center span { font-size: 1.8rem; }
+
+/* ---------------------------------------------------------------- Program oynatıcı */
+.pl-fig svg { display: block; }
+
+/* ---------------------------------------------------------------- Poza giriş: adım adım */
+.stepper-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 26px; align-items: start; margin-bottom: 26px; }
+.st-stage { background: radial-gradient(circle at 50% 40%, var(--color-secondary-soft), var(--color-surface) 75%); border-radius: var(--radius, 18px); padding: 18px 18px 12px; position: sticky; top: 90px; }
+.st-fig .pose-fig { max-width: 340px; margin: 0 auto; display: block; }
+.st-anat { margin-top: 8px; justify-content: center; }
+.st-legend { justify-content: center; margin: 6px 0 0; }
+.st-body h2 { margin-top: 0; }
+.st-steps { list-style: none; padding: 0; margin: 0 0 16px; display: grid; gap: 6px; counter-reset: none; }
+.st-steps button { display: flex; gap: 12px; align-items: flex-start; width: 100%; text-align: left; padding: 10px 12px; border-radius: 12px; border: 1px solid transparent; background: transparent; font: inherit; color: var(--color-muted); cursor: pointer; transition: background-color var(--dur-base) ease, color var(--dur-base) ease, border-color var(--dur-base) ease; }
+.st-steps button:hover { background: color-mix(in srgb, var(--color-primary) 7%, transparent); }
+.st-steps button[aria-current] { background: var(--color-info-bg); border-color: color-mix(in srgb, var(--color-primary) 30%, transparent); color: var(--color-text); }
+.st-steps button.done { color: var(--color-text); }
+.st-no { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font: 700 .8rem var(--font); background: color-mix(in srgb, var(--color-text) 8%, var(--color-surface)); transition: background-color var(--dur-base) ease, color var(--dur-base) ease; }
+.st-steps button.done .st-no { background: color-mix(in srgb, var(--color-primary) 25%, var(--color-surface)); }
+.st-steps button[aria-current] .st-no { background: var(--color-cta); color: var(--color-cta-text); }
+@media (max-width: 760px) { .stepper-card { grid-template-columns: 1fr; gap: 14px; } .st-stage { position: static; } .st-fig .pose-fig { max-width: 260px; } }
+
+/* ---------------------------------------------------------------- Başarı anı */
+.celebrate { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; padding: 16px; background: var(--color-overlay); }
+.cel-card { width: min(380px, 100%); background: var(--color-surface); border-radius: 26px; padding: 26px 24px 22px; text-align: center; box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .35); }
+.cel-card h2 { margin: 6px 0 4px; font-family: var(--serif); }
+.cel-card p { margin: 0 0 16px; color: var(--color-muted); }
+.cel-stage { position: relative; width: 170px; height: 170px; margin: 0 auto; }
+.cel-ring { position: absolute; inset: 0; transform: rotate(-90deg); }
+.cel-track { fill: color-mix(in srgb, var(--color-secondary-soft) 70%, var(--color-surface)); stroke: color-mix(in srgb, var(--color-text) 8%, transparent); stroke-width: 5; }
+.cel-arc { fill: none; stroke: var(--color-cta); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 1 1; stroke-dashoffset: 0; }
+.cel-fig { position: absolute; inset: 14px 18px 18px; }
+.cel-fig .fg-mat, .cel-fig .fg-shadow { display: none; }
+.cel-check { position: absolute; right: 6px; bottom: 10px; width: 40px; height: 40px; border-radius: 50%; background: var(--color-cta); display: grid; place-items: center; box-shadow: 0 0 0 4px var(--color-surface); }
+.cel-check svg { width: 22px; height: 22px; }
+.cel-check path { fill: none; stroke: var(--color-cta-text); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 1; }
+.cel-burst { position: absolute; left: 50%; top: 50%; }
+.cel-burst i { position: absolute; width: 8px; height: 8px; margin: -4px; border-radius: 50%; background: var(--color-cta); opacity: 0; }
+.cel-burst i:nth-child(3n) { background: var(--color-primary); width: 6px; height: 6px; }
+.cel-burst i:nth-child(3n+1) { background: var(--color-secondary); border-radius: 2px; }
+
+/* ---------------------------------------------------------------- Azaltılmış hareket */
+@media (prefers-reduced-motion: reduce) {
+  .pb-layer.l1, .pacer-circle.grow .l1, .pacer-circle.hold-big .l1 { transform: scale(.78) rotate(0deg) !important; }
+  .pb-layer.l2, .pacer-circle.grow .l2, .pacer-circle.hold-big .l2 { transform: scale(.7) rotate(30deg) !important; }
+  .pb-core, .pacer-circle.grow .pb-core, .pacer-circle.hold-big .pb-core { transform: scale(.74) !important; }
+  .med-ambient i, .med-fig { animation: none !important; }
+  #mRing { transition: none; }
+  .celebrate .cel-burst { display: none; }
+  a.card:hover, .feature:hover, .course-card:hover, .pose-card:hover .pose-fig { transform: none !important; }
+}
