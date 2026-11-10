@@ -301,3 +301,58 @@ a.card:active, .feature:active, .course-card:active, .day-tile:active, .btn:acti
 @media (max-width: 640px) {
   .br-card { padding: 14px 12px; }
 }
+
+/* ================================================================ Anatomik kas çizimleri (js/anatomy-art.js) */
+/* Rol renkleri tıbbi atlas mantığıyla sabit: aktif = kırmızı, esneyen = mavi, stabilizasyon = amber */
+.r-a { --r: #C9433A; } .r-s { --r: #3B7DC4; } .r-t { --r: #D8971F; } .r-n { --r: #CC8476; }
+.am-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.am-skin { fill: color-mix(in srgb, var(--fig-skin) 62%, #fff); }
+.am-hair { fill: var(--fig-hair); }
+.am-m { stroke: #4a1712; stroke-opacity: .38; stroke-width: .6; stroke-linejoin: round; }
+.am-n { fill: #CC8476; }
+.am-tendon { fill: #E6CDBB; stroke: #BFA48E; stroke-opacity: 1; }
+.an-m.am-m { fill: var(--r); }
+.an-m.am-m.r-n { fill: #CC8476; }
+.am-fib, .am-shade { pointer-events: none; }
+.am-shade { fill: url(#af-shade); }
+.am-bone { fill: #F4EBDD; stroke: #CBB89E; stroke-width: .6; }
+.am-line { fill: none; stroke: #F6EEE2; stroke-width: 1.3; stroke-linecap: round; opacity: .95; }
+.an-m.am-m { cursor: pointer; transition: filter .2s ease, opacity .2s ease; }
+.an-m.am-m:hover, .an-m.am-m:focus-visible { filter: brightness(1.08) saturate(1.1); outline: none; }
+.an-m.am-m.sel { stroke: #1d0b08; stroke-opacity: .9; stroke-width: 1.6; }
+.hide-a .an-m.am-m.r-a, .hide-s .an-m.am-m.r-s, .hide-t .an-m.am-m.r-t { fill: #CC8476; opacity: 1; }
+.hide-n .an-m.am-m.r-n { opacity: .35; }
+
+.an-sw.r-n { background: #CC8476; }
+.am-deep { fill: #A9645A; }
+.vz-body-svg.am-svg { width: 124px; }
+.vz-body-list .sw.on { background: #C9433A; }
+.an-svg.am-svg { max-width: 240px; margin: 0 auto; }
+.an-pair .an-svg.am-svg { max-width: 120px; }
+@media (max-width: 640px) { .an-svg.am-svg { max-width: 200px; } .an-pair .an-svg.am-svg { max-width: 96px; } .vz-body-svg.am-svg { width: 118px; } }
+
+/* Anatomi: iskelet, omurga, solunum */
+.ak-svg { overflow: visible; }
+.ak-bone { fill: #F4EBDD; stroke: #BFA88A; stroke-width: .8; stroke-linejoin: round; }
+.ak-bone.dim { fill: #EADCC6; }
+.ak-rib { fill: none; stroke: #E9DCC6; stroke-width: 3; stroke-linecap: round; }
+.ak-vert { fill: #EFE3D0; stroke: #BFA88A; stroke-width: .6; }
+.ak-hole { fill: #8F7C66; opacity: .55; }
+.ak-line { fill: none; stroke: #BFA88A; stroke-width: .8; }
+.ak-vert-b, .ak-vert-p { stroke: #A88E70; stroke-width: .8; stroke-linejoin: round; }
+.ak-vert-b.lv0, .ak-vert-p.lv0 { fill: #F4EBDD; }
+.ak-vert-b.lv1, .ak-vert-p.lv1 { fill: color-mix(in srgb, #D8971F 38%, #F4EBDD); }
+.ak-vert-b.lv2, .ak-vert-p.lv2 { fill: color-mix(in srgb, #C9433A 55%, #F4EBDD); }
+.ak-disc { fill: #8FB3C9; stroke: #6F96AE; stroke-width: .5; }
+.ak-brace { fill: none; stroke: color-mix(in srgb, var(--color-text) 35%, transparent); stroke-width: 1.2; }
+.ak-sub { font: 700 10px var(--font); fill: var(--color-muted); }
+.ak-sub.mid { text-anchor: middle; }
+.ak-lung { fill: #EFAFA6; stroke: #C97D74; stroke-width: 1; }
+.ak-fiss { fill: none; stroke: #C97D74; stroke-width: .9; stroke-linecap: round; }
+.ak-rib2 { fill: none; stroke: #EADDC8; stroke-width: 2.5; stroke-linecap: round; opacity: .82; }
+.ak-rib2.on { stroke: #D8971F; }
+.ak-trachea { fill: none; stroke: #D98C84; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+.ak-dia { fill: none; stroke: #CC8476; stroke-width: 6; stroke-linecap: round; }
+.ak-dia.on { stroke: #C9433A; }
+.an-svg.spine.ak-svg { max-width: 340px; }
+.an-sw.lv0 { background: #F4EBDD; } .an-sw.lv1 { background: color-mix(in srgb, #D8971F 38%, #F4EBDD); } .an-sw.lv2 { background: color-mix(in srgb, #C9433A 55%, #F4EBDD); }
