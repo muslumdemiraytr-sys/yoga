@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anatomi çizimleri kontrol sayfası</title>
+  <script src="../js/theme.js"></script>
+  <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/visuals.css"><link rel="stylesheet" href="../css/areluma.css">
+  <style>body{padding:20px;background:var(--color-background)} .row{display:flex;gap:24px;flex-wrap:wrap} .row>div{width:340px;background:var(--color-surface);border-radius:16px;padding:12px}</style>
+</head>
+<body>
+  <p>Poz: <select id="p"></select></p>
+  <div class="row" id="r"></div>
+  <script>window.App={h:s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])),icon:()=>"",figure:()=>"<svg></svg>"};</script>
+  <script src="../js/anatomy-art.js"></script><script src="../js/anatomy.js"></script>
+  <script>
+    const ROLES = { tadasana: {}, savasci: { quadriceps: 'a', gluteusMed: 't', adductors: 's', deltoid: 'a', trapezius: 't', obliques: 't', hipFlexors: 's', gastrocnemius: 't', hamstrings: 's', gluteusMax: 'a', erector: 't' } };
+    const sel = document.getElementById('p'); Object.keys(ROLES).forEach(k => sel.insertAdjacentHTML('beforeend', `<option>${k}</option>`));
+    function draw() { const R = ROLES[sel.value]; const role = (id) => R[id] || 'n';
+      const d = Anatomy.POSES['savasci-2'] || Object.values(Anatomy.POSES)[0]; document.getElementById('r').innerHTML = ['front', 'back'].map(v => `<div>${AnatomyArt.svg(v, { role })}</div>`).join('') + `<div>${Anatomy.skeletonSvg(d)}</div><div>${Anatomy.spineSvg(d)}</div><div>${Anatomy.breathSvg(d)}</div>`; }
+    sel.value = 'savasci'; sel.onchange = draw; draw();
+  </script>
+</body>
+</html>
