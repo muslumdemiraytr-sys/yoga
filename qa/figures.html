@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Figür kontrol sayfası</title>
+  <script src="../js/theme.js"></script>
+  <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/visuals.css"><link rel="stylesheet" href="../css/areluma.css">
+  <style>
+    body { padding: 20px; background: var(--color-background); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+    .grid figure { margin: 0; background: var(--color-surface); border-radius: 14px; padding: 8px; }
+    .grid figcaption { font: 600 12px sans-serif; text-align: center; }
+    .scenes { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 24px; }
+    .scenes figure { margin: 0; background: var(--color-primary-strong); border-radius: 14px; padding: 10px; color: #fff; }
+  </style>
+</head>
+<body>
+  <p>Tema: <select id="t"></select> <label><input type="checkbox" id="hl"> Kas vurgusu</label></p>
+  <div class="grid" id="g"></div>
+  <div class="scenes" id="s"></div>
+  <script src="../js/yoga-content.js"></script>
+  <script src="../js/anatomy.js"></script>
+  <script src="../js/figure.js"></script>
+  <script>
+    const sel = document.getElementById('t');
+    Theme.THEMES.forEach(x => sel.insertAdjacentHTML('beforeend', `<option value="${x.id}">${x.name || x.id}</option>`));
+    sel.value = Theme.current(); sel.onchange = () => Theme.apply(sel.value);
+    function draw() {
+      const hl = document.getElementById('hl').checked;
+      const figs = YA.poses.map(p => [p.id, p.fig, hl && typeof Anatomy !== 'undefined' && Anatomy.POSES && Anatomy.POSES[p.id] ? Figure.focusFrom(Anatomy.POSES[p.id].m) : null])
+        .concat(Object.entries(YA.extraFigs).map(([k, f]) => ['extra:' + k, f, null]));
+      document.getElementById('g').innerHTML = figs.map(([id, f, focus]) => `<figure>${Figure.svg(f, { label: id, focus })}<figcaption>${id}</figcaption></figure>`).join('');
+      document.getElementById('s').innerHTML = ['hero', 'baslangic', 'moduller', 'pozlar', 'nefes', 'meditasyon', 'program', 'panel', 'quiz', 'rozetler', 'kaynakca', 'programlar', 'ayarlar', 'kayip']
+        .map(n => `<figure>${Figure.scene(n, n)}<figcaption>${n}</figcaption></figure>`).join('');
+    }
+    document.getElementById('hl').onchange = draw; draw();
+  </script>
+</body>
+</html>
