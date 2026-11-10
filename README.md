@@ -1,4 +1,4 @@
-# Yoga Akademisi – Başlangıçtan Orta Seviyeye
+# Areluma Yoga – Başlangıçtan Orta Seviyeye
 
 Tamamen Türkçe, interaktif ve backend gerektirmeyen bir yoga eğitim platformu. Kullanıcıyı sıfırdan başlatıp
 30 günlük programla güvenli bir yoga alışkanlığı kazandırmayı, öğrenme ve pratik gelişimini ölçmeyi hedefler.
@@ -33,12 +33,15 @@ yoga-academy/
 ├── css/
 │   ├── style.css         # Tasarım sistemi ve bileşenler
 │   ├── visuals.css       # İnfografik ve harita bileşenleri
+│   ├── areluma.css       # Areluma görsel kimliği: figür/sahne renkleri, hareket belirteçleri ve animasyonlar
 │   └── responsive.css    # Tablet ve mobil düzen
 ├── js/
 │   ├── theme.js          # 10 renk teması, kontrast hesaplı tema motoru
 │   ├── visuals.js        # görsel anlatım bileşenleri, öğrenme haritası, görsel rapor
 │   ├── anatomy.js        # anatomi verisi ve etkileşimli anatomi bileşenleri (Modül 8)
 │   ├── storage.js        # localStorage, JSON dışa/içe aktarma
+│   ├── figure.js         # figür motoru (hacimli figür, poz geçişleri, kas vurgusu) ve sahne illüstrasyonları
+│   ├── motion.js         # hareket sistemi (sayfa açılışı, halkalar, başarı anı, nefes yayı)
 │   ├── yoga-content.js   # Modüller, kaynaklar, nefes, pozlar, programlar, meditasyon
 │   ├── progress.js       # Metrikler, seri (streak), rozet kuralları
 │   ├── daily-tasks.js    # 30 günlük plan verisi ve sayfaları
@@ -111,6 +114,42 @@ Hepsi tema renklerini kullanır, animasyon içermez ve metin alternatifiyle birl
   tarayıcıdaki gerçek kullanıcı verisinden hesaplanır.
 - Yeni bir bölüm görseli eklemek için `Viz.SECTION` nesnesine `'modülId/bölümId': () => Viz.flow([...])` gibi bir kayıt eklemek yeterlidir.
 
+## Areluma görsel kimliği ve hareket sistemi
+
+**İmza:** “Areluma kemeri” – her sayfa başlığında figürü çerçeveleyen yumuşak bir kemer, gün doğumu/ay diski ve
+aynı figür dili. Logo da bu kemerden türetilir. Tüm renkler aktif temadan gelir; 10 temanın hepsinde çalışır.
+
+**Figür motoru (`js/figure.js`):** Poz verisindeki eklem koordinatlarından (200×200) hacimli figür çizer: incelen uzuv
+kapsülleri, gövde silueti, el/ayak, saç topuzu, zemin gölgesi. Önden görünen pozlar (Dağ, Ağaç, Savaşçı II) otomatik
+algılanır ve omuz/kalça genişliği buna göre açılır. İsteğe bağlı veri alanları: `fv` (0 yandan, 1 önden görünüm),
+`ft` (ayak yönü, `[sol, sağ]`: -1/1/0 veya `[x, y]`).
+- `Figure.svg(fig, { focus })` – `focus` verilirse figür nötr anatomi tonuna geçer ve bölgeler `Anatomy.ROLE`
+  renkleriyle vurgulanır (`Figure.focusFrom(Anatomy.POSES[id].m)`).
+- `Figure.morph(svg, a, b)` – iki poz arasında **eklem açıları** üzerinden geçiş (boylar korunur, eklemler zeminin altına inmez).
+- `Figure.scene(ad)` – sayfa başlığı sahneleri: hero, baslangic, moduller, pozlar, nefes, meditasyon, program, panel,
+  quiz, rozetler, kaynakca, programlar, ayarlar, kayip. `assets/illustrations/` altındaki eski SVG'ler yalnızca
+  `spine.svg` ve `diaphragm.svg` için kullanılır.
+- Tüm figürleri ve sahneleri tek sayfada görmek için: `qa/figures.html` (tema seçici ve kas vurgusu düğmesiyle).
+
+**Hareketler (`js/motion.js`, harici kütüphane yok – Web Animations API):** GSAP, Motion, Lottie ve Rive
+değerlendirildi; proje derleme adımı olmayan statik bir site olduğundan ve gereken hareketler tarayıcının yerleşik
+API'siyle karşılanabildiğinden ek kütüphane yüklenmedi.
+
+| Hareket | Amacı |
+|---|---|
+| Nefes rehberi “Areluma çiçeği” | Nefes alırken açılır, verirken kapanır; dış yay o evrenin kalan süresini gösterir |
+| Poza giriş (poz sayfası) | Başlangıç duruşundan poza adım adım geçiş; oynat/ileri/geri, “Çalışan bölgeleri göster” |
+| Program oynatıcı | Adımlar arasında figür bir pozdan diğerine akar |
+| Sayfa açılışı | Kartlar görünür alana girdikçe kısa ve kademeli belirir (yalnızca bir kez) |
+| İlerleme halkaları | Değer 0'dan dolarak gelir, yüzde sayacı eşlik eder |
+| Görev / program tamamlandı | Figür oturuştan kalkar, halka dolar, onay işareti belirir |
+| Meditasyon | Yalnızca seans sırasında yavaş arka plan ışıkları ve hafif nefes ritmi; duraklatınca durur |
+| Kartlar | Üzerine gelince hafif yükselme, dokununca hafif basılma |
+
+İlkeler: yalnızca `transform`/`opacity` canlandırılır; sürekli dekoratif döngü yoktur; `prefers-reduced-motion`
+açıkken ölçekleme, kayma ve ortam hareketleri kapanır (nefes rehberinin süre yayı bilgi verdiği için kalır);
+otomatik test araçlarında (`navigator.webdriver`) içerik animasyonsuz ve hemen görünür.
+
 ## Renk temaları
 
 **Ayarlar → Görünüm ve Tema** bölümünden (üst bardaki palet simgesi ya da Menü → Ayarlar) 10 tema arasında geçiş yapılır:
@@ -142,7 +181,7 @@ Arayüz, çevrim içi kurs platformlarında yaygın olan sade bir “kurs” dü
 svgs.app’teki “Minimal Outline Accent” yaklaşımından esinlenen, bu proje için sıfırdan çizilmiş bir set kullanılır:
 koyu, yuvarlak uçlu konturlar + tek vurgu rengi (adaçayı yeşili), kesik çizgiler ve küçük süs işaretleri.
 
-- **Sayfa illüstrasyonları** (`assets/illustrations/`): `hero` (ana sayfa), `baslangic`, `moduller`, `pozlar`, `nefes`,
+- **Sayfa illüstrasyonları:** artık `js/figure.js` sahneleriyle satır içi çizilir (yukarıya bak). Eski dosyalar (`assets/illustrations/`): `hero` (ana sayfa), `baslangic`, `moduller`, `pozlar`, `nefes`,
   `meditasyon`, `program` (30 gün), `panel`, `quiz`, `rozetler`, `kaynakca`, `programlar`, `kayip` (404). Her sayfanın
   başlık kartına otomatik eklenir (`app.js` → `HEAD_ILL`).
 - **İkon seti** (`assets/icons/ya-icons.svg`): menü (11), modüller (7) ve rozetler (10) için 25 sembol. Sayfa açılırken
@@ -257,3 +296,6 @@ kaynaklar eklenmez; ana kaynak olarak önerilmeyen yayınlar kullanılmaz.
 - [ ] Quiz: geri bildirim, sonuç, tekrar çözme
 - [ ] JSON dışa aktar → sıfırla → içe aktar
 - [ ] Tarayıcı konsolunda hata olmaması
+
+> **Not:** Görünen ad “Areluma Yoga” olarak güncellendi; mevcut kullanıcı verileri kaybolmasın diye `localStorage`
+> anahtarları (`yogaAkademisi.v1`, `yogaAkademisi.theme`) ve JSON yedek biçimi bilerek değiştirilmedi.

@@ -1,0 +1,7 @@
+.DS_Store
+.claude/
+node_modules/
+qa/screenshots/
+qa/test-results/
+# Görsel regresyon referansları makineye/işletim sistemine özgüdür (…-darwin.png); yerelde tutulur
+qa/baseline/
