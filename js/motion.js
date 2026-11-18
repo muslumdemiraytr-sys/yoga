@@ -16,7 +16,7 @@ const Motion = (() => {
 
   /* ------------------------------------------------ Sayfa açılışı: kademeli belirme */
   const REVEAL = [
-    '.course-grid > *', '.home-grid > *', '.feature-grid > *', '.card-grid > *', '.pose-grid > *', '.questions > *',
+    '.course-grid > *', '.home-grid > *', '.bento > *', '.hx-cmp-wrap', '.feature-grid > *', '.card-grid > *', '.pose-grid > *', '.questions > *',
     '.badge-grid > *', '.metric-grid > *', '.day-grid', '.breath-list > *', '.module-list > *', '.seq > li',
     '.pi-steps > *', '.vz-flow > *', '.flow > li', '.pose-hero', '.pacer-card', '.med-card', '.stepper-card'
   ].join(',');

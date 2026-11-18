@@ -137,31 +137,111 @@ const App = (() => {
     const msg = YA.motivation[doy % YA.motivation.length];
     const name = st.profile.name;
     const nextSec = firstUnreadSection();
+    const doneSet = new Set(Object.entries(st.days).filter(([, v]) => v && v.done).map(([k]) => Number(k)));
+    const petals = (n, cls) => Array.from({ length: n }, (_, i) => `<path class="${cls}" transform="rotate(${(i * 360 / n).toFixed(1)} 150 150)" d="M150 150C127 122 131 72 150 42C169 72 173 122 150 150Z"/>`).join('');
     el.innerHTML = `
-      <section class="band band-center home-band">
-        <a class="announce" href="#/pozlar">${icon('sparkles')} <span><strong>Yeni:</strong> Her pozisyon için videolu anlatım eklendi.</span> <u>Göz at</u></a>
-        <h1 class="display">${name ? `Hoş geldin, ${h(name)}!` : 'Areluma Yoga’ya hoş geldin!'}</h1>
-        <p class="lead">Sıfırdan başlayanlar için ücretsiz, Türkçe ve adım adım bir yoga eğitimi. Kendi hızında öğren, günlük pratiğini takip et.</p>
-        ${ill('hero', 'Gün doğumunda kemerin önünde Savaşçı II duruşunda bir kişi')}
-        <div class="btn-row center">
-          ${next ? `<a class="btn pill light lg" href="#/gun/${next.n}">${s.daysDone ? `Gün ${next.n} ile devam et` : 'Eğitime başla'} ${icon('arrow-right')}</a>` : `<a class="btn pill light lg" href="#/rapor">Raporunu gör ${icon('arrow-right')}</a>`}
-          <button class="btn pill outline-light lg" id="toCourses">Eğitimlere göz at ${icon('arrow-down')}</button>
+      <section class="band hx" aria-labelledby="hxTitle">
+        <div class="hx-glow" aria-hidden="true"></div>
+        <div class="hx-grid">
+          <div class="hx-copy">
+            <p class="hx-pill">${icon('sparkles')} Ücretsiz · Türkçe · Adım adım</p>
+            ${name ? `<p class="hx-hello">Hoş geldin, ${h(name)}</p>` : ''}
+            <h1 id="hxTitle" class="hx-title">Nefesinle başla.<br>Bedenini <em>tanı.</em></h1>
+            <p class="hx-lead">Sıfırdan başlayanlar için güvenli, kademeli ve kanıta dayalı yoga eğitimi. Kısa günlük görevlerle kendi hızında ilerle.</p>
+            <div class="hx-cta">
+              ${next ? `<a class="btn hx-btn" href="#/gun/${next.n}">${s.daysDone ? `Gün ${next.n} ile devam et` : 'Eğitime başla'} ${icon('arrow-right')}</a>` : `<a class="btn hx-btn" href="#/rapor">Raporunu gör ${icon('arrow-right')}</a>`}
+              <button class="btn hx-btn ghost" id="toCourses">${icon('play')} Nasıl çalışır?</button>
+            </div>
+          </div>
+          <div class="hx-stage" aria-hidden="true">
+            <div class="hx-arch"><span class="hx-sun"></span><div class="hx-fig">${figure('tadasana', { label: '' })}</div></div>
+            <p class="hx-chip" id="hxChip"><span>Dağ Duruşu</span><em>Tadasana</em></p>
+          </div>
+        </div>
+        <ul class="hx-stats">
+          <li><b>${YA.poses.length}</b><span>poz, adım adım</span></li><li><b>${YA.breaths.length}</b><span>nefes tekniği</span></li>
+          <li><b>30</b><span>günlük program</span></li><li><b>${YA.modules.length}</b><span>eğitim modülü</span></li>
+        </ul>
+      </section>
+
+      <section class="hx-section" aria-labelledby="todayTitle">
+        <div class="hx-head"><p class="hx-kicker">Senin pratiğin</p><h2 id="todayTitle">Bugün</h2></div>
+        <div class="home-grid">
+          <article class="card today-card">
+            <div class="tc-head"><span class="icon-badge">${yi('calcheck')}</span><div><p class="eyebrow">Günlük görev</p>
+            <h2>${next ? `Gün ${next.n}: ${h(next.title)}` : 'Tüm görevler tamamlandı!'}</h2></div></div>
+            ${next ? `<p>${h(next.goal)}</p>
+              <div class="meta-row"><span class="chip">${icon('clock')} ${next.min} dk</span><span class="chip">Hafta ${next.w}: ${h(YA.weeks[next.w - 1].title)}</span></div>
+              <a class="btn primary" href="#/gun/${next.n}">${icon('arrow-right')} Göreve git</a>`
+              : `<p>30 günlük programı bitirdin. Programlar bölümünden pratiğe devam edebilirsin.</p><a class="btn primary" href="#/programlar">Programlar</a>`}
+          </article>
+          <article class="card ring-card">
+            <div class="ring" style="--p:${s.learning}"><span>%${s.learning}</span></div>
+            <div><p class="eyebrow">İlerleme</p><h3>Öğrenme ilerlemesi</h3>
+              <p class="muted">${s.daysDone}/30 gün · ${s.secDone}/${s.secTotal} bölüm · ${s.quizPassed}/${s.quizTotal} sınav</p>
+              <a class="link" href="#/panel">Gelişim paneline git ${icon('arrow-right')}</a></div>
+          </article>
+          <article class="card">
+            <p class="eyebrow">Son tamamlanan görev</p>
+            ${last ? `<h3>Gün ${last.n}: ${h(last.title)}</h3><p class="muted">${fmtDate(Store.state.days[last.n].date)}</p><a class="link" href="#/gun/${last.n}">Tekrar incele ${icon('arrow-right')}</a>` : '<h3>Henüz görev yok</h3><p class="muted">İlk görevini tamamladığında burada görünecek.</p>'}
+          </article>
+          <article class="card stat-mini">
+            <div><span class="big">${s.streak}</span><span class="muted">günlük seri ${icon('flame')}</span></div>
+            <div><span class="big">${s.totalMin}</span><span class="muted">toplam dakika</span></div>
+            <div><span class="big">${Object.keys(st.badges).length}</span><span class="muted">rozet</span></div>
+          </article>
+          <article class="card quote-card wide">
+            ${icon('quote')}
+            <p class="quote">${h(msg)}</p>
+            <p class="muted tiny">Günün motivasyon mesajı</p>
+          </article>
         </div>
       </section>
 
-      <section class="questions" aria-label="Bu eğitim kimin için?">
-        <div class="q-item">${yi('sprout')}<p>Yogaya nereden başlayacağını mı merak ediyorsun?</p></div>
-        <div class="q-item">${yi('wind')}<p>Nefesini ve bedenini daha iyi tanımak mı istiyorsun?</p></div>
-        <div class="q-item">${yi('calendar')}<p>Kısa ama düzenli bir pratik alışkanlığı mı kurmak istiyorsun?</p></div>
+      <section class="hx-cmp-wrap" id="nasil" aria-labelledby="cmpTitle">
+        <div class="hx-cmp-copy">
+          <p class="hx-kicker light">Hizalamayı gör</p>
+          <h2 id="cmpTitle">Duruşun farkı,<br>tek bakışta.</h2>
+          <p>Sürgüyü kaydır: öne düşen baş ve yuvarlanan sırt ile hizalı bir Dağ Duruşu arasındaki farkı gör. Hizalı duruşta kulak, omuz, kalça ve ayak bileği aynı dikey çizgiye yaklaşır.</p>
+          <ul class="hx-cmp-list"><li><span class="dot bad"></span>Baş öne, sırt yuvarlak, dizler geriye kilitli</li><li><span class="dot good"></span>Baş omurganın üstünde, göğüs açık, dizler yumuşak</li></ul>
+          <a class="btn hx-btn" href="#/poz/tadasana">Dağ Duruşu’nu öğren ${icon('arrow-right')}</a>
+        </div>
+        <div class="hx-cmp" id="hxCmp" style="--x:50%">
+          <div class="hx-cmp-layer before">${alignFig('slouch')}<span class="hx-tag bad">Çökük duruş</span></div>
+          <div class="hx-cmp-layer after">${alignFig('aligned')}<span class="hx-tag good">Hizalı duruş</span></div>
+          <div class="hx-cmp-handle" aria-hidden="true"><span>${icon('chevrons-left-right')}</span></div>
+          <input class="hx-cmp-range" type="range" min="0" max="100" value="50" aria-label="Çökük ve hizalı duruşu karşılaştırma sürgüsü">
+        </div>
       </section>
 
-      <section class="goal">
-        <h2>Amacımız: güvenli, kademeli ve kanıta dayalı başlangıç</h2>
-        <p>Areluma Yoga’nın amacı, kullanıcıya güvenli, kademeli ve kanıta dayalı başlangıç yoga eğitimi sunmaktır. Temel bilgiler bilimsel kaynaklara dayanarak sade bir dille anlatılır; kısa günlük görevlerle kendi hızında ilerlersin. Fiziksel sınırlarını zorlaman beklenmez. Yoga, tıbbi değerlendirme veya tedavinin yerine geçmez.</p>
+      <section class="hx-section" aria-labelledby="bentoTitle">
+        <div class="hx-head"><p class="hx-kicker">Tek platform</p><h2 id="bentoTitle">Pratiğin için ihtiyacın olan her şey</h2></div>
+        <div class="bento">
+          <a class="bx-card dark span2" href="#/pozlar">
+            <div class="bx-text"><p class="bx-kicker">Poz kütüphanesi</p><h3>${YA.poses.length} poz, her biri adım adım</h3><p>Hizalama noktaları, sık yapılan hatalar, kolaylaştırılmış alternatifler ve videolu anlatım.</p><span class="bx-link">Pozları keşfet ${icon('arrow-right')}</span></div>
+            <div class="bx-poses">${['tadasana', 'agac', 'savasci-2', 'kobra', 'asagi-kopek'].map(id => `<div>${figure(id, { small: true, label: poseById(id).tr })}</div>`).join('')}</div>
+          </a>
+          <a class="bx-card" href="#/nefes">
+            <div class="bx-art"><svg viewBox="0 0 300 300" class="bx-bloom" aria-hidden="true"><g class="l1">${petals(8, 'pb-petal')}</g><g class="l2">${petals(6, 'pb-petal b')}</g><circle cx="150" cy="150" r="52" class="pb-core"/></svg></div>
+            <div class="bx-text"><p class="bx-kicker">Nefes rehberi</p><h3>Ritmini bul</h3><p>${YA.breaths.length} teknik, canlı nefes zamanlayıcısıyla.</p><span class="bx-link">Başla ${icon('arrow-right')}</span></div>
+          </a>
+          <a class="bx-card" href="#/modul/m8">
+            <div class="bx-art anat">${AnatomyArt.svg('front', { role: (id) => ({ quadriceps: 'a', gluteusMed: 't', obliques: 't', adductors: 's' })[id] || 'n', label: '' })}</div>
+            <div class="bx-text"><p class="bx-kicker">Yoga anatomisi</p><h3>Hangi kas çalışıyor?</h3><p>Etkileşimli kas, iskelet ve omurga haritaları.</p><span class="bx-link">İncele ${icon('arrow-right')}</span></div>
+          </a>
+          <a class="bx-card dark span2" href="${next ? '#/gun/' + next.n : '#/program'}">
+            <div class="bx-text"><p class="bx-kicker">30 günlük program</p><h3><span class="bx-big">${s.daysDone}</span>/30 gün</h3><p>Her gün bir konu, kısa bir pratik ve tek bir değerlendirme sorusu.</p><span class="bx-link">${s.daysDone ? `Gün ${next ? next.n : 30} ile devam et` : 'Programa başla'} ${icon('arrow-right')}</span></div>
+            <div class="bx-days" aria-label="${s.daysDone} gün tamamlandı">${Array.from({ length: 30 }, (_, i) => `<span class="${doneSet.has(i + 1) ? 'on' : ''} ${next && next.n === i + 1 ? 'now' : ''}"></span>`).join('')}</div>
+          </a>
+          <a class="bx-card span3" href="#/meditasyon">
+            <div class="bx-art scene-art">${ill('meditasyon', '', 'scene')}</div>
+            <div class="bx-text"><p class="bx-kicker">Meditasyon</p><h3>Birkaç dakika sessizlik</h3><p>Rehberli, zilli zamanlayıcı.</p><span class="bx-link">Otur ${icon('arrow-right')}</span></div>
+          </a>
+        </div>
       </section>
 
-      <section id="egitimler" class="courses">
-        <h2 class="center-title">Eğitimler</h2>
+      <section id="egitimler" class="courses hx-section">
+        <div class="hx-head"><p class="hx-kicker">Öğren</p><h2>Eğitimler</h2></div>
         <div class="course-grid">
           <article class="course-card">
             <a class="cc-banner tone-1" href="#/program" aria-label="30 Günlük Program">${ill('program', '', 'scene')}</a>
@@ -180,50 +260,60 @@ const App = (() => {
         </div>
       </section>
 
-      <h2 class="center-title">Bugün</h2>
-      <div class="home-grid">
-        <article class="card today-card">
-          <div class="tc-head"><span class="icon-badge">${yi('calcheck')}</span><div><p class="eyebrow">Günlük görev</p>
-          <h2>${next ? `Gün ${next.n}: ${h(next.title)}` : 'Tüm görevler tamamlandı!'}</h2></div></div>
-          ${next ? `<p>${h(next.goal)}</p>
-            <div class="meta-row"><span class="chip">${icon('clock')} ${next.min} dk</span><span class="chip">Hafta ${next.w}: ${h(YA.weeks[next.w - 1].title)}</span></div>
-            <a class="btn primary" href="#/gun/${next.n}">${icon('arrow-right')} Göreve git</a>`
-            : `<p>30 günlük programı bitirdin. Programlar bölümünden pratiğe devam edebilirsin.</p><a class="btn primary" href="#/programlar">Programlar</a>`}
-        </article>
-        <article class="card ring-card">
-          <div class="ring" style="--p:${s.learning}"><span>%${s.learning}</span></div>
-          <div><p class="eyebrow">İlerleme</p><h3>Öğrenme ilerlemesi</h3>
-            <p class="muted">${s.daysDone}/30 gün · ${s.secDone}/${s.secTotal} bölüm · ${s.quizPassed}/${s.quizTotal} sınav</p>
-            <a class="link" href="#/panel">Gelişim paneline git ${icon('arrow-right')}</a></div>
-        </article>
-        <article class="card">
-          <p class="eyebrow">Son tamamlanan görev</p>
-          ${last ? `<h3>Gün ${last.n}: ${h(last.title)}</h3><p class="muted">${fmtDate(Store.state.days[last.n].date)}</p><a class="link" href="#/gun/${last.n}">Tekrar incele ${icon('arrow-right')}</a>` : '<h3>Henüz görev yok</h3><p class="muted">İlk görevini tamamladığında burada görünecek.</p>'}
-        </article>
-        <article class="card stat-mini">
-          <div><span class="big">${s.streak}</span><span class="muted">günlük seri ${icon('flame')}</span></div>
-          <div><span class="big">${s.totalMin}</span><span class="muted">toplam dakika</span></div>
-          <div><span class="big">${Object.keys(st.badges).length}</span><span class="muted">rozet</span></div>
-        </article>
-        <article class="card quote-card wide">
-          ${icon('quote')}
-          <p class="quote">${h(msg)}</p>
-          <p class="muted tiny">Günün motivasyon mesajı</p>
-        </article>
-      </div>
+      <section class="hx-section" aria-labelledby="toolsTitle">
+        <div class="hx-head"><p class="hx-kicker">Araçlar</p><h2 id="toolsTitle">Daha fazlası</h2></div>
+        <div class="feature-grid">
+          <a class="feature" href="#/programlar">${yi('sequence')}<h3>Hazır programlar</h3><p>5–20 dakikalık zamanlayıcılı rutinler.</p></a>
+          <a class="feature" href="#/quiz">${yi('quiz')}<h3>Quiz ve sınavlar</h3><p>Anında geri bildirim ve final değerlendirmesi.</p></a>
+          <a class="feature" href="#/harita">${yi('compass')}<h3>Öğrenme haritası</h3><p>Yolculuğun, anatomi ve pozlar arası geçişler.</p></a>
+          <a class="feature" href="#/panel">${yi('chart')}<h3>Gelişim paneli</h3><p>Grafikler ve seri takibi.</p></a>
+        </div>
+      </section>
 
-      <h2 class="center-title">Araçlar</h2>
-      <div class="feature-grid">
-        <a class="feature" href="#/pozlar">${yi('pose')}<h3>18 pozisyon</h3><p>Adım adım anlatım, video, hatalar ve alternatifler.</p></a>
-        <a class="feature" href="#/nefes">${yi('wind')}<h3>Nefes rehberi</h3><p>Animasyonlu nefes zamanlayıcısıyla 6 teknik.</p></a>
-        <a class="feature" href="#/meditasyon">${yi('lotus')}<h3>Meditasyon</h3><p>Rehberli, zilli meditasyon zamanlayıcısı.</p></a>
-        <a class="feature" href="#/programlar">${yi('sequence')}<h3>Hazır programlar</h3><p>5–20 dakikalık zamanlayıcılı rutinler.</p></a>
-        <a class="feature" href="#/quiz">${yi('quiz')}<h3>Quiz ve sınavlar</h3><p>Anında geri bildirim ve final değerlendirmesi.</p></a>
-        <a class="feature" href="#/harita">${yi('compass')}<h3>Öğrenme haritası</h3><p>Yolculuğun, anatomi ve pozlar arası geçişler.</p></a>
-        <a class="feature" href="#/panel">${yi('chart')}<h3>Gelişim paneli</h3><p>Grafikler ve seri takibi.</p></a>
-      </div>
+      <section class="goal hx-goal">
+        <h2>Güvenli, kademeli ve kanıta dayalı</h2>
+        <p>Areluma Yoga’nın amacı, kullanıcıya güvenli, kademeli ve kanıta dayalı başlangıç yoga eğitimi sunmaktır. Temel bilgiler bilimsel kaynaklara dayanarak sade bir dille anlatılır; kısa günlük görevlerle kendi hızında ilerlersin. Fiziksel sınırlarını zorlaman beklenmez. Yoga, tıbbi değerlendirme veya tedavinin yerine geçmez.</p>
+      </section>
       ${safetyNote()}`;
-    el.querySelector('#toCourses').addEventListener('click', () => el.querySelector('#egitimler').scrollIntoView({ behavior: 'smooth' }));
+    el.querySelector('#toCourses').addEventListener('click', () => el.querySelector('#nasil').scrollIntoView({ behavior: Motion.reduced() ? 'auto' : 'smooth' }));
+    initHeroFlow(el); initCompare(el);
+  }
+
+  /* ---- Ana sayfa: açılıştaki poz akışı (görünürken, yavaş; azaltılmış harekette durağan) */
+  function initHeroFlow(el) {
+    const svg = el.querySelector('.hx-fig svg'), chip = el.querySelector('#hxChip');
+    if (!svg) return;
+    const seq = ['tadasana', 'savasci-2', 'agac', 'ucgen'].map(poseById).filter(Boolean);
+    if (Motion.reduced() || Motion.automated()) { svg.innerHTML = Figure.inner(seq[1].fig); chip.innerHTML = `<span>${h(seq[1].tr)}</span><em>${h(seq[1].sa)}</em>`; return; }
+    let i = 0, timer = null, visible = true;
+    const step = () => {
+      if (!visible || document.hidden) return;
+      const a = seq[i], b = seq[(i + 1) % seq.length]; i = (i + 1) % seq.length;
+      Figure.morph(svg, a.fig, b.fig, { duration: 1500 });
+      chip.classList.add('swap');
+      setTimeout(() => { chip.innerHTML = `<span>${h(b.tr)}</span><em>${h(b.sa)}</em>`; chip.classList.remove('swap'); }, 450);
+    };
+    timer = setInterval(step, 3600);
+    const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => { visible = es[0].isIntersecting; }) : null;
+    if (io) io.observe(svg);
+    onCleanup(() => { clearInterval(timer); if (io) io.disconnect(); });
+  }
+  /* ---- Hizalama karşılaştırması: çökük ve hizalı duruş (yan görünüm) */
+  const ALIGN = {
+    aligned: { fv: 0, ft: [-1, -1], h: [101, 30], n: [101, 50], p: [101, 106], le: [100, 78], lh: [100, 104], re: [102, 78], rh: [102, 104], lk: [101, 143], lf: [102, 180], rk: [99, 143], rf: [100, 180] },
+    slouch: { fv: 0, ft: [-1, -1], h: [86, 42], n: [95, 58], p: [100, 108], c: [110, 80], le: [92, 84], lh: [88, 110], re: [94, 84], rh: [90, 110], lk: [105, 143], lf: [102, 180], rk: [103, 143], rf: [100, 180] }
+  };
+  function alignFig(kind) {
+    const f = ALIGN[kind], good = kind === 'aligned';
+    const pts = [f.h, f.n, f.p, f.lf].map(([x, y], i) => `<circle cx="${x}" cy="${i === 3 ? y - 2 : y}" r="3.4" class="al-pt ${good ? 'good' : 'bad'}"/>`).join('');
+    const path = good ? '' : `<path d="M${f.h[0]} ${f.h[1]}L${f.n[0]} ${f.n[1]}L${f.p[0]} ${f.p[1]}L${f.lf[0]} ${f.lf[1] - 2}" class="al-bend"/>`;
+    return figure(f, { label: good ? 'Hizalı Dağ Duruşu, yandan' : 'Çökük duruş, yandan' }).replace('viewBox="0 0 200 200"', 'viewBox="46 6 110 186"').replace(/<\/svg>\s*$/, `<g class="al-over"><path d="M101 12V186" class="al-line ${good ? 'good' : ''}"/>${path}${pts}</g></svg>`);
+  }
+  function initCompare(el) {
+    const box = el.querySelector('#hxCmp'); if (!box) return;
+    const r = box.querySelector('.hx-cmp-range');
+    const set = (v) => box.style.setProperty('--x', v + '%');
+    r.addEventListener('input', () => set(r.value));
   }
 
   /* ---------- Yoga'ya Başlangıç */
